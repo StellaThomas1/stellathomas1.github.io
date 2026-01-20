@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Global Water Fund — Contact</title>
+
+<style>
+:root{
+  --bg:#05060a; --bg2:#0b0f1a;
+  --ink:rgba(245,248,255,.92);
+  --muted:rgba(245,248,255,.70);
+  --muted2:rgba(245,248,255,.50);
+  --line:rgba(245,248,255,.10);
+}
+html,body{
+  margin:0;height:100%;
+  background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+
+.nav{
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(10px);
+  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
+  border-bottom:1px solid var(--line);
+}
+.navin{
+  max-width:1120px;margin:0 auto;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px
+}
+.brand{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
+.links{display:flex;gap:14px;flex-wrap:wrap}
+.links a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
+.links a:hover{color:var(--ink)}
+
+.hero{
+  max-width:1120px;margin:0 auto;padding:64px 18px 24px
+}
+.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
+.h1{
+  margin:14px 0 0;
+  font-size:clamp(30px,4.2vw,60px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  line-height:1.08
+}
+.sub{
+  margin:18px 0 0;
+  max-width:860px;
+  color:var(--muted);
+  line-height:1.85;
+  font-size:clamp(14px,1.25vw,16px)
+}
+
+.panel{
+  max-width:1120px;margin:0 auto;padding:24px 18px 80px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:18px
+}
+.box{
+  grid-column:span 6;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.box h3{
+  margin:0;
+  font-size:13px;
+  letter-spacing:.20em;
+  text-transform:uppercase
+}
+.box p{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.85
+}
+.email{
+  margin-top:14px;
+  font-size:18px;
+  letter-spacing:.08em;
+  color:rgba(120,220,255,.9)
+}
+.note{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted2);
+  line-height:1.7
+}
+.footer{
+  border-top:1px solid var(--line);
+  padding:18px;
+  color:var(--muted2);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-align:center
+}
+@media (max-width:860px){.box{grid-column:span 12}}
+</style>
+</head>
+
+<body>
+<div class="nav">
+  <div class="navin">
+    <div class="brand">GLOBAL WATER FUND</div>
+    <div class="links">
+      <a href="preview.html">Earth</a>
+      <a href="planetary.html">Stability</a>
+      <a href="map.html">Map</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="forecasting.html">Forecasting</a>
+      <a href="maritime.html">Maritime</a>
+      <a href="capital.html">Capital</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="kicker">Engagement & Inquiries</div>
+  <div class="h1">Contact</div>
+  <div class="sub">
+    Global Water Fund engages selectively with governments, investors, development institutions, and strategic partners.
+    To discuss water-security intelligence, forecasting, or intervention design, please contact us through the channels below.
+  </div>
+</section>
+
+<section class="panel">
+  <div class="box">
+    <h3>General & Strategic Inquiries</h3>
+    <p>For partnerships, government engagements, or investor discussions.</p>
+    <div class="email">info@globalwaterfund.com</div>
+    <div class="note">Messages are reviewed by the Global Water Fund leadership team.</div>
+  </div>
+
+  <div class="box">
+    <h3>Confidential Communications</h3>
+    <p>For sensitive or time-critical matters related to water security, geopolitical risk, or crisis response.</p>
+    <div class="email">secure@globalwaterfund.com</div>
+    <div class="note">Encrypted communications available upon request.</div>
+  </div>
+</section>
+
+<div class="footer">GLOBAL WATER FUND — ENGAGE • ADVISE • STABILIZE</div>
+</body>
+</html>
