@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Global Water Fund — Systems Map</title>
+
+<style>
+:root{
+  --bg:#05060a;
+  --bg2:#0b0f1a;
+  --ink:rgba(245,248,255,.92);
+  --muted:rgba(245,248,255,.70);
+  --muted2:rgba(245,248,255,.50);
+  --grid:rgba(245,248,255,.06);
+  --grid2:rgba(245,248,255,.035);
+}
+
+html,body{
+  margin:0;
+  height:100%;
+  background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
+  color:var(--ink);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow:hidden;
+}
+
+/* ===== BASE MAP ===== */
+.mapLayer{
+  position:fixed;
+  inset:0;
+  background:url("world.topo.bathy.200412.3x5400x2700.jpg") center/cover no-repeat;
+  filter: contrast(1.05) saturate(.95) brightness(.6);
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 2s ease, transform 2s ease, filter 2s ease;
+}
+.mapLayer.on{
+  opacity:.92;
+  transform:translateY(0);
+  filter: contrast(1.05) saturate(1) brightness(.78);
+}
+
+/* ===== GRID ===== */
+.grid{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 84px, var(--grid) 85px, transparent 86px),
+    repeating-linear-gradient(0deg,  transparent 0, transparent 58px, var(--grid2) 59px, transparent 60px);
+}
+
+/* ===== VIGNETTE ===== */
+.vignette{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(900px 650px at 50% 45%, rgba(0,0,0,0), rgba(0,0,0,.35), rgba(0,0,0,.75));
+}
+
+/* ===== WATER FLOW ===== */
+.water{
+  position:fixed;
+  inset:-12%;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg, transparent, rgba(120,200,255,.08), transparent),
+    radial-gradient(900px 520px at 30% 55%, rgba(120,200,255,.05), transparent),
+    radial-gradient(760px 460px at 70% 40%, rgba(120,200,255,.04), transparent);
+  mix-blend-mode:screen;
+  opacity:.32;
+  animation:ocean 22s ease-in-out infinite;
+}
+@keyframes ocean{
+  0%{transform:translate(-3%,-2%);}
+  50%{transform:translate(3%,2%);}
+  100%{transform:translate(-3%,-2%);}
+}
+
+/* ===== CITY LIGHTS ===== */
+#lights{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  opacity:.55;
+}
+
+/* ===== BASINS ===== */
+#basins{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+.basin{
+  fill:none;
+  stroke:rgba(120,220,255,.35);
+  stroke-width:1.4;
+  stroke-dasharray:6 10;
+  animation:flow 30s linear infinite;
+}
+@keyframes flow{ to{ stroke-dashoffset:-500; } }
+
+/* ===== TEXT ===== */
+.topbar{
+  position:fixed;
+  top:14px;
+  width:100%;
+  text-align:center;
+  pointer-events:none;
+}
+.brand{
+  font-size:11px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted2);
+}
+.systems{
+  margin-top:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:0 14px;
+  line-height:1.35;
+}
+
+.center{
+  position:fixed;
+  inset:0;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  pointer-events:none;
+  padding:0 18px;
+}
+.center h1{
+  font-size:48px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin:0;
+}
+.center p{
+  max-width:700px;
+  margin:18px auto 0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--muted2);
+  padding:16px 14px;
+  pointer-events:none;
+}
+
+/* ===== Planetary-style MENU (Top-Right) ===== */
+.menuCorner{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:9999;
+  pointer-events:auto;
+}
+.menuBtn{
+  font:inherit;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.62);
+  color:rgba(245,248,255,.82);
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+.menuBtn:hover{
+  background:rgba(0,0,0,.78);
+  border-color:rgba(255,255,255,.18);
+}
+.menuList{
+  position:absolute;
+  right:0;
+  top:38px;
+  min-width:220px;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(14px);
+  display:none;
+}
+.menuCorner.open .menuList{ display:block; }
+.menuList a{
+  display:block;
+  padding:10px 10px;
+  border-radius:10px;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(245,248,255,.72);
+  text-decoration:none;
+  white-space:nowrap;
+}
+.menuList a:hover{
+  background:rgba(255,255,255,.06);
+  color:rgba(245,248,255,.95);
+}
+
+/* ===== Mobile tightening (prevents crowding) ===== */
+@media (max-width: 720px){
+  .center h1{ font-size:28px; letter-spacing:.12em; }
+  .systems{ font-size:10px; letter-spacing:.14em; margin-top:8px; }
+  .topbar{ top:12px; }
+  .bottom{ font-size:10px; letter-spacing:.14em; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU dropdown (MUST be in BODY, not in STYLE) -->
+<div class="menuCorner" id="menuCorner">
+  <button class="menuBtn" id="menuBtn" type="button">MENU</button>
+  <div class="menuList" id="menuList">
+    <a href="preview.html">Earth</a>
+    <a href="planetary.html">Planetary</a>
+    <a href="map.html">Map</a>
+    <a href="capabilities.html">Capabilities</a>
+    <a href="forecasting.html">Foresight</a>
+    <a href="maritime.html">Maritime</a>
+    <a href="capital.html">Capital</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div id="map" class="mapLayer"></div>
+<div class="grid"></div>
+<div class="vignette"></div>
+<div class="water"></div>
+<canvas id="lights"></canvas>
+
+<svg id="basins" viewBox="0 0 1000 500" preserveAspectRatio="none">
+  <path class="basin" d="M120,210 C300,140 500,140 700,210"/>
+  <path class="basin" d="M200,350 C350,300 600,300 800,350"/>
+</svg>
+
+<div class="topbar">
+  <div class="brand">GLOBAL WATER FUND</div>
+  <div class="systems">BASINS • NETWORKS • CASCADING RISKS • EARLY WARNING • ECOSYSTEMS • HUMAN SECURITY</div>
+</div>
+
+<div class="center">
+  <div>
+    <h1>WATER IS EARTH’S OPERATING SYSTEM</h1>
+    <p>We translate basin stress and cross-border dependencies into decision-ready risk signals for governments, investors, and operators.</p>
+  </div>
+</div>
+
+<div class="bottom">
+  GLOBAL OPERATING PICTURE — WATER, FOOD, ENERGY, HEALTH, MARITIME, MIGRATION, SECURITY, ECONOMY
+</div>
+
+<script>
+/* Fade in map once image is ready */
+const map = document.getElementById("map");
+const img = new Image();
+img.src = "world.topo.bathy.200412.3x5400x2700.jpg";
+img.onload = () => map.classList.add("on");
+
+/* City lights canvas */
+const c = document.getElementById("lights");
+const ctx = c.getContext("2d");
+
+function resize(){
+  const d = Math.min(devicePixelRatio || 1, 2);
+  c.width  = innerWidth * d;
+  c.height = innerHeight * d;
+  c.style.width  = innerWidth + "px";
+  c.style.height = innerHeight + "px";
+  ctx.setTransform(d,0,0,d,0,0);
+  drawLights();
+}
+addEventListener("resize", resize);
+
+function drawLights(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  const clusters = [[22,28],[48,26],[62,34],[74,28],[30,42],[78,44]];
+  clusters.forEach(p=>{
+    for(let i=0;i<800;i++){
+      const x = (p[0] + (Math.random() - .5) * 8) * innerWidth / 100;
+      const y = (p[1] + (Math.random() - .5) * 6) * innerHeight / 100;
+      ctx.fillStyle = "rgba(255,200,140,.08)";
+      ctx.fillRect(x,y,1,1);
+    }
+  });
+}
+resize();
+
+/* MENU behavior (Planetary-style) */
+(function(){
+  const box = document.getElementById('menuCorner');
+  const btn = document.getElementById('menuBtn');
+  if(!box || !btn) return;
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    box.classList.toggle('open');
+  });
+
+  window.addEventListener('click', (e)=>{
+    if(!box.contains(e.target)) box.classList.remove('open');
+  });
+
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') box.classList.remove('open');
+  });
+
+  box.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> box.classList.remove('open'));
+  });
+})();
+</script>
+
+</body>
+</html>
