@@ -32,21 +32,22 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="nav">
-  <div class="navin">
-    <div class="brand">GLOBAL WATER FUND</div>
-    <div class="links">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="map.html">Map</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Forecasting</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
+<div class="menu-bar">
+  <div class="menu-brand">GLOBAL WATER FUND</div>
+  <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
+</div>
+
+<div class="menu-overlay" id="menu">
+  <nav class="menu-links">
+    <a href="index.html">Earth</a>
+    <a href="planetary.html">Stability</a>
+    <a href="capabilities.html">Capabilities</a>
+    <a href="forecasting.html">Forecasting</a>
+    <a href="maritime.html">Maritime</a>
+    <a href="capital.html">Capital</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </div>
 
 <section class="hero">
