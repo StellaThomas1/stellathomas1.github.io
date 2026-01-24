@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Global Water Fund — About</title>
 
   <style>
@@ -10,22 +10,18 @@
       --bg:#05060a;
       --bg2:#0b0f1a;
       --ink:rgba(245,248,255,.92);
-      --muted:rgba(245,248,255,.70);
-      --muted2:rgba(245,248,255,.50);
-      --line:rgba(245,248,255,.10);
-      --accent:rgba(120,220,255,.85);
+      --muted:rgba(245,248,255,.72);
+      --line:rgba(245,248,255,.12);
+      --accent:#78dcff;
     }
 
-    /* ✅ MOBILE SCROLL: safe defaults */
+    /* ✅ DO NOT FIGHT SCROLL: keep it default */
     html, body{
       margin:0;
       padding:0;
       width:100%;
-      height:auto;
       min-height:100%;
       overflow-x:hidden;
-      overflow-y:auto;
-      -webkit-overflow-scrolling:touch;
       background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
       color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -33,156 +29,134 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* ✅ Make room for fixed header */
-    .page{
-      min-height:100svh;
-      min-height:100dvh;
-      padding-top:72px;
-    }
-
-    /* ---------- FIXED TOP BAR (more reliable than sticky on iOS) ---------- */
-    .menu-bar{
+    /* ✅ Header ALWAYS visible */
+    header{
       position:fixed;
       top:0; left:0; right:0;
-      z-index:20;
+      z-index:99999;
+      background: rgba(0,0,0,.88);
+      border-bottom:1px solid var(--line);
+      padding:14px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:14px 18px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
-      border-bottom:1px solid var(--line);
+      gap:12px;
     }
 
-    .menu-brand{
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
+    .brand{
       display:flex;
       align-items:center;
       gap:10px;
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.72);
       white-space:nowrap;
     }
-    .menu-dot{
+    .dot{
       width:10px; height:10px;
       border-radius:999px;
       background: var(--accent);
       box-shadow: 0 0 18px rgba(120,220,255,.35);
+      flex:0 0 auto;
     }
 
-    /* Desktop nav (optional; hidden on mobile) */
-    .top-links{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(245,248,255,.72);
-    }
-    .top-links a{
-      padding:10px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .top-links a:hover{
-      color:var(--ink);
-      border-color:rgba(255,255,255,.18);
-      background:rgba(255,255,255,.03);
-    }
-
-    /* ---------- Hamburger button ---------- */
-    .menu-toggle{
+    /* ✅ MENU button is TEXT so you can’t miss it */
+    .menuBtn{
       appearance:none;
-      background:rgba(255,255,255,.02);
-      border:1px solid rgba(255,255,255,.18);
-      color:rgba(245,248,255,.90);
-      width:44px;
-      height:44px;
-      border-radius:12px;
+      border:1px solid rgba(245,248,255,.28);
+      background: rgba(255,255,255,.06);
+      color: rgba(245,248,255,.95);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
       cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .menu-toggle:hover{
-      border-color:rgba(255,255,255,.32);
-      color:var(--ink);
-    }
-    .icon{
-      width:18px;
-      height:12px;
-      position:relative;
-    }
-    .icon span{
-      position:absolute;
-      left:0; right:0;
-      height:2px;
-      border-radius:2px;
-      background:rgba(245,248,255,.92);
-      transition: transform .18s ease, top .18s ease, opacity .18s ease;
-    }
-    .icon span:nth-child(1){ top:0; }
-    .icon span:nth-child(2){ top:5px; }
-    .icon span:nth-child(3){ top:10px; }
-
-    /* Show desktop links only on wider screens */
-    @media (max-width: 860px){
-      .top-links{ display:none; }
     }
 
-    /* ---------- MENU OVERLAY + DRAWER ---------- */
-    .menu-overlay{
-      position:fixed;
-      inset:0;
-      z-index:30;
-      display:block;
-      opacity:0;
-      pointer-events:none;
-      background:rgba(5,6,10,.62);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: opacity .18s ease;
-    }
-    .menu-panel{
-      position:fixed;
-      top:0; right:0;
-      height:100%;
-      width:min(560px, 88vw);
-      background:linear-gradient(180deg, rgba(11,15,26,.98), rgba(5,6,10,.98));
-      border-left:1px solid var(--line);
-      transform: translateX(102%);
-      transition: transform .22s ease;
-      padding:18px;
-      padding-top:84px;
-      box-sizing:border-box;
+    /* Page content starts below fixed header */
+    main{
+      padding-top:72px;
+      padding-left:18px;
+      padding-right:18px;
+      padding-bottom:70px;
+      max-width:1120px;
+      margin:0 auto;
     }
 
-    .menu-head{
-      position:absolute;
-      top:14px;
-      left:18px;
-      right:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding-bottom:12px;
-      border-bottom:1px solid var(--line);
-    }
-    .menu-title{
+    .kicker{
+      margin-top:40px;
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
-      color:var(--muted2);
+      color:rgba(245,248,255,.55);
     }
-    .menu-close{
+    h1{
+      margin:14px 0 0;
+      font-size:clamp(30px,4.2vw,60px);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    p{
+      margin:18px 0 0;
+      max-width:920px;
+      line-height:1.95;
+      font-size:clamp(14px,1.25vw,16px);
+      color:var(--muted);
+    }
+    hr{
+      margin:28px 0;
+      border:0;
+      border-top:1px solid var(--line);
+    }
+
+    /* ✅ Overlay menu */
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:99998;
+      display:none;
+      background: rgba(0,0,0,.70);
+    }
+    .overlay.open{ display:block; }
+
+    .panel{
+      position:fixed;
+      top:0; right:0;
+      height:100%;
+      width:min(520px, 86vw);
+      z-index:99999;
+      background: rgba(11,15,26,.98);
+      border-left:1px solid var(--line);
+      padding:18px;
+      box-sizing:border-box;
+      display:none;
+      overflow:auto; /* menu itself scrolls if needed */
+      -webkit-overflow-scrolling:touch;
+    }
+    .panel.open{ display:block; }
+
+    .panelHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:12px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:14px;
+    }
+    .panelTitle{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.55);
+    }
+    .closeBtn{
       appearance:none;
-      background:transparent;
-      border:1px solid rgba(255,255,255,.18);
-      color:rgba(245,248,255,.85);
+      border:1px solid rgba(245,248,255,.28);
+      background: rgba(255,255,255,.04);
+      color: rgba(245,248,255,.92);
       padding:8px 12px;
       border-radius:999px;
       font-size:11px;
@@ -191,13 +165,8 @@
       cursor:pointer;
     }
 
-    .menu-links{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      padding-top:14px;
-    }
-    .menu-links a{
+    nav a{
+      display:block;
       padding:14px;
       border-radius:12px;
       border:1px solid var(--line);
@@ -205,198 +174,113 @@
       font-size:12px;
       letter-spacing:.22em;
       text-transform:uppercase;
-      color:rgba(245,248,255,.78);
+      color:rgba(245,248,255,.82);
       background:rgba(255,255,255,.02);
+      margin-bottom:10px;
     }
-    .menu-links a:hover{
-      color:var(--ink);
-      border-color:rgba(255,255,255,.28);
-      background:rgba(255,255,255,.04);
-    }
-    .menu-links a[aria-current="page"]{
-      border-color:var(--accent);
-      background:rgba(120,220,255,.10);
-      color:var(--ink);
+    nav a[aria-current="page"]{
+      border-color: var(--accent);
+      background: rgba(120,220,255,.10);
+      color: rgba(245,248,255,.98);
     }
 
-    /* OPEN STATE */
-    body.menu-open .menu-overlay{
-      opacity:1;
-      pointer-events:auto;
-    }
-    body.menu-open .menu-panel{
-      transform: translateX(0);
-    }
-
-    /* Animate hamburger into X */
-    body.menu-open .icon span:nth-child(1){ top:5px; transform: rotate(45deg); }
-    body.menu-open .icon span:nth-child(2){ opacity:0; }
-    body.menu-open .icon span:nth-child(3){ top:5px; transform: rotate(-45deg); }
-
-    /* ✅ Strong scroll lock only while menu is open */
+    /* Only lock scroll WHILE menu is open */
     body.menu-open{
       overflow:hidden;
       height:100%;
-      touch-action:none;
     }
 
-    /* ---------- PAGE CONTENT ---------- */
-    .hero{
-      max-width:1120px;
-      margin:0 auto;
-      padding:56px 18px 70px;
-    }
-    .kicker{
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
-    }
-    .h1{
-      margin:14px 0 0;
-      font-size:clamp(30px,4.2vw,60px);
-      letter-spacing:.16em;
-      text-transform:uppercase;
-    }
-    .p{
-      margin:18px 0 0;
-      max-width:920px;
-      line-height:1.95;
-      font-size:clamp(14px,1.25vw,16px);
-      color:var(--muted);
-    }
-    .hr{
-      margin:28px 0;
-      border:0;
+    footer{
+      margin-top:44px;
+      padding-top:18px;
       border-top:1px solid var(--line);
-    }
-
-    .footer{
-      border-top:1px solid var(--line);
-      padding:18px;
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color:var(--muted2);
+      color:rgba(245,248,255,.55);
       text-align:center;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- TOP BAR -->
-  <header class="menu-bar">
-    <a class="menu-brand" href="index.html" aria-label="Home">
-      <span class="menu-dot" aria-hidden="true"></span>
+  <header>
+    <a class="brand" href="index.html" aria-label="Home">
+      <span class="dot" aria-hidden="true"></span>
       GLOBAL WATER FUND
     </a>
+    <button class="menuBtn" id="menuBtn">MENU</button>
+  </header>
 
-    <!-- Optional desktop links (shows only on wide screens) -->
-    <nav class="top-links" aria-label="Primary">
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="panel" id="panel" aria-label="Site navigation">
+    <div class="panelHeader">
+      <div class="panelTitle">Navigation</div>
+      <button class="closeBtn" id="closeBtn">Close</button>
+    </div>
+    <nav>
       <a href="index.html">Earth</a>
       <a href="planetary.html">Stability</a>
       <a href="capabilities.html">Capabilities</a>
       <a href="forecasting.html">Forecasting</a>
+      <a href="maritime.html">Maritime</a>
       <a href="capital.html">Capital</a>
+      <a href="about.html" aria-current="page">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+  </aside>
 
-    <!-- Hamburger (always visible; becomes primary on mobile) -->
-    <button class="menu-toggle" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-      <span class="icon" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-  </header>
+  <main>
+    <div class="kicker">Founder &amp; Managing Director</div>
+    <h1>Stella Thomas</h1>
 
-  <!-- OVERLAY + DRAWER -->
-  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
-    <aside class="menu-panel" id="menuPanel" aria-label="Site navigation">
-      <div class="menu-head">
-        <div class="menu-title">Navigation</div>
-        <button class="menu-close" id="menuClose">Close</button>
-      </div>
+    <p>
+      Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate,
+      infrastructure, finance, and geopolitical risk.
+    </p>
 
-      <nav class="menu-links">
-        <a href="index.html">Earth</a>
-        <a href="planetary.html">Stability</a>
-        <a href="capabilities.html">Capabilities</a>
-        <a href="forecasting.html">Forecasting</a>
-        <a href="maritime.html">Maritime</a>
-        <a href="capital.html">Capital</a>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
-  </div>
+    <p>
+      Global Water Fund is built on the understanding that water is not a local utility issue, but a foundation of human
+      and national security.
+    </p>
 
-  <!-- PAGE CONTENT -->
-  <main class="page">
-    <section class="hero">
-      <div class="kicker">Founder & Managing Director</div>
-      <div class="h1">Stella Thomas</div>
+    <hr />
 
-      <div class="p">
-        Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate,
-        infrastructure, finance, and geopolitical risk.
-      </div>
+    <p style="color:rgba(245,248,255,.62)">
+      The platform integrates scientific insight, geopolitical analysis, and financial structuring to anticipate risk,
+      guide intervention, and preserve systemic stability.
+    </p>
 
-      <div class="p">
-        Global Water Fund is built on the understanding that water is not a local utility issue, but a foundation of human
-        and national security.
-      </div>
+    <!-- Spacer so you can confirm scroll works on mobile -->
+    <div style="height:50vh"></div>
 
-      <hr class="hr"/>
-
-      <div class="p" style="color:rgba(245,248,255,.62)">
-        The platform integrates scientific insight, geopolitical analysis, and financial structuring to anticipate risk,
-        guide intervention, and preserve systemic stability.
-      </div>
-    </section>
-
-    <div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
+    <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
   </main>
 
   <script>
     (function(){
       const menuBtn = document.getElementById('menuBtn');
-      const overlay = document.getElementById('menuOverlay');
-      const panel = document.getElementById('menuPanel');
-      const closeBtn = document.getElementById('menuClose');
+      const overlay = document.getElementById('overlay');
+      const panel = document.getElementById('panel');
+      const closeBtn = document.getElementById('closeBtn');
 
       function setOpen(isOpen){
         document.body.classList.toggle('menu-open', isOpen);
-        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        overlay.classList.toggle('open', isOpen);
+        panel.classList.toggle('open', isOpen);
       }
 
-      function openMenu(){ setOpen(true); }
-      function closeMenu(){ setOpen(false); }
-      function toggleMenu(){ setOpen(!document.body.classList.contains('menu-open')); }
+      menuBtn.addEventListener('click', () => setOpen(true));
+      closeBtn.addEventListener('click', () => setOpen(false));
+      overlay.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
 
-      menuBtn.addEventListener('click', toggleMenu);
-      closeBtn.addEventListener('click', closeMenu);
-
-      // Click outside the panel closes
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) closeMenu();
-      });
-
-      // Clicking a link closes (better on mobile)
       panel.addEventListener('click', (e) => {
         const a = e.target.closest('a');
-        if (a) closeMenu();
-      });
-
-      // Escape closes
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
-
-      // Resize to desktop -> ensure scroll restored
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 860) closeMenu();
+        if (a) setOpen(false);
       });
     })();
   </script>
-
 </body>
 </html>
