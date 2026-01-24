@@ -11,17 +11,20 @@
       --bg2:#0b0f1a;
       --ink:rgba(245,248,255,.92);
       --muted:rgba(245,248,255,.72);
+      --muted2:rgba(245,248,255,.55);
       --line:rgba(245,248,255,.12);
       --accent:#78dcff;
     }
 
-    /* ✅ DO NOT FIGHT SCROLL: keep it default */
+    /* ✅ DO NOT FIGHT SCROLL */
     html, body{
       margin:0;
       padding:0;
       width:100%;
       min-height:100%;
       overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
       background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
       color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -29,18 +32,20 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* ✅ Header ALWAYS visible */
+    /* ✅ FIXED HEADER: ALWAYS VISIBLE */
     header{
       position:fixed;
       top:0; left:0; right:0;
-      z-index:99999;
-      background: rgba(0,0,0,.88);
-      border-bottom:1px solid var(--line);
+      z-index:999999;
       padding:14px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
+      background: rgba(0,0,0,.82);
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .brand{
@@ -50,7 +55,7 @@
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
-      color:rgba(245,248,255,.72);
+      color:var(--muted2);
       white-space:nowrap;
     }
     .dot{
@@ -61,10 +66,10 @@
       flex:0 0 auto;
     }
 
-    /* ✅ MENU button is TEXT so you can’t miss it */
+    /* ✅ MENU BUTTON: ALWAYS ON (desktop + mobile) */
     .menuBtn{
       appearance:none;
-      border:1px solid rgba(245,248,255,.28);
+      border:1px solid rgba(245,248,255,.26);
       background: rgba(255,255,255,.06);
       color: rgba(245,248,255,.95);
       padding:10px 14px;
@@ -73,9 +78,10 @@
       letter-spacing:.22em;
       text-transform:uppercase;
       cursor:pointer;
+      display:inline-block;
     }
 
-    /* Page content starts below fixed header */
+    /* Space under fixed header */
     main{
       padding-top:72px;
       padding-left:18px;
@@ -90,12 +96,12 @@
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
-      color:rgba(245,248,255,.55);
+      color:var(--muted2);
     }
     h1{
       margin:14px 0 0;
       font-size:clamp(30px,4.2vw,60px);
-      letter-spacing:.08em;
+      letter-spacing:.10em;
       text-transform:uppercase;
     }
     p{
@@ -111,30 +117,29 @@
       border-top:1px solid var(--line);
     }
 
-    /* ✅ Overlay menu */
+    /* ✅ OVERLAY MENU */
     .overlay{
       position:fixed;
       inset:0;
-      z-index:99998;
+      z-index:999998;
       display:none;
       background: rgba(0,0,0,.70);
     }
-    .overlay.open{ display:block; }
-
     .panel{
       position:fixed;
       top:0; right:0;
       height:100%;
       width:min(520px, 86vw);
-      z-index:99999;
+      z-index:999999;
+      display:none;
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
       background: rgba(11,15,26,.98);
       border-left:1px solid var(--line);
       padding:18px;
       box-sizing:border-box;
-      display:none;
-      overflow:auto; /* menu itself scrolls if needed */
-      -webkit-overflow-scrolling:touch;
     }
+    .overlay.open{ display:block; }
     .panel.open{ display:block; }
 
     .panelHeader{
@@ -150,13 +155,13 @@
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
-      color:rgba(245,248,255,.55);
+      color:var(--muted2);
     }
     .closeBtn{
       appearance:none;
-      border:1px solid rgba(245,248,255,.28);
-      background: rgba(255,255,255,.04);
-      color: rgba(245,248,255,.92);
+      border:1px solid rgba(245,248,255,.26);
+      background: rgba(255,255,255,.06);
+      color: rgba(245,248,255,.95);
       padding:8px 12px;
       border-radius:999px;
       font-size:11px;
@@ -184,7 +189,7 @@
       color: rgba(245,248,255,.98);
     }
 
-    /* Only lock scroll WHILE menu is open */
+    /* ✅ LOCK BACKGROUND SCROLL ONLY WHEN MENU OPEN */
     body.menu-open{
       overflow:hidden;
       height:100%;
@@ -197,16 +202,13 @@
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color:rgba(245,248,255,.55);
+      color:var(--muted2);
       text-align:center;
     }
   </style>
 </head>
 
 <body>
-  <div style="position:fixed;top:0;left:0;right:0;z-index:999999;background:#ff2d55;color:#000;padding:10px;font:700 14px system-ui;text-align:center">
-  DEPLOY TEST — ABOUT — 123
-</div>
   <header>
     <a class="brand" href="index.html" aria-label="Home">
       <span class="dot" aria-hidden="true"></span>
@@ -222,6 +224,7 @@
       <div class="panelTitle">Navigation</div>
       <button class="closeBtn" id="closeBtn">Close</button>
     </div>
+
     <nav>
       <a href="index.html">Earth</a>
       <a href="planetary.html">Stability</a>
@@ -255,8 +258,8 @@
       guide intervention, and preserve systemic stability.
     </p>
 
-    <!-- Spacer so you can confirm scroll works on mobile -->
-    <div style="height:50vh"></div>
+    <!-- Spacer so you can *see* scroll working on mobile -->
+    <div style="height:45vh"></div>
 
     <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
   </main>
@@ -277,7 +280,10 @@
       menuBtn.addEventListener('click', () => setOpen(true));
       closeBtn.addEventListener('click', () => setOpen(false));
       overlay.addEventListener('click', () => setOpen(false));
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
+      });
 
       panel.addEventListener('click', (e) => {
         const a = e.target.closest('a');
