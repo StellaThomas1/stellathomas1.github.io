@@ -14,12 +14,12 @@
       --muted2:rgba(245,248,255,.55);
       --line:rgba(245,248,255,.12);
       --accent:#78dcff;
+      --glass:rgba(0,0,0,.78);
     }
 
-    /* ✅ DO NOT FIGHT SCROLL */
+    /* ✅ MOBILE SCROLL: keep it simple + reliable */
     html, body{
-      margin:0;
-      padding:0;
+      margin:0; padding:0;
       width:100%;
       min-height:100%;
       overflow-x:hidden;
@@ -29,10 +29,11 @@
       color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
     }
-
     a{ color:inherit; text-decoration:none; }
 
-    /* ✅ FIXED HEADER: ALWAYS VISIBLE */
+    /* =========================
+       TOP BAR (Desktop links + Mobile menu button)
+       ========================= */
     header{
       position:fixed;
       top:0; left:0; right:0;
@@ -41,32 +42,54 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
-      background: rgba(0,0,0,.82);
+      gap:14px;
+      background: var(--glass);
       border-bottom:1px solid var(--line);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
+      display:flex; align-items:center; gap:10px;
+      font-size:11px; letter-spacing:.26em; text-transform:uppercase;
       color:var(--muted2);
       white-space:nowrap;
     }
     .dot{
-      width:10px; height:10px;
-      border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 18px rgba(120,220,255,.35);
+      width:10px; height:10px; border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 18px rgba(120,220,255,.35);
       flex:0 0 auto;
     }
 
-    /* ✅ MENU BUTTON: ALWAYS ON (desktop + mobile) */
+    /* Desktop nav (horizontal) */
+    .top-nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .top-nav a{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.74);
+      padding:10px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .top-nav a:hover{
+      color:var(--ink);
+      border-color:rgba(245,248,255,.18);
+      background:rgba(255,255,255,.03);
+    }
+    .top-nav a[aria-current="page"]{
+      color:var(--ink);
+      border-color:rgba(120,220,255,.40);
+      background:rgba(120,220,255,.08);
+    }
+
+    /* Mobile menu button */
     .menuBtn{
       appearance:none;
       border:1px solid rgba(245,248,255,.26);
@@ -78,12 +101,41 @@
       letter-spacing:.22em;
       text-transform:uppercase;
       cursor:pointer;
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      -webkit-tap-highlight-color: transparent;
+      white-space:nowrap;
+    }
+    .hamburger{
+      width:18px; height:12px; position:relative;
+      flex:0 0 auto;
+    }
+    .hamburger span{
+      position:absolute; left:0; right:0;
+      height:2px; border-radius:2px;
+      background:rgba(245,248,255,.92);
+      transition: transform .18s ease, top .18s ease, opacity .18s ease;
+    }
+    .hamburger span:nth-child(1){ top:0; }
+    .hamburger span:nth-child(2){ top:5px; }
+    .hamburger span:nth-child(3){ top:10px; }
+
+    /* On desktop: hide the "Menu" label (icon-only looks cleaner) */
+    @media (min-width: 861px){
+      .menuBtn .label{ display:none; }
+    }
+    /* On mobile: hide desktop nav, show menu label */
+    @media (max-width: 860px){
+      .top-nav{ display:none; }
+      .menuBtn .label{ display:inline; }
     }
 
-    /* Space under fixed header */
+    /* =========================
+       PAGE LAYOUT
+       ========================= */
     main{
-      padding-top:72px;
+      padding-top:78px; /* space for fixed header */
       padding-left:18px;
       padding-right:18px;
       padding-bottom:70px;
@@ -92,18 +144,34 @@
     }
 
     .kicker{
-      margin-top:40px;
+      margin-top:44px;
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
       color:var(--muted2);
     }
+
+    .about-grid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:28px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .about-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
     h1{
-      margin:14px 0 0;
-      font-size:clamp(30px,4.2vw,60px);
+      margin:10px 0 0;
+      font-size:clamp(30px,4.2vw,56px);
       letter-spacing:.10em;
       text-transform:uppercase;
+      line-height:1.06;
     }
+
     p{
       margin:18px 0 0;
       max-width:920px;
@@ -111,19 +179,53 @@
       font-size:clamp(14px,1.25vw,16px);
       color:var(--muted);
     }
+
     hr{
       margin:28px 0;
       border:0;
       border-top:1px solid var(--line);
     }
 
-    /* ✅ OVERLAY MENU */
+    /* Photo card */
+    .photo-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      padding:14px;
+      position:sticky;
+      top:92px; /* stays visible on desktop while scrolling */
+    }
+    @media (max-width: 900px){
+      .photo-card{ position:relative; top:auto; }
+    }
+
+    .headshot{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+
+    .caption{
+      margin-top:10px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      text-align:left;
+    }
+
+    /* =========================
+       MOBILE OVERLAY MENU
+       ========================= */
     .overlay{
       position:fixed;
       inset:0;
       z-index:999998;
       display:none;
-      background: rgba(0,0,0,.70);
+      background:rgba(0,0,0,.70);
     }
     .panel{
       position:fixed;
@@ -143,19 +245,11 @@
     .panel.open{ display:block; }
 
     .panelHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding-bottom:12px;
-      border-bottom:1px solid var(--line);
-      margin-bottom:14px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:14px;
     }
     .panelTitle{
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
+      font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--muted2);
     }
     .closeBtn{
       appearance:none;
@@ -169,8 +263,7 @@
       text-transform:uppercase;
       cursor:pointer;
     }
-
-    nav a{
+    .panel nav a{
       display:block;
       padding:14px;
       border-radius:12px;
@@ -183,13 +276,13 @@
       background:rgba(255,255,255,.02);
       margin-bottom:10px;
     }
-    nav a[aria-current="page"]{
+    .panel nav a[aria-current="page"]{
       border-color: var(--accent);
       background: rgba(120,220,255,.10);
       color: rgba(245,248,255,.98);
     }
 
-    /* ✅ LOCK BACKGROUND SCROLL ONLY WHEN MENU OPEN */
+    /* Lock background scroll only while menu open */
     body.menu-open{
       overflow:hidden;
       height:100%;
@@ -209,22 +302,40 @@
 </head>
 
 <body>
+  <!-- TOP BAR -->
   <header>
     <a class="brand" href="index.html" aria-label="Home">
       <span class="dot" aria-hidden="true"></span>
       GLOBAL WATER FUND
     </a>
-    <button class="menuBtn" id="menuBtn">MENU</button>
+
+    <!-- Desktop horizontal nav -->
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html">Earth</a>
+      <a href="planetary.html">Stability</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="forecasting.html">Forecasting</a>
+      <a href="maritime.html">Maritime</a>
+      <a href="capital.html">Capital</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Mobile menu button (still visible on desktop as icon-only) -->
+    <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="label">Menu</span>
+    </button>
   </header>
 
-  <div class="overlay" id="overlay"></div>
+  <!-- MOBILE MENU -->
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
 
   <aside class="panel" id="panel" aria-label="Site navigation">
     <div class="panelHeader">
       <div class="panelTitle">Navigation</div>
       <button class="closeBtn" id="closeBtn">Close</button>
     </div>
-
     <nav>
       <a href="index.html">Earth</a>
       <a href="planetary.html">Stability</a>
@@ -237,31 +348,54 @@
     </nav>
   </aside>
 
+  <!-- PAGE -->
   <main>
     <div class="kicker">Founder &amp; Managing Director</div>
-    <h1>Stella Thomas</h1>
 
-    <p>
-      Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate,
-      infrastructure, finance, and geopolitical risk.
-    </p>
+    <div class="about-grid">
+      <!-- TEXT -->
+      <section>
+        <h1>Stella Thomas</h1>
 
-    <p>
-      Global Water Fund is built on the understanding that water is not a local utility issue, but a foundation of human
-      and national security.
-    </p>
+        <p>
+          Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate, infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating water stress into decision-ready intelligence and long-term resilience strategies.
+        </p>
 
-    <hr />
+        <p>
+          She has advised governments, multilateral institutions, and private-sector leaders across the Middle East, Europe, Africa, and North America on water security, climate resilience, and strategic infrastructure investment.
+        </p>
 
-    <p style="color:rgba(245,248,255,.62)">
-      The platform integrates scientific insight, geopolitical analysis, and financial structuring to anticipate risk,
-      guide intervention, and preserve systemic stability.
-    </p>
+        <p>
+          <strong style="color:rgba(245,248,255,.88); font-weight:650;">Global Water Fund</strong> is built on the understanding that water is not a local utility issue, but a core element of human and national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+        </p>
 
-    <!-- Spacer so you can *see* scroll working on mobile -->
-    <div style="height:45vh"></div>
+        <hr />
 
-    <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
+        <p style="color:rgba(245,248,255,.62)">
+          Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial structuring through a network of advisors, partners, and research collaborations to anticipate risk, guide intervention, and preserve systemic stability.
+        </p>
+
+        <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
+      </section>
+
+      <!-- PHOTO -->
+      <aside class="photo-card" aria-label="Founder photo">
+        <!--
+          ✅ PHOTO INSTRUCTIONS:
+          1) Put your photo file in the SAME folder as about.html (root), OR in /images/.
+          2) Then set src accordingly:
+             - Same folder: src="stella-thomas.jpg"
+             - Images folder: src="images/stella-thomas.jpg"
+        -->
+        <img
+          class="headshot"
+          src="images/stella-thomas.jpg"
+          alt="Stella Thomas"
+          loading="lazy"
+        />
+        <div class="caption">Stella Thomas — Founder &amp; Managing Director</div>
+      </aside>
+    </div>
   </main>
 
   <script>
@@ -275,6 +409,7 @@
         document.body.classList.toggle('menu-open', isOpen);
         overlay.classList.toggle('open', isOpen);
         panel.classList.toggle('open', isOpen);
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
       }
 
       menuBtn.addEventListener('click', () => setOpen(true));
