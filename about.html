@@ -1,7 +1,5 @@
 <!doctype html>
 <html lang="en">
- <img class="headshot" src="/stella-thomas.jpg" alt="Stella Thomas" loading="lazy">
-</div>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
@@ -19,7 +17,6 @@
       --glass:rgba(0,0,0,.78);
     }
 
-    /* ✅ SCROLL: keep it stable and simple */
     html, body{
       margin:0;
       padding:0;
@@ -35,22 +32,19 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* =========================
-       TOP BAR (Desktop links + Mobile menu)
-       ========================= */
+    /* ===== HEADER ===== */
     header{
       position:fixed;
       top:0; left:0; right:0;
-      z-index:999999;
+      z-index:1000;
       padding:14px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      background: var(--glass);
+      background:var(--glass);
       border-bottom:1px solid var(--line);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter:blur(10px);
     }
 
     .brand{
@@ -66,97 +60,77 @@
 
     .dot{
       width:10px; height:10px;
-      border-radius:999px;
+      border-radius:50%;
       background:var(--accent);
-      box-shadow:0 0 18px rgba(120,220,255,.35);
-      flex:0 0 auto;
+      box-shadow:0 0 14px rgba(120,220,255,.35);
     }
 
-    /* Desktop nav (horizontal) */
-    .top-nav{
+    nav.top-nav{
       display:flex;
       gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
     }
-    .top-nav a{
+
+    nav.top-nav a{
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
       color:rgba(245,248,255,.74);
-      padding:10px 10px;
+      padding:10px;
       border-radius:999px;
-      border:1px solid transparent;
     }
-    .top-nav a:hover{
+
+    nav.top-nav a[aria-current="page"]{
       color:var(--ink);
-      border-color:rgba(245,248,255,.18);
-      background:rgba(255,255,255,.03);
-    }
-    .top-nav a[aria-current="page"]{
-      color:var(--ink);
-      border-color:rgba(120,220,255,.40);
+      border:1px solid rgba(120,220,255,.4);
       background:rgba(120,220,255,.08);
     }
 
-    /* Mobile menu button */
     .menuBtn{
       appearance:none;
       border:1px solid rgba(245,248,255,.26);
-      background: rgba(255,255,255,.06);
-      color: rgba(245,248,255,.95);
+      background:rgba(255,255,255,.06);
+      color:#fff;
       padding:10px 14px;
       border-radius:999px;
       font-size:12px;
       letter-spacing:.22em;
       text-transform:uppercase;
       cursor:pointer;
-      display:inline-flex;
-      align-items:center;
+      display:flex;
       gap:10px;
-      -webkit-tap-highlight-color: transparent;
-      white-space:nowrap;
+      align-items:center;
     }
 
     .hamburger{
-      width:18px; height:12px;
-      position:relative;
-      flex:0 0 auto;
+      width:18px; height:12px; position:relative;
     }
     .hamburger span{
       position:absolute; left:0; right:0;
-      height:2px;
-      border-radius:2px;
-      background:rgba(245,248,255,.92);
+      height:2px; background:#fff;
     }
     .hamburger span:nth-child(1){ top:0; }
     .hamburger span:nth-child(2){ top:5px; }
     .hamburger span:nth-child(3){ top:10px; }
 
-    /* Desktop: keep nav, hide "Menu" label for cleaner look */
     @media (min-width: 861px){
-      .menuBtn .label{ display:none; }
+      .menuBtn{ display:none; }
     }
-    /* Mobile: hide horizontal nav */
     @media (max-width: 860px){
-      .top-nav{ display:none; }
-      .menuBtn .label{ display:inline; }
+      nav.top-nav{ display:none; }
     }
 
-    /* =========================
-       PAGE LAYOUT
-       ========================= */
+    /* ===== LAYOUT ===== */
     main{
-      padding-top:78px; /* space for fixed header */
+      padding-top:90px;
       padding-left:18px;
       padding-right:18px;
-      padding-bottom:70px;
+      padding-bottom:80px;
       max-width:1120px;
       margin:0 auto;
     }
 
     .kicker{
-      margin-top:44px;
+      margin-top:40px;
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
@@ -164,33 +138,32 @@
     }
 
     .about-grid{
-      margin-top:12px;
+      margin-top:14px;
       display:grid;
       grid-template-columns: 1.35fr .65fr;
       gap:28px;
-      align-items:start;
     }
-    @media (max-width: 900px){
-      .about-grid{ grid-template-columns: 1fr; }
+
+    @media (max-width:900px){
+      .about-grid{ grid-template-columns:1fr; }
     }
 
     h1{
       margin:10px 0 0;
-      font-size:clamp(30px,4.2vw,56px);
-      letter-spacing:.10em;
+      font-size:clamp(30px,4vw,56px);
+      letter-spacing:.1em;
       text-transform:uppercase;
-      line-height:1.06;
     }
 
     p{
-      margin:18px 0 0;
-      max-width:920px;
+      margin-top:18px;
+      max-width:900px;
       line-height:1.95;
       font-size:clamp(14px,1.25vw,16px);
       color:var(--muted);
     }
 
-    .lead-strong{
+    .strong{
       color:rgba(245,248,255,.88);
       font-weight:650;
     }
@@ -201,26 +174,21 @@
       border-top:1px solid var(--line);
     }
 
-    /* Photo card on right */
+    /* ===== PHOTO ===== */
     .photo-card{
       border:1px solid var(--line);
       border-radius:18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
       padding:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
       position:sticky;
-      top:92px;
-    }
-    @media (max-width: 900px){
-      .photo-card{ position:relative; top:auto; }
+      top:110px;
     }
 
     .headshot{
       width:100%;
-      height:auto;
       display:block;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.1);
     }
 
     .caption{
@@ -232,92 +200,8 @@
       line-height:1.6;
     }
 
-    /* =========================
-       MOBILE MENU DRAWER
-       ========================= */
-    .overlay{
-      position:fixed;
-      inset:0;
-      z-index:999998;
-      display:none;
-      background:rgba(0,0,0,.70);
-    }
-
-    .panel{
-      position:fixed;
-      top:0; right:0;
-      height:100%;
-      width:min(520px, 86vw);
-      z-index:999999;
-      display:none;
-      overflow:auto;
-      -webkit-overflow-scrolling:touch;
-      background: rgba(11,15,26,.98);
-      border-left:1px solid var(--line);
-      padding:18px;
-      box-sizing:border-box;
-    }
-
-    .overlay.open{ display:block; }
-    .panel.open{ display:block; }
-
-    .panelHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding-bottom:12px;
-      border-bottom:1px solid var(--line);
-      margin-bottom:14px;
-    }
-
-    .panelTitle{
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
-    }
-
-    .closeBtn{
-      appearance:none;
-      border:1px solid rgba(245,248,255,.26);
-      background: rgba(255,255,255,.06);
-      color: rgba(245,248,255,.95);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
-
-    .panel nav a{
-      display:block;
-      padding:14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      text-align:center;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:rgba(245,248,255,.82);
-      background:rgba(255,255,255,.02);
-      margin-bottom:10px;
-    }
-    .panel nav a[aria-current="page"]{
-      border-color: var(--accent);
-      background: rgba(120,220,255,.10);
-      color: rgba(245,248,255,.98);
-    }
-
-    /* Lock background scroll ONLY when drawer is open */
-    body.menu-open{
-      overflow:hidden;
-      height:100%;
-    }
-
     footer{
-      margin-top:44px;
+      margin-top:40px;
       padding-top:18px;
       border-top:1px solid var(--line);
       font-size:11px;
@@ -330,126 +214,67 @@
 </head>
 
 <body>
-  <!-- TOP BAR -->
-  <header>
-    <a class="brand" href="index.html" aria-label="Home">
-      <span class="dot" aria-hidden="true"></span>
-      GLOBAL WATER FUND
-    </a>
 
-    <!-- Desktop horizontal nav -->
-    <nav class="top-nav" aria-label="Primary">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Forecasting</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<header>
+  <a class="brand" href="index.html">
+    <span class="dot"></span>
+    GLOBAL WATER FUND
+  </a>
 
-    <!-- Mobile menu button (visible on mobile; icon-only on desktop) -->
-    <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="label">Menu</span>
-    </button>
-  </header>
+  <nav class="top-nav">
+    <a href="index.html">Earth</a>
+    <a href="planetary.html">Stability</a>
+    <a href="capabilities.html">Capabilities</a>
+    <a href="forecasting.html">Forecasting</a>
+    <a href="maritime.html">Maritime</a>
+    <a href="capital.html">Capital</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <!-- Mobile overlay + drawer -->
-  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <button class="menuBtn">
+    <span class="hamburger"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+</header>
 
-  <aside class="panel" id="panel" aria-label="Site navigation">
-    <div class="panelHeader">
-      <div class="panelTitle">Navigation</div>
-      <button class="closeBtn" id="closeBtn">Close</button>
-    </div>
-    <nav>
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Forecasting</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </aside>
+<main>
+  <div class="kicker">Founder &amp; Managing Director</div>
 
-  <!-- PAGE -->
-  <main>
-    <div class="kicker">Founder &amp; Managing Director</div>
+  <div class="about-grid">
+    <section>
+      <h1>Stella Thomas</h1>
 
-    <div class="about-grid">
-      <!-- TEXT -->
-      <section>
-        <h1>Stella Thomas</h1>
+      <p>
+        Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate, infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating water stress into decision-ready intelligence and long-term resilience strategies.
+      </p>
 
-        <p>
-          Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate, infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating water stress into decision-ready intelligence and long-term resilience strategies.
-        </p>
+      <p>
+        She has advised governments, multilateral institutions, and private-sector leaders across the Middle East, Europe, Africa, and North America on water security, climate resilience, and strategic infrastructure investment.
+      </p>
 
-        <p>
-          She has advised governments, multilateral institutions, and private-sector leaders across the Middle East, Europe, Africa, and North America on water security, climate resilience, and strategic infrastructure investment.
-        </p>
+      <p>
+        <span class="strong">Global Water Fund</span> is built on the understanding that water is not a local utility issue, but a core element of human and national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+      </p>
 
-        <p>
-          <span class="lead-strong">Global Water Fund</span> is built on the understanding that water is not a local utility issue, but a core element of human and national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
-        </p>
+      <hr />
 
-        <hr />
+      <p style="color:rgba(245,248,255,.62)">
+        Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial structuring through a network of advisors, partners, and research collaborations to anticipate risk, guide intervention, and preserve systemic stability.
+      </p>
 
-        <p style="color:rgba(245,248,255,.62)">
-          Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial structuring through a network of advisors, partners, and research collaborations to anticipate risk, guide intervention, and preserve systemic stability.
-        </p>
+      <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
+    </section>
 
-        <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
-      </section>
+    <aside class="photo-card">
+      <img class="headshot" src="/stella-thomas.jpg" alt="Stella Thomas">
+      <div class="caption">
+        Stella Thomas<br>
+        Founder &amp; Managing Director
+      </div>
+    </aside>
+  </div>
+</main>
 
-      <!-- PHOTO (RIGHT SIDE) -->
-      <aside class="photo-card" aria-label="Founder photo">
-        <!-- IMPORTANT: photo must be in SAME folder as about.html -->
-        <img
-          class="headshot"
-          src="stella-thomas.jpg"
-          alt="Stella Thomas"
-          loading="lazy"
-        />
-        <div class="caption">
-          Stella Thomas<br/>
-          Founder &amp; Managing Director
-        </div>
-      </aside>
-    </div>
-  </main>
-
-  <script>
-    (function(){
-      const menuBtn = document.getElementById('menuBtn');
-      const overlay = document.getElementById('overlay');
-      const panel = document.getElementById('panel');
-      const closeBtn = document.getElementById('closeBtn');
-
-      function setOpen(isOpen){
-        document.body.classList.toggle('menu-open', isOpen);
-        overlay.classList.toggle('open', isOpen);
-        panel.classList.toggle('open', isOpen);
-        menuBtn.setAttribute('aria-expanded', String(isOpen));
-      }
-
-      menuBtn.addEventListener('click', () => setOpen(true));
-      closeBtn.addEventListener('click', () => setOpen(false));
-      overlay.addEventListener('click', () => setOpen(false));
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') setOpen(false);
-      });
-
-      panel.addEventListener('click', (e) => {
-        const a = e.target.closest('a');
-        if (a) setOpen(false);
-      });
-    })();
-  </script>
 </body>
 </html>
