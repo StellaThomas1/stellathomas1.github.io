@@ -1,78 +1,250 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Global Water Fund — About</title>
-<style>
-  html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;                 /* CRITICAL */
-  overflow-x: hidden;
-  overflow-y: auto;             /* ENABLE SCROLL */
-  -webkit-overflow-scrolling: touch;
-}
-:root{--bg:#05060a;--bg2:#0b0f1a;--ink:rgba(245,248,255,.92);--muted:rgba(245,248,255,.70);--muted2:rgba(245,248,255,.50);--line:rgba(245,248,255,.10);}
-html,body{margin:0;background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));border-bottom:1px solid var(--line);}
-.navin{max-width:1120px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
-.links a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
-.links a:hover{color:var(--ink)}
-.hero{max-width:1120px;margin:0 auto;padding:56px 18px 70px}
-.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.h1{margin:14px 0 0;font-size:clamp(30px,4.2vw,60px);letter-spacing:.16em;text-transform:uppercase;line-height:1.08}
-.p{margin:18px 0 0;max-width:920px;color:var(--muted);line-height:1.95;font-size:clamp(14px,1.25vw,16px)}
-.hr{margin:28px 0;border:0;border-top:1px solid rgba(255,255,255,.10)}
-.footer{border-top:1px solid var(--line);padding:18px;color:var(--muted2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Global Water Fund — About</title>
+
+  <style>
+    :root{
+      --bg:#05060a;
+      --bg2:#0b0f1a;
+      --ink:rgba(245,248,255,.92);
+      --muted:rgba(245,248,255,.70);
+      --muted2:rgba(245,248,255,.50);
+      --line:rgba(245,248,255,.10);
+    }
+
+    /* ✅ MOBILE SCROLL FIX (do not override later) */
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      height:auto;               /* key: NOT 100% */
+      overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
+      color:var(--ink);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    /* ✅ ELEGANT MENU BAR */
+    .menu-bar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 18px;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
+      border-bottom:1px solid var(--line);
+    }
+
+    .menu-brand{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      user-select:none;
+    }
+
+    .menu-toggle{
+      appearance:none;
+      background:transparent;
+      border:1px solid rgba(255,255,255,.16);
+      color:rgba(245,248,255,.80);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+      line-height:1;
+    }
+    .menu-toggle:hover{border-color:rgba(255,255,255,.28);color:var(--ink)}
+    .menu-toggle:focus{outline:2px solid rgba(120,220,255,.55);outline-offset:2px}
+
+    /* ✅ FULLSCREEN MENU OVERLAY */
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      z-index:30;
+      display:none;
+      background: rgba(5,6,10,.92);
+      backdrop-filter: blur(10px);
+    }
+    .menu-overlay.open{display:flex}
+
+    .menu-panel{
+      width: min(560px, calc(100% - 32px));
+      margin:auto;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      padding:18px;
+    }
+
+    .menu-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .menu-title{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted2);
+    }
+
+    .menu-close{
+      appearance:none;
+      background:transparent;
+      border:1px solid rgba(255,255,255,.16);
+      color:rgba(245,248,255,.80);
+      padding:9px 10px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      cursor:pointer;
+      line-height:1;
+    }
+    .menu-close:hover{border-color:rgba(255,255,255,.28);color:var(--ink)}
+
+    .menu-links{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding-top:14px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.78);
+      text-align:center;
+    }
+    .menu-links a:hover{color:var(--ink);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.04)}
+    .menu-links a[aria-current="page"]{
+      color:var(--ink);
+      border-color:rgba(120,220,255,.35);
+      background:rgba(120,220,255,.08);
+    }
+
+    /* Page */
+    .hero{max-width:1120px;margin:0 auto;padding:56px 18px 70px}
+    .kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
+    .h1{margin:14px 0 0;font-size:clamp(30px,4.2vw,60px);letter-spacing:.16em;text-transform:uppercase;line-height:1.08}
+    .p{margin:18px 0 0;max-width:920px;color:var(--muted);line-height:1.95;font-size:clamp(14px,1.25vw,16px)}
+    .hr{margin:28px 0;border:0;border-top:1px solid rgba(255,255,255,.10)}
+    .footer{border-top:1px solid var(--line);padding:18px;color:var(--muted2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center}
+
+    /* ✅ When menu open, prevent background scroll (safe on mobile) */
+    body.menu-open{overflow:hidden}
+  </style>
 </head>
+
 <body>
-<div class="menu-bar">
-  <div class="menu-brand">GLOBAL WATER FUND</div>
-  <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
-</div>
+  <!-- MENU BAR -->
+  <div class="menu-bar">
+    <div class="menu-brand">GLOBAL WATER FUND</div>
+    <button class="menu-toggle" type="button" onclick="toggleMenu(true)" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false">
+      MENU
+    </button>
+  </div>
 
-<div class="menu-overlay" id="menu">
-  <nav class="menu-links">
-    <a href="index.html">Earth</a>
-    <a href="planetary.html">Stability</a>
-    <a href="capabilities.html">Capabilities</a>
-    <a href="forecasting.html">Forecasting</a>
-    <a href="maritime.html">Maritime</a>
-    <a href="capital.html">Capital</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</div>
+  <!-- MENU OVERLAY -->
+  <div class="menu-overlay" id="menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="menu-panel">
+      <div class="menu-head">
+        <div class="menu-title">Navigation</div>
+        <button class="menu-close" type="button" onclick="toggleMenu(false)">CLOSE</button>
+      </div>
 
-<section class="hero">
-  <div class="kicker">Founder & Managing Director</div>
-  <div class="h1">Stella Thomas</div>
+      <nav class="menu-links">
+        <a href="index.html">Earth</a>
+        <a href="planetary.html">Stability</a>
+        <a href="capabilities.html">Capabilities</a>
+        <a href="forecasting.html">Forecasting</a>
+        <a href="maritime.html">Maritime</a>
+        <a href="capital.html">Capital</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
 
- <div class="p">
-  Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate,
-  infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating
-  water stress into decision-ready intelligence and long-term resilience strategies.
-</div>
+  <!-- PAGE CONTENT -->
+  <section class="hero">
+    <div class="kicker">Founder & Managing Director</div>
+    <div class="h1">Stella Thomas</div>
 
-<div class="p">
-  Global Water Fund is built on the understanding that water is not a local utility issue, but a core element of human and
-  national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
-</div>
+    <div class="p">
+      Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate,
+      infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating
+      water stress into decision-ready intelligence and long-term resilience strategies.
+    </div>
 
-<hr class="hr"/>
+    <div class="p">
+      Global Water Fund is built on the understanding that water is not a local utility issue, but a core element of human and
+      national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+    </div>
 
-<div class="p" style="color:rgba(245,248,255,.62)">
-  Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial
-  structuring to anticipate risk, guide intervention, and preserve systemic stability.
-</div>
-</section>
+    <hr class="hr"/>
 
-<div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
+    <div class="p" style="color:rgba(245,248,255,.62)">
+      Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial
+      structuring to anticipate risk, guide intervention, and preserve systemic stability.
+    </div>
+  </section>
+
+  <div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
+
+  <!-- ✅ REQUIRED JS (menu open/close + ESC key + click outside) -->
+  <script>
+    function toggleMenu(open) {
+      const menu = document.getElementById('menu');
+      const btn = document.querySelector('.menu-toggle');
+      const isOpen = (open === true) ? true : (open === false ? false : !menu.classList.contains('open'));
+
+      menu.classList.toggle('open', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+
+      if (btn) btn.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') toggleMenu(false);
+    });
+
+    // Close when clicking the dark overlay (but not the panel)
+    document.getElementById('menu').addEventListener('click', (e) => {
+      if (e.target.id === 'menu') toggleMenu(false);
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
