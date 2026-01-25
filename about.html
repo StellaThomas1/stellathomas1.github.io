@@ -6,6 +6,42 @@
   <title>Global Water Fund — About</title>
 
   <style>
+
+    .about-wrap{
+  max-width:1100px;
+  margin:40px auto;
+  padding:0 18px 80px;
+  display:grid;
+  grid-template-columns: 1.4fr .6fr;
+  gap:28px;
+  align-items:start;
+}
+
+@media (max-width:900px){
+  .about-wrap{ grid-template-columns:1fr; }
+}
+
+.about-photo{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  padding:14px;
+  background: rgba(255,255,255,.03);
+}
+
+.about-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.caption{
+  margin-top:10px;
+  font-size:12px;
+  opacity:.75;
+  line-height:1.4;
+}
     :root{
       --bg:#05060a;
       --bg2:#0b0f1a;
