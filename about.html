@@ -1,183 +1,318 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Global Water Fund — About</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Global Water Fund — About</title>
 
-<style>
-:root{
-  --bg:#05060a;
-  --bg2:#0b0f1a;
-  --ink:rgba(245,248,255,.92);
-  --muted:rgba(245,248,255,.70);
-  --muted2:rgba(245,248,255,.55);
-  --line:rgba(245,248,255,.12);
-  --accent:#78dcff;
-}
+  <style>
+    :root{
+      --bg:#05060a;
+      --bg2:#0b0f1a;
+      --ink:rgba(245,248,255,.92);
+      --muted:rgba(245,248,255,.72);
+      --muted2:rgba(245,248,255,.55);
+      --line:rgba(245,248,255,.12);
+      --accent:#78dcff;
+      --glass:rgba(0,0,0,.78);
+    }
 
-/* ===== SCROLL-SAFE GLOBAL RESET ===== */
-html, body{
-  margin:0;
-  width:100%;
-  height:auto;
-  min-height:100%;
-  overflow-x:hidden;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
-  color:var(--ink);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
+    /* ✅ SCROLL-SAFE: desktop + mobile */
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      height:auto;
+      min-height:100%;
+      overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
+      color:var(--ink);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
 
-a{ color:inherit; text-decoration:none }
+    a{ color:inherit; text-decoration:none; }
 
-/* ===== NAV ===== */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  backdrop-filter:blur(10px);
-  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
-  border-bottom:1px solid var(--line);
-}
+    /* ===== HEADER ===== */
+    header{
+      position:sticky;
+      top:0; left:0; right:0;
+      z-index:1000;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      background:var(--glass);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+    }
 
-.navin{
-  max-width:1120px;
-  margin:0 auto;
-  padding:14px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      white-space:nowrap;
+    }
 
-.brand{
-  font-size:11px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--muted2);
-}
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 14px rgba(120,220,255,.35);
+    }
 
-.links{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
+    nav.top-nav{
+      display:flex;
+      gap:14px;
+    }
 
-.links a{
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted2);
-  padding:10px;
-  border-radius:999px;
-}
+    nav.top-nav a{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.74);
+      padding:10px;
+      border-radius:999px;
+    }
 
-.links a:hover{ color:var(--ink); }
+    nav.top-nav a:hover{ color:var(--ink); }
 
-.links a[aria-current="page"]{
-  color:var(--ink);
-  border:1px solid rgba(120,220,255,.4);
-  background:rgba(120,220,255,.08);
-}
+    nav.top-nav a[aria-current="page"]{
+      color:var(--ink);
+      border:1px solid rgba(120,220,255,.4);
+      background:rgba(120,220,255,.08);
+    }
 
-/* ===== LAYOUT ===== */
-.main{
-  max-width:1120px;
-  margin:0 auto;
-  padding:64px 18px 80px;
-}
+    .menuBtn{
+      appearance:none;
+      border:1px solid rgba(245,248,255,.26);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns: 1.4fr .6fr;
-  gap:36px;
-  align-items:start;
-}
+    .hamburger{
+      width:18px; height:12px; position:relative;
+    }
+    .hamburger span{
+      position:absolute; left:0; right:0;
+      height:2px; background:#fff;
+    }
+    .hamburger span:nth-child(1){ top:0; }
+    .hamburger span:nth-child(2){ top:5px; }
+    .hamburger span:nth-child(3){ top:10px; }
 
-@media (max-width:900px){
-  .grid{ grid-template-columns:1fr; }
-}
+    @media (min-width: 861px){
+      .menuBtn{ display:none; }
+    }
+    @media (max-width: 860px){
+      nav.top-nav{ display:none; }
+    }
 
-/* ===== TEXT ===== */
-.kicker{
-  font-size:11px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--muted2);
-}
+    /* ===== MOBILE MENU PANEL ===== */
+    .mobileMenu{
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      display:none;
+      background:rgba(0,0,0,.65);
+      backdrop-filter:blur(8px);
+    }
 
-.h1{
-  margin:16px 0 0;
-  font-size:clamp(30px,4.2vw,56px);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
+    .mobileMenu[aria-hidden="false"]{ display:block; }
 
-.p{
-  margin-top:20px;
-  max-width:720px;
-  line-height:1.95;
-  font-size:clamp(14px,1.25vw,16px);
-  color:var(--muted);
-}
+    .mobilePanel{
+      position:absolute;
+      top:14px; right:14px; left:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(0,0,0,.80);
+      overflow:hidden;
+    }
 
-.p-muted{ color:rgba(245,248,255,.62); }
+    .mobileTop{
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--line);
+    }
 
-.hr{
-  margin:32px 0;
-  border:0;
-  border-top:1px solid var(--line);
-}
+    .closeBtn{
+      border:1px solid rgba(245,248,255,.26);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
 
-/* ===== PHOTO ===== */
-.photo-card{
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:14px;
-  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-  position:sticky;
-  top:110px;
-}
+    .mobileLinks{
+      display:grid;
+      gap:0;
+    }
 
-@media (max-width:900px){
-  .photo-card{ position:relative; top:auto; }
-}
+    .mobileLinks a{
+      padding:14px 14px;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(245,248,255,.80);
+    }
 
-.headshot{
-  width:100%;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-}
+    .mobileLinks a:first-child{ border-top:0; }
 
-.caption{
-  margin-top:12px;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted2);
-}
+    .mobileLinks a[aria-current="page"]{
+      background:rgba(120,220,255,.10);
+      color:var(--ink);
+    }
 
-/* ===== FOOTER ===== */
-.footer{
-  margin-top:64px;
-  border-top:1px solid var(--line);
-  padding:18px;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted2);
-  text-align:center;
-}
-</style>
+    /* ===== CONTENT ===== */
+    main{
+      padding:60px 18px 80px;
+      max-width:1120px;
+      margin:0 auto;
+    }
+
+    .kicker{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--muted2);
+    }
+
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap:36px;
+      align-items:start;
+    }
+
+    @media (max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    h1{
+      margin:10px 0 0;
+      font-size:clamp(30px,4vw,56px);
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    p{
+      margin-top:20px;
+      max-width:900px;
+      line-height:1.95;
+      font-size:clamp(14px,1.25vw,16px);
+      color:var(--muted);
+    }
+
+    .mutedBlock{
+      color:rgba(245,248,255,.62);
+    }
+
+    hr{
+      margin:32px 0;
+      border:0;
+      border-top:1px solid var(--line);
+    }
+
+    /* ===== PHOTO CARD ===== */
+    .photo-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      position:sticky;
+      top:110px;
+    }
+
+    @media (max-width:900px){
+      .photo-card{ position:relative; top:auto; }
+    }
+
+    .headshot{
+      width:100%;
+      display:block;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .caption{
+      margin-top:12px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      line-height:1.5;
+    }
+
+    footer{
+      margin-top:60px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      text-align:center;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <div class="navin">
-    <div class="brand">GLOBAL WATER FUND</div>
-    <div class="links">
+<header>
+  <a class="brand" href="index.html">
+    <span class="dot"></span>
+    GLOBAL WATER FUND
+  </a>
+
+  <nav class="top-nav">
+    <a href="index.html">Earth</a>
+    <a href="planetary.html">Stability</a>
+    <a href="map.html">Map</a>
+    <a href="capabilities.html">Capabilities</a>
+    <a href="forecasting.html">Forecasting</a>
+    <a href="maritime.html">Maritime</a>
+    <a href="capital.html">Capital</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <button class="menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="mobileMenu" aria-expanded="false">
+    <span class="hamburger"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="mobilePanel" role="document">
+    <div class="mobileTop">
+      <div class="brand"><span class="dot"></span> GLOBAL WATER FUND</div>
+      <button class="closeBtn" id="closeBtn">Close</button>
+    </div>
+    <div class="mobileLinks">
       <a href="index.html">Earth</a>
       <a href="planetary.html">Stability</a>
       <a href="map.html">Map</a>
@@ -191,49 +326,79 @@ a{ color:inherit; text-decoration:none }
   </div>
 </div>
 
-<main class="main">
+<main>
+  <div class="kicker">Founder &amp; Managing Director</div>
+
   <div class="grid">
-
     <section>
-      <div class="kicker">Founder & Managing Director</div>
-      <div class="h1">Stella Thomas</div>
+      <h1>Stella Thomas</h1>
 
-      <div class="p">
+      <p>
         Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
         climate, infrastructure, and finance, with a focus on strategic resilience and risk.
-      </div>
+      </p>
 
-      <div class="p">
+      <p>
         Global Water Fund is built on the understanding that water is a core element of human and national security—shaping
         food systems, energy reliability, coastal stability, migration pressures, and economic growth.
-      </div>
+      </p>
 
-      <hr class="hr" />
+      <hr />
 
-      <div class="p p-muted">
+      <p class="mutedBlock">
         Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
         into decision-ready intelligence and financeable frameworks.
-      </div>
+      </p>
 
-      <div class="p p-muted">
+      <p class="mutedBlock">
         Through a network of advisors, research collaborations, and institutional partners, the platform integrates
         scientific insight, geopolitical analysis, and financial structuring to anticipate systemic risk, guide
         intervention, and preserve long-term stability.
-      </div>
+      </p>
+
+      <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
     </section>
 
     <aside class="photo-card">
-      <img class="headshot" src="stella-thomas.jpg" alt="Stella Thomas">
+      <img class="headshot" src="stella-thomas.jpg" alt="Stella Thomas" loading="lazy">
       <div class="caption">
         Stella Thomas<br>
         Founder &amp; Managing Director
       </div>
     </aside>
-
   </div>
 </main>
 
-<div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
+<script>
+  (function(){
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function openMenu(){
+      mobileMenu.setAttribute('aria-hidden','false');
+      menuBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu(){
+      mobileMenu.setAttribute('aria-hidden','true');
+      menuBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    mobileMenu.addEventListener('click', (e)=>{
+      if(e.target === mobileMenu) closeMenu();
+    });
+
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
 
 </body>
 </html>
