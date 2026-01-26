@@ -17,10 +17,8 @@
   --glass:rgba(0,0,0,.78);
 }
 
-/* ===== SCROLL SAFE (DESKTOP + MOBILE) ===== */
 html, body{
-  margin:0;
-  padding:0;
+  margin:0; padding:0;
   width:100%;
   height:auto;
   min-height:100%;
@@ -31,7 +29,6 @@ html, body{
   color:var(--ink);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
-
 a{ color:inherit; text-decoration:none; }
 
 /* ===== HEADER ===== */
@@ -50,27 +47,22 @@ header{
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
+  display:flex; align-items:center; gap:10px;
   font-size:11px;
   letter-spacing:.26em;
   text-transform:uppercase;
   color:var(--muted2);
+  white-space:nowrap;
 }
 
 .dot{
-  width:10px;height:10px;
+  width:10px; height:10px;
   border-radius:50%;
   background:var(--accent);
   box-shadow:0 0 14px rgba(120,220,255,.35);
 }
 
-nav.top-nav{
-  display:flex;
-  gap:14px;
-}
-
+nav.top-nav{ display:flex; gap:14px; }
 nav.top-nav a{
   font-size:11px;
   letter-spacing:.18em;
@@ -79,8 +71,7 @@ nav.top-nav a{
   padding:10px;
   border-radius:999px;
 }
-
-/* ✅ ACTIVE PAGE HIGHLIGHT */
+nav.top-nav a:hover{ color:var(--ink); }
 nav.top-nav a[aria-current="page"]{
   color:var(--ink);
   border:1px solid rgba(120,220,255,.4);
@@ -103,37 +94,38 @@ nav.top-nav a[aria-current="page"]{
   align-items:center;
 }
 
-.hamburger{width:18px;height:12px;position:relative}
-.hamburger span{position:absolute;left:0;right:0;height:2px;background:#fff}
-.hamburger span:nth-child(1){top:0}
-.hamburger span:nth-child(2){top:5px}
-.hamburger span:nth-child(3){top:10px}
+.hamburger{ width:18px; height:12px; position:relative; }
+.hamburger span{ position:absolute; left:0; right:0; height:2px; background:#fff; }
+.hamburger span:nth-child(1){ top:0; }
+.hamburger span:nth-child(2){ top:5px; }
+.hamburger span:nth-child(3){ top:10px; }
 
-@media (min-width:861px){.menuBtn{display:none}}
-@media (max-width:860px){nav.top-nav{display:none}}
+@media (min-width:861px){ .menuBtn{ display:none; } }
+@media (max-width:860px){ nav.top-nav{ display:none; } }
 
 /* ===== MOBILE MENU ===== */
 .mobileMenu{
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   z-index:1200;
   display:none;
   background:rgba(0,0,0,.65);
   backdrop-filter:blur(8px);
 }
-.mobileMenu[aria-hidden="false"]{display:block}
+.mobileMenu[aria-hidden="false"]{ display:block; }
 
 .mobilePanel{
   position:absolute;
-  top:14px;left:14px;right:14px;
+  top:14px; left:14px; right:14px;
   border:1px solid var(--line);
   border-radius:18px;
   background:rgba(0,0,0,.80);
+  overflow:hidden;
 }
 
 .mobileTop{
   padding:14px;
   display:flex;
+  align-items:center;
   justify-content:space-between;
   border-bottom:1px solid var(--line);
 }
@@ -142,20 +134,26 @@ nav.top-nav a[aria-current="page"]{
   border:1px solid rgba(245,248,255,.26);
   background:rgba(255,255,255,.06);
   color:#fff;
-  padding:8px 12px;
+  padding:10px 12px;
   border-radius:999px;
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
+  cursor:pointer;
 }
 
 .mobileLinks a{
   display:block;
-  padding:14px;
+  padding:14px 14px;
   border-top:1px solid rgba(255,255,255,.08);
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
+  color:rgba(245,248,255,.80);
+}
+.mobileLinks a[aria-current="page"]{
+  background:rgba(120,220,255,.10);
+  color:var(--ink);
 }
 
 /* ===== CONTENT ===== */
@@ -177,6 +175,7 @@ h1{
   font-size:clamp(30px,4.2vw,60px);
   letter-spacing:.16em;
   text-transform:uppercase;
+  line-height:1.08;
 }
 
 .sub{
@@ -184,6 +183,7 @@ h1{
   max-width:860px;
   color:var(--muted);
   line-height:1.85;
+  font-size:clamp(14px,1.25vw,16px);
 }
 
 .grid{
@@ -200,31 +200,16 @@ h1{
   padding:18px;
   background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
 }
-
 .card h3{
   margin:0;
   font-size:13px;
   letter-spacing:.20em;
   text-transform:uppercase;
 }
-
-.card p{
-  margin-top:10px;
-  color:var(--muted);
-  line-height:1.85;
-}
-
-.bul{
-  margin:12px 0 0;
-  padding:0;
-  list-style:none;
-}
-
-.bul li{
-  padding:8px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-
+.card p{ margin-top:10px; color:var(--muted); line-height:1.85; }
+.bul{ margin:12px 0 0; padding:0; list-style:none; color:var(--muted); }
+.bul li{ padding:8px 0; border-top:1px solid rgba(255,255,255,.06); }
+.bul li:first-child{ border-top:none; }
 .tag{
   display:inline-block;
   margin-top:12px;
@@ -233,12 +218,8 @@ h1{
   text-transform:uppercase;
   color:rgba(120,220,255,.75);
 }
+@media (max-width:860px){ .card{ grid-column:span 12; } }
 
-@media (max-width:860px){
-  .card{grid-column:span 12}
-}
-
-/* ===== FOOTER ===== */
 footer{
   border-top:1px solid var(--line);
   padding:18px;
@@ -258,7 +239,7 @@ footer{
 
   <nav class="top-nav">
     <a href="index.html">Earth</a>
-    <a href="planetary.html">Planetary</a>
+    <a href="planetary.html">Stability</a>
     <a href="map.html">Map</a>
     <a href="capabilities.html" aria-current="page">Capabilities</a>
     <a href="forecasting.html">Foresight</a>
@@ -268,20 +249,39 @@ footer{
     <a href="contact.html">Contact</a>
   </nav>
 
-  <button class="menuBtn" id="menuBtn">
+  <button class="menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="mobileMenu" aria-expanded="false">
     <span class="hamburger"><span></span><span></span><span></span></span>
     Menu
   </button>
 </header>
+
+<div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="mobilePanel" role="document">
+    <div class="mobileTop">
+      <div class="brand"><span class="dot"></span> GLOBAL WATER FUND</div>
+      <button class="closeBtn" id="closeBtn">Close</button>
+    </div>
+    <div class="mobileLinks">
+      <a href="index.html">Earth</a>
+      <a href="planetary.html">Stability</a>
+      <a href="map.html">Map</a>
+      <a href="capabilities.html" aria-current="page">Capabilities</a>
+      <a href="forecasting.html">Foresight</a>
+      <a href="maritime.html">Maritime</a>
+      <a href="capital.html">Capital</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
 
 <main>
   <div class="kicker">Operating picture → foresight → intervention</div>
   <h1>Capabilities</h1>
 
   <div class="sub">
-    Global Water Fund is a strategic water-security intelligence platform. We connect basins,
-    infrastructure, trade, ecosystems, and human security—translating complex risk into
-    decision-ready signals and action pathways.
+    Global Water Fund is a strategic water-security intelligence platform. We connect basins, infrastructure,
+    trade, ecosystems, and human security—translating complex risk into decision-ready signals and action pathways.
   </div>
 
   <section class="grid">
@@ -298,22 +298,22 @@ footer{
 
     <div class="card">
       <h3>Strategic Forecasting</h3>
-      <p>Forward-looking scenarios integrating hydrology, climate variability, and geopolitics.</p>
+      <p>Forward-looking scenarios integrating hydrology, climate variability, and geopolitical dynamics.</p>
       <ul class="bul">
         <li>Early warning indicators</li>
-        <li>Risk trajectories</li>
-        <li>Decision windows</li>
+        <li>Risk trajectories and decision windows</li>
+        <li>Policy and investment implications</li>
       </ul>
       <div class="tag">Foresight</div>
     </div>
 
     <div class="card">
       <h3>Intervention Design</h3>
-      <p>Translate risk into resilience strategies that stabilize systems and protect growth.</p>
+      <p>From risk to resilience: define interventions that stabilize systems and protect growth.</p>
       <ul class="bul">
-        <li>Basin, city, and coastal strategies</li>
-        <li>Sequencing and governance</li>
-        <li>Delivery partnerships</li>
+        <li>Resilience strategies at basin, city, and coastal scale</li>
+        <li>Priority actions, sequencing, and governance models</li>
+        <li>Implementation partnerships and delivery support</li>
       </ul>
       <div class="tag">Action pathways</div>
     </div>
@@ -322,9 +322,9 @@ footer{
       <h3>Capital Mobilization</h3>
       <p>Structure capital so money flows to stability with clear outcomes.</p>
       <ul class="bul">
-        <li>PPP and blended finance</li>
-        <li>Blue and green bonds</li>
-        <li>Portfolio resilience</li>
+        <li>PPP structuring and investment vehicles</li>
+        <li>Blue/green bonds and blended finance</li>
+        <li>Portfolio resilience and risk-adjusted strategies</li>
       </ul>
       <div class="tag">Finance</div>
     </div>
@@ -332,6 +332,30 @@ footer{
 </main>
 
 <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
+
+<script>
+(function(){
+  const menuBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function openMenu(){
+    mobileMenu.setAttribute('aria-hidden','false');
+    menuBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu(){
+    mobileMenu.setAttribute('aria-hidden','true');
+    menuBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', (e)=>{ if(e.target === mobileMenu) closeMenu(); });
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+})();
+</script>
 
 </body>
 </html>
