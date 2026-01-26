@@ -34,6 +34,8 @@
 
     a{ color:inherit; text-decoration:none; }
 
+    .strong{ color:rgba(245,248,255,.92); font-weight:700; }
+
     /* ===== HEADER ===== */
     header{
       position:sticky;
@@ -187,7 +189,7 @@
 
     /* ===== CONTENT ===== */
     main{
-      padding:60px 18px 80px;
+      padding:60px 18px 40px;
       max-width:1120px;
       margin:0 auto;
     }
@@ -219,19 +221,22 @@
     }
 
     p{
-      margin-top:20px;
+      margin-top:18px;
       max-width:900px;
       line-height:1.95;
       font-size:clamp(14px,1.25vw,16px);
       color:var(--muted);
     }
 
-    .mutedBlock{
-      color:rgba(245,248,255,.62);
-    }
+    /* spacing control per paragraph */
+    .p1{ margin-top:18px; } /* after name */
+    .p2{ margin-top:28px; } /* more space away from Stella paragraph */
+    .p3{ margin-top:12px; } /* closer to Global Water Fund paragraph */
+
+    .mutedBlock{ color:rgba(245,248,255,.62); }
 
     hr{
-      margin:32px 0;
+      margin:26px 0;
       border:0;
       border-top:1px solid var(--line);
     }
@@ -267,8 +272,9 @@
     }
 
     footer{
-      margin-top:60px;
-      padding-top:18px;
+      max-width:1120px;
+      margin:30px auto 0;
+      padding:18px 18px 26px;
       border-top:1px solid var(--line);
       font-size:11px;
       letter-spacing:.18em;
@@ -333,30 +339,29 @@
     <section>
       <h1>Stella Thomas</h1>
 
-      <p>
+      <p class="p1">
         Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
-        climate, infrastructure, and finance, with a focus on strategic resilience and risk.
+        climate, infrastructure, and finance, with a focus on geopolitical risk and strategic resilience.
       </p>
 
-      <p>
-        Global Water Fund is built on the understanding that water is a core element of human and national security—shaping
-        food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+      <p class="p2">
+        <span class="strong">Global Water Fund</span> is built on the understanding that water is a core element of human
+        and national security—shaping food systems, energy reliability, coastal stability, migration pressures, and
+        economic growth.
+      </p>
+
+      <p class="p3 mutedBlock">
+        Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
+        into decision-ready intelligence and investment-ready frameworks.
       </p>
 
       <hr />
 
       <p class="mutedBlock">
-        Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
-        into decision-ready intelligence and financeable frameworks.
-      </p>
-
-      <p class="mutedBlock">
         Through a network of advisors, research collaborations, and institutional partners, the platform integrates
-        scientific insight, geopolitical analysis, and financial structuring to anticipate systemic risk, guide
+        scientific insight, strategic analysis, and financial structuring to anticipate systemic risk, guide
         intervention, and preserve long-term stability.
       </p>
-
-      <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
     </section>
 
     <aside class="photo-card">
@@ -368,6 +373,8 @@
     </aside>
   </div>
 </main>
+
+<footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
 
 <script>
   (function(){
