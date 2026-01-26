@@ -6,42 +6,6 @@
   <title>Global Water Fund — About</title>
 
   <style>
-
-    .about-wrap{
-  max-width:1100px;
-  margin:40px auto;
-  padding:0 18px 80px;
-  display:grid;
-  grid-template-columns: 1.4fr .6fr;
-  gap:28px;
-  align-items:start;
-}
-
-@media (max-width:900px){
-  .about-wrap{ grid-template-columns:1fr; }
-}
-
-.about-photo{
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px;
-  padding:14px;
-  background: rgba(255,255,255,.03);
-}
-
-.about-photo img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.10);
-}
-
-.caption{
-  margin-top:10px;
-  font-size:12px;
-  opacity:.75;
-  line-height:1.4;
-}
     :root{
       --bg:#05060a;
       --bg2:#0b0f1a;
@@ -53,15 +17,21 @@
       --glass:rgba(0,0,0,.78);
     }
 
-  html, body{
-  margin:0;
-  padding:0;
-  width:100%;
-  min-height:100%;
-  overflow-x:hidden;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
+    /* ===== SCROLL-SAFE RESET ===== */
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      height:auto;              /* key */
+      min-height:100%;
+      overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
     a{ color:inherit; text-decoration:none; }
 
     /* ===== HEADER ===== */
@@ -133,27 +103,18 @@
       align-items:center;
     }
 
-    .hamburger{
-      width:18px; height:12px; position:relative;
-    }
-    .hamburger span{
-      position:absolute; left:0; right:0;
-      height:2px; background:#fff;
-    }
+    .hamburger{ width:18px; height:12px; position:relative; }
+    .hamburger span{ position:absolute; left:0; right:0; height:2px; background:#fff; }
     .hamburger span:nth-child(1){ top:0; }
     .hamburger span:nth-child(2){ top:5px; }
     .hamburger span:nth-child(3){ top:10px; }
 
-    @media (min-width: 861px){
-      .menuBtn{ display:none; }
-    }
-    @media (max-width: 860px){
-      nav.top-nav{ display:none; }
-    }
+    @media (min-width: 861px){ .menuBtn{ display:none; } }
+    @media (max-width: 860px){ nav.top-nav{ display:none; } }
 
-    /* ===== LAYOUT ===== */
+    /* ===== MAIN LAYOUT ===== */
     main{
-      padding-top:90px;
+      padding-top:90px;         /* header offset */
       padding-left:18px;
       padding-right:18px;
       padding-bottom:80px;
@@ -174,6 +135,7 @@
       display:grid;
       grid-template-columns: 1.35fr .65fr;
       gap:28px;
+      align-items:start;
     }
 
     @media (max-width:900px){
@@ -189,7 +151,6 @@
 
     p{
       margin-top:18px;
-      max-width:900px;
       line-height:1.95;
       font-size:clamp(14px,1.25vw,16px);
       color:var(--muted);
@@ -206,7 +167,7 @@
       border-top:1px solid var(--line);
     }
 
-    /* ===== PHOTO ===== */
+    /* ===== PHOTO CARD ===== */
     .photo-card{
       border:1px solid var(--line);
       border-radius:18px;
@@ -214,6 +175,14 @@
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
       position:sticky;
       top:110px;
+    }
+
+    /* IMPORTANT: disable sticky on mobile to avoid weird scroll-feel */
+    @media (max-width:900px){
+      .photo-card{
+        position:relative;
+        top:auto;
+      }
     }
 
     .headshot{
@@ -264,8 +233,8 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <button class="menuBtn">
-    <span class="hamburger"><span></span><span></span><span></span></span>
+  <button class="menuBtn" type="button" aria-label="Open menu">
+    <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
     Menu
   </button>
 </header>
@@ -276,41 +245,37 @@
   <div class="about-grid">
     <section>
       <h1>Stella Thomas</h1>
-<section class="about-wrap">
-  <div class="about-text">
-    <h1>Stella Thomas</h1>
-    <p>Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate, infrastructure, finance, and geopolitical risk.</p>
-    <p>Global Water Fund is built on the understanding that water is not a local utility issue, but a core element of human and national security.</p>
-  </div>
 
-  <aside class="about-photo">
-    <img src="/stella-thomas.jpg" alt="Stella Thomas" loading="lazy">
-    <div class="caption">Stella Thomas • Founder &amp; Managing Director</div>
-  </aside>
-</section>
       <p>
-      Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water, climate, infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators in translating water stress into decision-ready intelligence and long-term resilience strategies.
+        Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
+        climate, infrastructure, finance, and geopolitical risk. Her work supports governments, investors, and operators
+        in translating water stress into decision-ready intelligence and long-term resilience strategies.
       </p>
 
       <p>
-        She has advised governments, multilateral institutions, and private-sector leaders across the Middle East, Europe, Africa, and North America on water security, climate resilience, and strategic infrastructure investment.
+        She has advised governments, multilateral institutions, and private-sector leaders across the Middle East,
+        Europe, Africa, and North America on water security, climate resilience, and strategic infrastructure investment.
       </p>
 
       <p>
-        <span class="strong">Global Water Fund</span> is built on the understanding that water is not a local utility issue, but a core element of human and national security — shaping food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+        <span class="strong">Global Water Fund</span> is built on the understanding that water is not a local utility issue,
+        but a core element of human and national security — shaping food systems, energy reliability, coastal stability,
+        migration pressures, and economic growth.
       </p>
 
       <hr />
 
       <p style="color:rgba(245,248,255,.62)">
-        Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis, and financial structuring through a network of advisors, partners, and research collaborations to anticipate risk, guide intervention, and preserve systemic stability.
+        Operating as a strategic platform, Global Water Fund integrates scientific insight, geopolitical analysis,
+        and financial structuring through a network of advisors, partners, and research collaborations to anticipate risk,
+        guide intervention, and preserve systemic stability.
       </p>
 
       <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
     </section>
 
     <aside class="photo-card">
-      <img class="headshot" src="/stella-thomas.jpg" alt="Stella Thomas">
+      <img class="headshot" src="/stella-thomas.jpg" alt="Stella Thomas" loading="lazy">
       <div class="caption">
         Stella Thomas<br>
         Founder &amp; Managing Director
