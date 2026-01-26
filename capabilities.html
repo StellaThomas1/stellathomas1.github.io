@@ -4,87 +4,284 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Global Water Fund — Capabilities</title>
+
 <style>
-  html, body {
-  margin: 0;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
 :root{
-  --bg:#05060a; --bg2:#0b0f1a;
+  --bg:#05060a;
+  --bg2:#0b0f1a;
   --ink:rgba(245,248,255,.92);
-  --muted:rgba(245,248,255,.70);
-  --muted2:rgba(245,248,255,.50);
-  --line:rgba(245,248,255,.10);
-  --accent:rgba(120,220,255,.85);
+  --muted:rgba(245,248,255,.72);
+  --muted2:rgba(245,248,255,.55);
+  --line:rgba(245,248,255,.12);
+  --accent:#78dcff;
+  --glass:rgba(0,0,0,.78);
 }
-html,body{margin:0;background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-a{color:inherit;text-decoration:none}
-.wrap{min-height:100%;display:flex;flex-direction:column}
-.nav{
-  position:sticky;top:0;z-index:10;
-  backdrop-filter: blur(10px);
-  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
+
+/* ===== SCROLL SAFE ===== */
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:auto;
+  min-height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+/* ===== HEADER ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  background:var(--glass);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted2);
+}
+
+.dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 14px rgba(120,220,255,.35);
+}
+
+nav.top-nav{
+  display:flex;
+  gap:14px;
+}
+
+nav.top-nav a{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(245,248,255,.74);
+  padding:10px;
+  border-radius:999px;
+}
+
+nav.top-nav a[aria-current="page"]{
+  color:var(--ink);
+  border:1px solid rgba(120,220,255,.4);
+  background:rgba(120,220,255,.08);
+}
+
+.menuBtn{
+  appearance:none;
+  border:1px solid rgba(245,248,255,.26);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  cursor:pointer;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.hamburger{width:18px;height:12px;position:relative}
+.hamburger span{position:absolute;left:0;right:0;height:2px;background:#fff}
+.hamburger span:nth-child(1){top:0}
+.hamburger span:nth-child(2){top:5px}
+.hamburger span:nth-child(3){top:10px}
+
+@media (min-width:861px){.menuBtn{display:none}}
+@media (max-width:860px){nav.top-nav{display:none}}
+
+/* ===== MOBILE MENU ===== */
+.mobileMenu{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:none;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);
+}
+.mobileMenu[aria-hidden="false"]{display:block}
+
+.mobilePanel{
+  position:absolute;
+  top:14px;left:14px;right:14px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(0,0,0,.80);
+}
+
+.mobileTop{
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
   border-bottom:1px solid var(--line);
 }
-.navin{max-width:1120px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
-.links a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
-.links a:hover{color:var(--ink)}
-.hero{max-width:1120px;margin:0 auto;padding:56px 18px 22px}
-.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.h1{margin:14px 0 0;font-size:clamp(30px,4.2vw,60px);letter-spacing:.16em;text-transform:uppercase;line-height:1.08}
-.sub{margin:18px 0 0;max-width:860px;color:var(--muted);line-height:1.85;font-size:clamp(14px,1.25vw,16px)}
-.grid{max-width:1120px;margin:0 auto;padding:22px 18px 68px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+
+.closeBtn{
+  border:1px solid rgba(245,248,255,.26);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.mobileLinks a{
+  display:block;
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+/* ===== CONTENT ===== */
+main{
+  max-width:1120px;
+  margin:0 auto;
+  padding:56px 18px 80px;
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted2);
+}
+
+h1{
+  margin:14px 0 0;
+  font-size:clamp(30px,4.2vw,60px);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.sub{
+  margin-top:18px;
+  max-width:860px;
+  color:var(--muted);
+  line-height:1.85;
+}
+
+.grid{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
+}
+
 .card{
   grid-column:span 6;
   border:1px solid var(--line);
   border-radius:16px;
-  padding:18px 18px 16px;
+  padding:18px;
   background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
 }
-.card h3{margin:0;font-size:13px;letter-spacing:.20em;text-transform:uppercase}
-.card p{margin:10px 0 0;color:var(--muted);line-height:1.85}
-.bul{margin:12px 0 0;padding:0;list-style:none;color:var(--muted)}
-.bul li{padding:8px 0;border-top:1px solid rgba(255,255,255,.06)}
-.bul li:first-child{border-top:none}
-.tag{display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(120,220,255,.75)}
-.footer{margin-top:auto;border-top:1px solid var(--line);padding:18px;color:var(--muted2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center}
-@media (max-width:860px){.card{grid-column:span 12}}
+
+.card h3{
+  margin:0;
+  font-size:13px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+}
+
+.card p{
+  margin-top:10px;
+  color:var(--muted);
+  line-height:1.85;
+}
+
+.bul{
+  margin:12px 0 0;
+  padding:0;
+  list-style:none;
+}
+
+.bul li{
+  padding:8px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.tag{
+  display:inline-block;
+  margin-top:12px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(120,220,255,.75);
+}
+
+@media (max-width:860px){
+  .card{grid-column:span 12}
+}
+
+/* ===== FOOTER ===== */
+footer{
+  border-top:1px solid var(--line);
+  padding:18px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted2);
+  text-align:center;
+}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <nav class="nav">
-  <div class="navin">
-    <div class="brand">GLOBAL WATER FUND</div>
-    <div class="links">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Planetary</a>
-      <a href="map.html">Map</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Foresight</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</nav>
 
-  <section class="hero">
-    <div class="kicker">Operating picture → foresight → intervention</div>
-    <div class="h1">Capabilities</div>
-    <div class="sub">
-      Global Water Fund is a strategic water-security intelligence platform. We connect basins, infrastructure,
-      trade, ecosystems, and human security — translating complex risk into decision-ready signals and action pathways.
-    </div>
-  </section>
+<body>
+
+<header>
+  <a class="brand" href="index.html"><span class="dot"></span>GLOBAL WATER FUND</a>
+
+  <nav class="top-nav">
+    <a href="index.html">Earth</a>
+    <a href="planetary.html">Planetary</a>
+    <a href="map.html">Map</a>
+    <a href="capabilities.html" aria-current="page">Capabilities</a>
+    <a href="forecasting.html">Foresight</a>
+    <a href="maritime.html">Maritime</a>
+    <a href="capital.html">Capital</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <button class="menuBtn" id="menuBtn">
+    <span class="hamburger"><span></span><span></span><span></span></span>
+    Menu
+  </button>
+</header>
+
+<main>
+  <div class="kicker">Operating picture → foresight → intervention</div>
+  <h1>Capabilities</h1>
+
+  <div class="sub">
+    Global Water Fund is a strategic water-security intelligence platform. We connect basins,
+    infrastructure, trade, ecosystems, and human security—translating complex risk into
+    decision-ready signals and action pathways.
+  </div>
 
   <section class="grid">
     <div class="card">
@@ -92,47 +289,55 @@ a{color:inherit;text-decoration:none}
       <p>Systems-level water intelligence across basins, supply chains, coasts, energy, and security.</p>
       <ul class="bul">
         <li>Basin stress + cross-border dependency mapping</li>
-        <li>Cascading risk pathways (food, energy, migration, conflict)</li>
-        <li>Asset exposure for critical infrastructure and portfolios</li>
+        <li>Cascading risk pathways</li>
+        <li>Critical infrastructure exposure</li>
       </ul>
       <div class="tag">Systems mapping</div>
     </div>
 
     <div class="card">
       <h3>Strategic Forecasting</h3>
-      <p>Forward-looking scenarios that integrate hydrology, climate variability, and geopolitical dynamics.</p>
+      <p>Forward-looking scenarios integrating hydrology, climate variability, and geopolitics.</p>
       <ul class="bul">
-        <li>Early warning indicators and scenario cones</li>
-        <li>Risk trajectories and decision windows</li>
-        <li>Policy and investment implications</li>
+        <li>Early warning indicators</li>
+        <li>Risk trajectories</li>
+        <li>Decision windows</li>
       </ul>
       <div class="tag">Foresight</div>
     </div>
 
     <div class="card">
       <h3>Intervention Design</h3>
-      <p>From risk to resilience: define interventions that stabilize systems and protect growth.</p>
+      <p>Translate risk into resilience strategies that stabilize systems and protect growth.</p>
       <ul class="bul">
-        <li>Resilience strategies at basin, city, and coastal scale</li>
-        <li>Priority actions, sequencing, and governance models</li>
-        <li>Implementation partnerships and delivery support</li>
+        <li>Basin, city, and coastal strategies</li>
+        <li>Sequencing and governance</li>
+        <li>Delivery partnerships</li>
       </ul>
       <div class="tag">Action pathways</div>
     </div>
 
     <div class="card">
       <h3>Capital Mobilization</h3>
-      <p>Structure capital so money flows to stability — with clear outcomes and bankable structures.</p>
+      <p>Structure capital so money flows to stability with clear outcomes.</p>
       <ul class="bul">
-        <li>PPP structuring and investment vehicles</li>
-        <li>Blue/green bonds and blended finance</li>
-        <li>Portfolio resilience and risk-adjusted strategies</li>
+        <li>PPP and blended finance</li>
+        <li>Blue and green bonds</li>
+        <li>Portfolio resilience</li>
       </ul>
       <div class="tag">Finance</div>
     </div>
   </section>
+</main>
 
-  <div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
-</div>
+<footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('menuBtn');
+  const menu=document.querySelector('.mobileMenu');
+})();
+</script>
+
 </body>
 </html>
