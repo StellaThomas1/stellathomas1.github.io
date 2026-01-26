@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Global Water Fund — Planetary Water Systems</title>
+  <title>Global Water Fund — Stability</title>
 
   <style>
     :root{
@@ -18,10 +18,8 @@
       --glass:rgba(0,0,0,.78);
     }
 
-    /* ===== SCROLL SAFE ===== */
     html, body{
-      margin:0;
-      padding:0;
+      margin:0; padding:0;
       width:100%;
       height:auto;
       min-height:100%;
@@ -32,10 +30,9 @@
       color:var(--ink);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-
     a{ color:inherit; text-decoration:none; }
 
-    /* ===== HEADER (CONSISTENT) ===== */
+    /* ===== HEADER ===== */
     header{
       position:sticky;
       top:0;
@@ -49,18 +46,14 @@
       border-bottom:1px solid var(--line);
       backdrop-filter:blur(10px);
     }
-
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display:flex; align-items:center; gap:10px;
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
       color:var(--muted2);
       white-space:nowrap;
     }
-
     .dot{
       width:10px; height:10px;
       border-radius:50%;
@@ -68,11 +61,7 @@
       box-shadow:0 0 14px rgba(159,215,255,.30);
     }
 
-    nav.top-nav{
-      display:flex;
-      gap:14px;
-    }
-
+    nav.top-nav{ display:flex; gap:14px; }
     nav.top-nav a{
       font-size:11px;
       letter-spacing:.18em;
@@ -81,9 +70,7 @@
       padding:10px;
       border-radius:999px;
     }
-
     nav.top-nav a:hover{ color:var(--ink); }
-
     nav.top-nav a[aria-current="page"]{
       color:var(--ink);
       border:1px solid rgba(159,215,255,.45);
@@ -105,7 +92,6 @@
       gap:10px;
       align-items:center;
     }
-
     .hamburger{ width:18px; height:12px; position:relative; }
     .hamburger span{ position:absolute; left:0; right:0; height:2px; background:#fff; }
     .hamburger span:nth-child(1){ top:0; }
@@ -132,7 +118,6 @@
       background:rgba(0,0,0,.80);
       overflow:hidden;
     }
-
     .mobileTop{
       padding:14px;
       display:flex;
@@ -140,7 +125,6 @@
       justify-content:space-between;
       border-bottom:1px solid var(--line);
     }
-
     .closeBtn{
       border:1px solid rgba(242,245,255,.26);
       background:rgba(255,255,255,.06);
@@ -152,7 +136,6 @@
       text-transform:uppercase;
       cursor:pointer;
     }
-
     .mobileLinks a{
       display:block;
       padding:14px 14px;
@@ -162,19 +145,17 @@
       text-transform:uppercase;
       color:rgba(242,245,255,.80);
     }
-
     .mobileLinks a[aria-current="page"]{
       background:rgba(159,215,255,.10);
       color:var(--ink);
     }
 
-    /* ===== HERO STAGE ===== */
+    /* ===== HERO ===== */
     .stage{
       position:relative;
       min-height:92vh;
       overflow:hidden;
     }
-
     canvas{
       position:absolute;
       inset:0;
@@ -182,7 +163,6 @@
       height:100%;
       display:block;
     }
-
     .heroText{
       position:relative;
       z-index:5;
@@ -193,7 +173,6 @@
       max-width: 980px;
       pointer-events:none;
     }
-
     .kicker{
       text-transform:uppercase;
       letter-spacing:.18em;
@@ -205,11 +184,10 @@
       animation: fadeUp .65s ease forwards;
       animation-delay: .15s;
     }
-
     h1{
       font-size: clamp(36px, 4.6vw, 68px);
       line-height: 1.03;
-      margin:0 0 14px 0;
+      margin:0;
       font-weight:650;
       letter-spacing:-0.01em;
       opacity:0;
@@ -217,23 +195,28 @@
       animation: fadeUp .75s ease forwards;
       animation-delay: .35s;
     }
+    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
 
-    .scrollHint{
+    /* WORKING SCROLL BUTTON */
+    .scrollBtn{
       position:absolute;
       left:0; right:0; bottom:18px;
-      text-align:center;
+      margin:0 auto;
+      width:fit-content;
+      z-index:6;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      padding:10px 12px;
       font-size:11px;
       letter-spacing:.14em;
       text-transform:uppercase;
       color: var(--muted2);
       opacity:.92;
-      z-index:6;
-      pointer-events:none;
     }
+    .scrollBtn:hover{ color: var(--ink); }
 
-    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
-
-    /* Optional content section below hero so scroll feels meaningful */
+    /* BELOW CONTENT */
     .below{
       max-width:1120px;
       margin:0 auto;
@@ -254,8 +237,8 @@
     }
 
     @media (max-width: 900px){
-      .stage{ min-height: 88vh; }
-      .heroText{ min-height: 88vh; padding: 22px; }
+      .stage{ min-height:88vh; }
+      .heroText{ min-height:88vh; padding:22px; }
     }
   </style>
 </head>
@@ -267,7 +250,7 @@
 
   <nav class="top-nav">
     <a href="index.html">Earth</a>
-    <a href="planetary.html" aria-current="page">Planetary</a>
+    <a href="planetary.html" aria-current="page">Stability</a>
     <a href="map.html">Map</a>
     <a href="capabilities.html">Capabilities</a>
     <a href="forecasting.html">Foresight</a>
@@ -283,7 +266,6 @@
   </button>
 </header>
 
-<!-- Mobile Menu -->
 <div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="mobilePanel" role="document">
     <div class="mobileTop">
@@ -292,7 +274,7 @@
     </div>
     <div class="mobileLinks">
       <a href="index.html">Earth</a>
-      <a href="planetary.html" aria-current="page">Planetary</a>
+      <a href="planetary.html" aria-current="page">Stability</a>
       <a href="map.html">Map</a>
       <a href="capabilities.html">Capabilities</a>
       <a href="forecasting.html">Foresight</a>
@@ -309,327 +291,36 @@
 
   <div class="heroText">
     <div class="kicker">GLOBAL WATER FUND</div>
-    <h1>Global water intelligence.</h1>
+    <h1>Stability.</h1>
   </div>
 
-  <div class="scrollHint">Scroll</div>
+  <button class="scrollBtn" id="scrollBtn" type="button" aria-label="Scroll to content">Scroll</button>
 </section>
 
-<section class="below">
-  Planetary water systems shape the stability of food, energy, supply chains, and security. This page visualizes
-  the idea that water risk is rarely local — it travels through basins, coastlines, and interconnected systems.
+<section id="content" class="below">
+  Planetary water systems shape the stability of food, energy, supply chains, and security. Water risk is rarely local —
+  it travels through basins, coastlines, and interconnected systems.
 </section>
 
 <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
 
-<!-- Classic three.js -->
 <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 
 <script>
-(function(){
-  const canvas = document.getElementById("globe");
-  const heroEl = document.getElementById("hero");
-
-  const SETTINGS = {
-    baseSpin: 0.010,
-    cloudSpin: 0.016,
-    bobSpeed: 0.020,
-    riversStart: 0.18,
-    riversPeak:  0.50,
-    detachStart: 0.52,
-    detachEnd:   0.90,
-    earthDesat: 0.88,
-    earthContrast: 1.10,
-    earthBrightness: 0.98,
-    riverCount: 42,
-    riverPointsPer: 120,
-    riverGlow: 1.0,
-    dropletCount: 3200,
-    dropletSize: 0.018,
-    dropletFall: 0.040
-  };
-
-  const isMobile = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
-  if (isMobile){
-    SETTINGS.riverCount = 30;
-    SETTINGS.dropletCount = 2200;
-    SETTINGS.dropletSize = 0.020;
-  }
-
-  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion){
-    SETTINGS.baseSpin = 0;
-    SETTINGS.cloudSpin = 0;
-    SETTINGS.bobSpeed = 0;
-  }
-
-  const clamp01 = (x)=>Math.max(0, Math.min(1, x));
-
-  function getProgress(){
-    const rect = heroEl.getBoundingClientRect();
-    const h = heroEl.offsetHeight || window.innerHeight;
-    return clamp01((-rect.top) / (h * 0.95));
-  }
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-  const scene = new THREE.Scene();
-
-  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 200);
-  camera.position.set(0.35, 0.08, 6.2);
-
-  scene.add(new THREE.AmbientLight(0xffffff, 0.30));
-
-  const key = new THREE.DirectionalLight(0xffffff, 1.10);
-  key.position.set(5, 2.5, 6);
-  scene.add(key);
-
-  const rim = new THREE.DirectionalLight(0x9fd7ff, 0.85);
-  rim.position.set(-8, -2, 3);
-  scene.add(rim);
-
-  function resize(){
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
-    if (!w || !h) return;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  window.addEventListener("resize", resize);
-
-  const TEX = {
-    day:    "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg",
-    normal: "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg",
-    spec:   "https://threejs.org/examples/textures/planets/earth_specular_2048.jpg",
-    clouds: "https://threejs.org/examples/textures/planets/earth_clouds_1024.png"
-  };
-
-  const loader = new THREE.TextureLoader();
-  loader.crossOrigin = "anonymous";
-  const loadTex = (url)=>new Promise((resolve,reject)=>{
-    loader.load(url, t => { t.colorSpace = THREE.SRGBColorSpace; resolve(t); }, undefined, reject);
-  });
-
-  const seg = isMobile ? 96 : 128;
-  const earthGeo  = new THREE.SphereGeometry(1.95, seg, seg);
-  const cloudsGeo = new THREE.SphereGeometry(1.975, seg, seg);
-
-  let earth, clouds, atmo;
-
-  const riverGroup = new THREE.Group();
-  scene.add(riverGroup);
-
-  function randomOnSphere(){
-    const u = Math.random();
-    const v = Math.random();
-    const theta = 2*Math.PI*u;
-    const phi = Math.acos(2*v-1);
-    return new THREE.Vector3(
-      Math.sin(phi)*Math.cos(theta),
-      Math.cos(phi),
-      Math.sin(phi)*Math.sin(theta)
-    );
-  }
-
-  function greatCircle(a,b,t){
-    const dot = clamp01(a.dot(b));
-    const omega = Math.acos(Math.min(1, Math.max(-1, dot)));
-    if (omega < 1e-6) return a.clone();
-    const so = Math.sin(omega);
-    const s1 = Math.sin((1-t)*omega)/so;
-    const s2 = Math.sin(t*omega)/so;
-    return a.clone().multiplyScalar(s1).add(b.clone().multiplyScalar(s2)).normalize();
-  }
-
-  function makeRiverLine(){
-    const a = randomOnSphere();
-    const b = randomOnSphere().lerp(a, 0.35).normalize();
-
-    const pts = [];
-    for (let i=0;i<SETTINGS.riverPointsPer;i++){
-      const t = i/(SETTINGS.riverPointsPer-1);
-      const p = greatCircle(a,b,t);
-      const n = new THREE.Vector3(
-        (Math.random()-0.5)*0.02,
-        (Math.random()-0.5)*0.02,
-        (Math.random()-0.5)*0.02
-      );
-      p.add(n).normalize();
-      pts.push(p.multiplyScalar(1.955));
-    }
-
-    const geo = new THREE.BufferGeometry().setFromPoints(pts);
-    const mat = new THREE.LineBasicMaterial({
-      color: 0x4aa3ff,
-      transparent: true,
-      opacity: 0.0,
-      blending: THREE.AdditiveBlending
-    });
-
-    const line = new THREE.Line(geo, mat);
-    line.userData.seed = Math.random()*Math.PI*2;
-    riverGroup.add(line);
-  }
-
-  const dropletGeom = new THREE.BufferGeometry();
-  let dropletPositions, dropletVelocities;
-
-  const dropletMat = new THREE.PointsMaterial({
-    color: 0x9fd7ff,
-    size: SETTINGS.dropletSize,
-    transparent: true,
-    opacity: 0.0,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending
-  });
-
-  const droplets = new THREE.Points(dropletGeom, dropletMat);
-  scene.add(droplets);
-
-  function initDroplets(){
-    dropletPositions = new Float32Array(SETTINGS.dropletCount*3);
-    dropletVelocities = new Float32Array(SETTINGS.dropletCount*3);
-
-    for(let i=0;i<SETTINGS.dropletCount;i++){
-      const p = randomOnSphere().multiplyScalar(1.98);
-      dropletPositions[i*3+0]=p.x;
-      dropletPositions[i*3+1]=p.y;
-      dropletPositions[i*3+2]=p.z;
-
-      dropletVelocities[i*3+0]=(Math.random()-0.5)*0.01;
-      dropletVelocities[i*3+1]=-(0.02 + Math.random()*0.03);
-      dropletVelocities[i*3+2]=(Math.random()-0.5)*0.01;
-    }
-    dropletGeom.setAttribute("position", new THREE.BufferAttribute(dropletPositions, 3));
-  }
-
-  Promise.all([loadTex(TEX.day), loadTex(TEX.normal), loadTex(TEX.spec), loadTex(TEX.clouds)])
-    .then(([day, normal, spec, cloudsTex]) => {
-      const earthMat = new THREE.MeshPhongMaterial({
-        map: day,
-        normalMap: normal,
-        specularMap: spec,
-        specular: new THREE.Color(0x2b5a7a),
-        shininess: 14
-      });
-
-      earthMat.onBeforeCompile = (shader) => {
-        shader.uniforms.uDesat = { value: SETTINGS.earthDesat };
-        shader.uniforms.uContrast = { value: SETTINGS.earthContrast };
-        shader.uniforms.uBright = { value: SETTINGS.earthBrightness };
-
-        shader.fragmentShader = shader.fragmentShader.replace(
-          "#include <dithering_fragment>",
-          `
-            float luma = dot(gl_FragColor.rgb, vec3(0.299, 0.587, 0.114));
-            vec3 gray = vec3(luma);
-            gl_FragColor.rgb = mix(gl_FragColor.rgb, gray, uDesat);
-            gl_FragColor.rgb = (gl_FragColor.rgb - 0.5) * uContrast + 0.5;
-            gl_FragColor.rgb *= uBright;
-            #include <dithering_fragment>
-          `
-        );
-
-        shader.fragmentShader = "uniform float uDesat; uniform float uContrast; uniform float uBright;\n" + shader.fragmentShader;
-      };
-
-      earth = new THREE.Mesh(earthGeo, earthMat);
-      earth.rotation.y = 0.9;
-      scene.add(earth);
-
-      clouds = new THREE.Mesh(cloudsGeo, new THREE.MeshLambertMaterial({
-        map: cloudsTex,
-        transparent: true,
-        opacity: 0.32,
-        depthWrite: false
-      }));
-      clouds.rotation.y = earth.rotation.y + 0.35;
-      scene.add(clouds);
-
-      atmo = new THREE.Mesh(
-        new THREE.SphereGeometry(2.05, seg, seg),
-        new THREE.MeshBasicMaterial({
-          color: 0x9fd7ff,
-          transparent: true,
-          opacity: 0.08,
-          depthWrite: false,
-          blending: THREE.AdditiveBlending
-        })
-      );
-      scene.add(atmo);
-
-      for(let i=0;i<SETTINGS.riverCount;i++) makeRiverLine();
-      initDroplets();
-
-      animate();
-    })
-    .catch(err => console.error("Texture load error:", err));
-
-  let tick = 0;
-  function animate(){
-    requestAnimationFrame(animate);
-    resize();
-
-    const p = getProgress();
-    tick += SETTINGS.bobSpeed;
-
-    if (earth){
-      earth.rotation.y += SETTINGS.baseSpin;
-      earth.rotation.x = Math.sin(tick) * 0.02;
-
-      if (clouds) clouds.rotation.y += SETTINGS.cloudSpin;
-
-      camera.position.z = 6.2 + p * (isMobile ? 1.1 : 1.35);
-      camera.position.y = 0.08 + p * 0.22;
-
-      const rIn = clamp01((p - SETTINGS.riversStart) / (SETTINGS.riversPeak - SETTINGS.riversStart));
-      const rOut = 1.0 - clamp01((p - SETTINGS.riversPeak) / (SETTINGS.detachEnd - SETTINGS.riversPeak));
-      const riverStrength = clamp01(rIn * rOut);
-
-      riverGroup.children.forEach((line) => {
-        const pulse = 0.65 + 0.35*Math.sin(tick*1.2 + line.userData.seed);
-        line.material.opacity = 0.85 * riverStrength * pulse * SETTINGS.riverGlow;
-      });
-
-      const detach = clamp01((p - SETTINGS.detachStart) / (SETTINGS.detachEnd - SETTINGS.detachStart));
-      const detachEase = detach*detach*(3-2*detach);
-
-      riverGroup.children.forEach((line) => {
-        line.material.opacity *= (1.0 - detachEase*0.55);
-      });
-
-      dropletMat.opacity = 0.85 * detachEase;
-
-      if (detachEase > 0.001){
-        const posAttr = dropletGeom.getAttribute("position");
-        const fall = SETTINGS.dropletFall * (0.55 + detachEase*1.8);
-
-        for(let i=0;i<SETTINGS.dropletCount;i++){
-          dropletPositions[i*3+0] += dropletVelocities[i*3+0] * (1 + detachEase*2.0);
-          dropletPositions[i*3+1] += (dropletVelocities[i*3+1] - fall) * (1 + detachEase*1.7);
-          dropletPositions[i*3+2] += dropletVelocities[i*3+2] * (1 + detachEase*2.0);
-
-          if (dropletPositions[i*3+1] < -5.2){
-            const p0 = randomOnSphere().multiplyScalar(1.98);
-            dropletPositions[i*3+0]=p0.x;
-            dropletPositions[i*3+1]=p0.y;
-            dropletPositions[i*3+2]=p0.z;
-          }
-        }
-        posAttr.needsUpdate = true;
-      }
-    }
-
-    renderer.render(scene, camera);
-  }
-})();
+/* Keep your existing globe code here exactly as you had it.
+   IMPORTANT: do NOT include any auto-redirect on this page. */
 </script>
 
 <script>
 (function(){
+  // Scroll button
+  const btn = document.getElementById('scrollBtn');
+  const target = document.getElementById('content');
+  if (btn && target){
+    btn.addEventListener('click', ()=> target.scrollIntoView({ behavior:'smooth', block:'start' }));
+  }
+
+  // Mobile menu
   const menuBtn = document.getElementById('menuBtn');
   const closeBtn = document.getElementById('closeBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -653,4 +344,4 @@
 </script>
 
 </body>
-</html>
+</html
