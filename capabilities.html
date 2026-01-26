@@ -17,7 +17,7 @@
   --glass:rgba(0,0,0,.78);
 }
 
-/* ===== SCROLL SAFE ===== */
+/* ===== SCROLL SAFE (DESKTOP + MOBILE) ===== */
 html, body{
   margin:0;
   padding:0;
@@ -80,6 +80,7 @@ nav.top-nav a{
   border-radius:999px;
 }
 
+/* ✅ ACTIVE PAGE HIGHLIGHT */
 nav.top-nav a[aria-current="page"]{
   color:var(--ink);
   border:1px solid rgba(120,220,255,.4);
@@ -331,13 +332,6 @@ footer{
 </main>
 
 <footer>GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</footer>
-
-<script>
-(function(){
-  const btn=document.getElementById('menuBtn');
-  const menu=document.querySelector('.mobileMenu');
-})();
-</script>
 
 </body>
 </html>
