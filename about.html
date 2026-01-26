@@ -16,17 +16,15 @@
   --accent:#78dcff;
 }
 
-/* SCROLL-SAFE RESET */
-html,body{
- html, body {
-  margin: 0;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
+/* ===== SCROLL-SAFE GLOBAL RESET ===== */
+html, body{
+  margin:0;
+  width:100%;
+  height:auto;
+  min-height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
   color:var(--ink);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -34,11 +32,11 @@ html,body{
 
 a{ color:inherit; text-decoration:none }
 
-/* NAV */
+/* ===== NAV ===== */
 .nav{
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:1000;
   backdrop-filter:blur(10px);
   background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
   border-bottom:1px solid var(--line);
@@ -51,7 +49,6 @@ a{ color:inherit; text-decoration:none }
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
 }
 
 .brand{
@@ -65,7 +62,6 @@ a{ color:inherit; text-decoration:none }
   display:flex;
   gap:14px;
   flex-wrap:wrap;
-  justify-content:flex-end;
 }
 
 .links a{
@@ -85,13 +81,25 @@ a{ color:inherit; text-decoration:none }
   background:rgba(120,220,255,.08);
 }
 
-/* CONTENT */
-.hero{
+/* ===== LAYOUT ===== */
+.main{
   max-width:1120px;
   margin:0 auto;
-  padding:56px 18px 80px;
+  padding:64px 18px 80px;
 }
 
+.grid{
+  display:grid;
+  grid-template-columns: 1.4fr .6fr;
+  gap:36px;
+  align-items:start;
+}
+
+@media (max-width:900px){
+  .grid{ grid-template-columns:1fr; }
+}
+
+/* ===== TEXT ===== */
 .kicker{
   font-size:11px;
   letter-spacing:.26em;
@@ -101,41 +109,64 @@ a{ color:inherit; text-decoration:none }
 
 .h1{
   margin:16px 0 0;
-  font-size:clamp(30px,4.2vw,60px);
+  font-size:clamp(30px,4.2vw,56px);
   letter-spacing:.16em;
   text-transform:uppercase;
-  line-height:1.08;
 }
 
 .p{
-  margin:20px 0 0;
-  max-width:920px;
-  color:var(--muted);
+  margin-top:20px;
+  max-width:720px;
   line-height:1.95;
   font-size:clamp(14px,1.25vw,16px);
+  color:var(--muted);
 }
 
-.p-muted{
-  color:rgba(245,248,255,.62);
-}
-
-.section-break{
-  margin-top:36px;
-}
+.p-muted{ color:rgba(245,248,255,.62); }
 
 .hr{
   margin:32px 0;
   border:0;
-  border-top:1px solid rgba(255,255,255,.10);
+  border-top:1px solid var(--line);
 }
 
-.footer{
-  border-top:1px solid var(--line);
-  padding:18px;
-  color:var(--muted2);
+/* ===== PHOTO ===== */
+.photo-card{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  position:sticky;
+  top:110px;
+}
+
+@media (max-width:900px){
+  .photo-card{ position:relative; top:auto; }
+}
+
+.headshot{
+  width:100%;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.caption{
+  margin-top:12px;
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
+  color:var(--muted2);
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:64px;
+  border-top:1px solid var(--line);
+  padding:18px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted2);
   text-align:center;
 }
 </style>
@@ -160,35 +191,47 @@ a{ color:inherit; text-decoration:none }
   </div>
 </div>
 
-<section class="hero">
-  <div class="kicker">Founder & Managing Director</div>
-  <div class="h1">Stella Thomas</div>
+<main class="main">
+  <div class="grid">
 
-  <div class="p">
-    Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
-    climate, infrastructure, and finance, with a focus on strategic resilience and risk.
+    <section>
+      <div class="kicker">Founder & Managing Director</div>
+      <div class="h1">Stella Thomas</div>
+
+      <div class="p">
+        Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
+        climate, infrastructure, and finance, with a focus on strategic resilience and risk.
+      </div>
+
+      <div class="p">
+        Global Water Fund is built on the understanding that water is a core element of human and national security—shaping
+        food systems, energy reliability, coastal stability, migration pressures, and economic growth.
+      </div>
+
+      <hr class="hr" />
+
+      <div class="p p-muted">
+        Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
+        into decision-ready intelligence and financeable frameworks.
+      </div>
+
+      <div class="p p-muted">
+        Through a network of advisors, research collaborations, and institutional partners, the platform integrates
+        scientific insight, geopolitical analysis, and financial structuring to anticipate systemic risk, guide
+        intervention, and preserve long-term stability.
+      </div>
+    </section>
+
+    <aside class="photo-card">
+      <img class="headshot" src="stella-thomas.jpg" alt="Stella Thomas">
+      <div class="caption">
+        Stella Thomas<br>
+        Founder &amp; Managing Director
+      </div>
+    </aside>
+
   </div>
-
-  <div class="p">
-    Global Water Fund is built on the understanding that water is a core element of human and national security—shaping
-    food systems, energy reliability, coastal stability, migration pressures, and economic growth.
-  </div>
-
-  <hr class="hr" />
-
-  <div class="p p-muted section-break">
-    Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
-    into decision-ready intelligence and financeable frameworks. The platform supports governments, development
-    institutions, and investors in designing, structuring, and scaling water-security programs that are resilient,
-    bankable, and implementable.
-  </div>
-
-  <div class="p p-muted">
-    Through a network of advisors, research collaborations, and institutional partners, Global Water Fund integrates
-    scientific insight, geopolitical analysis, and financial structuring to anticipate systemic risk, guide
-    intervention, and preserve long-term stability.
-  </div>
-</section>
+</main>
 
 <div class="footer">GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY</div>
 
