@@ -2,33 +2,189 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Global Water Fund — Planetary Water Systems</title>
 
   <style>
     :root{
-      /* Dark editorial background (Regeneration-like feel) */
       --bg0:#07080b;
       --bg1:#0b0d12;
       --ink:#f2f5ff;
       --muted:rgba(242,245,255,.70);
       --muted2:rgba(242,245,255,.48);
-      --accent:#9fd7ff;     /* cool “ice light” */
-      --accent2:#4aa3ff;    /* river glow */
+      --accent:#9fd7ff;
+      --accent2:#4aa3ff;
+      --line:rgba(242,245,255,.10);
+      --panel:rgba(255,255,255,.04);
     }
 
+    /* ✅ Scrolling on mobile + desktop */
     html, body {
-      margin:0; padding:0; height:100%;
+      margin:0;
+      padding:0;
+      width:100%;
+      min-height:100%;
       background: radial-gradient(1200px 800px at 60% 35%, var(--bg1) 0%, var(--bg0) 55%, #05060a 100%);
       color:var(--ink);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling: touch;
     }
 
+    /* ---------- Header / Nav ---------- */
+    .siteHeader{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:50;
+      padding: 14px clamp(16px, 3.5vw, 34px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background: linear-gradient(to bottom, rgba(7,8,11,.70), rgba(7,8,11,.18), rgba(7,8,11,0));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--ink);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-size:12px;
+      opacity:.92;
+      white-space:nowrap;
+    }
+
+    .navDesktop{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    .navDesktop a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      padding:8px 10px;
+      border-radius:10px;
+    }
+
+    .navDesktop a:hover{
+      color:var(--ink);
+      background:rgba(255,255,255,.05);
+    }
+
+    .hamburger{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--ink);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .hamburger:focus{ outline:2px solid rgba(159,215,255,.35); outline-offset:2px; }
+
+    .hamburger svg{ width:22px; height:22px; }
+
+    /* Mobile nav overlay */
+    .navOverlay{
+      position:fixed;
+      inset:0;
+      z-index:60;
+      display:none;
+      background:rgba(5,6,10,.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .navPanel{
+      position:absolute;
+      top:12px;
+      right:12px;
+      left:12px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(10,12,18,.88);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+      padding: 14px;
+      overflow:hidden;
+    }
+
+    .navPanelTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:10px;
+    }
+
+    .navTitle{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted2);
+    }
+
+    .closeBtn{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--ink);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .navLinks{
+      display:grid;
+      gap:8px;
+      padding: 6px 0 10px;
+    }
+
+    .navLinks a{
+      text-decoration:none;
+      color:var(--ink);
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      font-size:14px;
+      letter-spacing:.04em;
+    }
+
+    .navLinks a span{
+      display:block;
+      font-size:11px;
+      color:var(--muted2);
+      margin-top:6px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .navOverlay.isOpen{ display:block; }
+
+    /* ---------- Hero / Globe ---------- */
     .stage{
       position:relative;
       min-height:100vh;
       overflow:hidden;
+      padding-top:72px; /* header spacing */
     }
 
     canvas{
@@ -37,13 +193,13 @@
       width:100%;
       height:100%;
       display:block;
+      pointer-events:none; /* ✅ never blocks scrolling/taps */
     }
 
-    /* Minimal, non-intrusive hero text (you hated the previous copy) */
     .heroText{
       position:relative;
       z-index:5;
-      min-height:100vh;
+      min-height:calc(100vh - 72px);
       display:grid;
       align-content:center;
       padding: clamp(22px, 5vw, 72px);
@@ -86,40 +242,191 @@
       animation-delay: .55s;
     }
 
-    .scrollHint{
+    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+
+    /* ✅ Scroll button (clickable) */
+    .scrollBtn{
       position:absolute;
       left:0; right:0; bottom:18px;
-      text-align:center;
+      margin:auto;
+      width:max-content;
+      z-index:55;
+      pointer-events:auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      cursor:pointer;
       font-size:11px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      color: var(--muted2);
-      opacity:.92;
-      z-index:6;
-      pointer-events:none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+    .scrollBtn:hover{ color:var(--ink); background:rgba(255,255,255,.05); }
+    .scrollBtn svg{ width:16px; height:16px; opacity:.9; }
+
+    /* ---------- Content section (gives real scroll) ---------- */
+    .content{
+      position:relative;
+      z-index:2;
+      padding: 64px clamp(18px, 4vw, 72px) 90px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background: linear-gradient(to bottom, rgba(5,6,10,0), rgba(5,6,10,.55) 30%, rgba(5,6,10,.80));
+    }
+
+    .contentWrap{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:22px;
+      padding:18px;
+    }
+
+    .card h2{
+      margin:0 0 8px 0;
+      font-size:18px;
+      letter-spacing:-0.01em;
+      font-weight:650;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .pill{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      user-select:none;
+    }
 
     /* Mobile */
     @media (max-width: 900px){
-      .stage{ min-height: 88vh; }
-      .heroText{ min-height: 88vh; padding: 22px; }
+      .navDesktop{ display:none; }
+      .hamburger{ display:flex; }
+      .stage{ min-height: 88vh; padding-top:66px; }
+      .heroText{ min-height: calc(88vh - 66px); padding: 22px; }
+      .contentWrap{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 
 <body>
+  <!-- ✅ Header with desktop nav + mobile menu button -->
+  <header class="siteHeader" role="banner">
+    <a class="brand" href="#">
+      <span>GLOBAL WATER FUND</span>
+    </a>
+
+    <nav class="navDesktop" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- ✅ Mobile menu overlay -->
+  <div class="navOverlay" id="navOverlay" aria-hidden="true">
+    <div class="navPanel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="navPanelTop">
+        <div class="navTitle">Menu</div>
+        <button class="closeBtn" id="closeBtn" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="navLinks">
+        <a href="about.html">About <span>Mission & team</span></a>
+        <a href="work.html">Work <span>Programs & partners</span></a>
+        <a href="insights.html">Insights <span>Research & briefs</span></a>
+        <a href="contact.html">Contact <span>Get in touch</span></a>
+        <a href="earth/planetary.html">Enter Planetary <span>Full experience</span></a>
+      </div>
+    </div>
+  </div>
+
   <section class="stage" id="hero">
     <canvas id="globe"></canvas>
 
     <div class="heroText">
       <div class="kicker">GLOBAL WATER FUND</div>
       <h1>Global water intelligence.</h1>
-
+      <div class="sub">Seeing the whole system—basins, risk, finance, and security—before it becomes a crisis headline.</div>
     </div>
 
-    <div class="scrollHint">Scroll</div>
+    <!-- ✅ Scroll button that actually scrolls -->
+    <button class="scrollBtn" id="scrollBtn" type="button" aria-label="Scroll to content">
+      Scroll
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7 14l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </section>
+
+  <!-- ✅ Content section provides real scroll area -->
+  <section class="content" id="content">
+    <div class="contentWrap">
+      <div class="card">
+        <h2>Planetary water systems, made decision-ready.</h2>
+        <p>
+          A compact view of the water cycle as infrastructure: watersheds, supply chains, climate stress, and the policies
+          that decide who gets resilience—and who gets rationing.
+        </p>
+        <div class="pillRow">
+          <div class="pill">Risk intelligence</div>
+          <div class="pill">Basin analytics</div>
+          <div class="pill">Finance signals</div>
+          <div class="pill">Security nexus</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Enter Planetary</h2>
+        <p>Prefer to skip the intro? Jump straight into the full experience.</p>
+        <div class="pillRow">
+          <a class="pill" href="earth/planetary.html" style="text-decoration:none;color:var(--ink);">Open planetary</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Classic three.js (stable) -->
@@ -130,32 +437,20 @@
       const canvas = document.getElementById("globe");
       const heroEl = document.getElementById("hero");
 
-      // ===========
-      // TUNING KNOBS (edit these first if you want)
-      // ===========
       const SETTINGS = {
-        // overall feel
-        baseSpin: 0.010,        // ← much faster than before
+        baseSpin: 0.010,
         cloudSpin: 0.016,
         bobSpeed: 0.020,
-
-        // scroll choreography (0..1 progress over hero)
-        riversStart: 0.18,      // when rivers begin to appear
-        riversPeak:  0.50,      // rivers strongest
-        detachStart: 0.52,      // when detachment begins
-        detachEnd:   0.90,      // when detachment fades out
-
-        // palette
-        earthDesat: 0.88,       // 1 = grayscale, 0 = full color
+        riversStart: 0.18,
+        riversPeak:  0.50,
+        detachStart: 0.52,
+        detachEnd:   0.90,
+        earthDesat: 0.88,
         earthContrast: 1.10,
         earthBrightness: 0.98,
-
-        // rivers
         riverCount: 42,
         riverPointsPer: 120,
         riverGlow: 1.0,
-
-        // particles
         dropletCount: 3200,
         dropletSize: 0.018,
         dropletFall: 0.040
@@ -170,17 +465,12 @@
 
       const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (prefersReducedMotion){
-        // If reduced motion, keep a still premium “hero” without animation
         SETTINGS.baseSpin = 0;
         SETTINGS.cloudSpin = 0;
         SETTINGS.bobSpeed = 0;
       }
 
-      // ===========
-      // Helpers
-      // ===========
       const clamp01 = (x)=>Math.max(0, Math.min(1, x));
-      const lerp = (a,b,t)=>a+(b-a)*t;
 
       function getProgress(){
         const rect = heroEl.getBoundingClientRect();
@@ -188,9 +478,6 @@
         return clamp01((-rect.top) / (h * 0.95));
       }
 
-      // ===========
-      // Three.js setup
-      // ===========
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -200,7 +487,6 @@
       const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 200);
       camera.position.set(0.35, 0.08, 6.2);
 
-      // Lighting — dark editorial with crisp rim
       scene.add(new THREE.AmbientLight(0xffffff, 0.30));
 
       const key = new THREE.DirectionalLight(0xffffff, 1.10);
@@ -221,10 +507,6 @@
       }
       window.addEventListener("resize", resize);
 
-      // ===========
-      // Earth + clouds textures
-      // ===========
-      // Using widely used three.js example earth textures (not Regeneration’s assets).
       const TEX = {
         day:    "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg",
         normal: "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg",
@@ -244,15 +526,9 @@
 
       let earth, clouds, atmo;
 
-      // ===========
-      // River network (geographic glow) + detaching droplets
-      // ===========
       const riverGroup = new THREE.Group();
       scene.add(riverGroup);
 
-      // For “rivers,” we generate curved lines constrained to the sphere surface.
-      // This is an original visualization (not copying anyone’s river dataset),
-      // but it reads as “river networks / basins” on the globe.
       function randomOnSphere(){
         const u = Math.random();
         const v = Math.random();
@@ -265,9 +541,8 @@
       }
 
       function greatCircle(a,b,t){
-        // slerp along unit sphere
-        const dot = clamp01(a.dot(b));
-        const omega = Math.acos(Math.min(1, Math.max(-1, dot)));
+        const dot = Math.max(-1, Math.min(1, a.dot(b)));
+        const omega = Math.acos(dot);
         if (omega < 1e-6) return a.clone();
         const so = Math.sin(omega);
         const s1 = Math.sin((1-t)*omega)/so;
@@ -277,23 +552,19 @@
 
       function makeRiverLine(){
         const a = randomOnSphere();
-        // bias endpoints to be “near-ish” so it looks like basins
         const b = randomOnSphere().lerp(a, 0.35).normalize();
 
         const pts = [];
         for (let i=0;i<SETTINGS.riverPointsPer;i++){
           const t = i/(SETTINGS.riverPointsPer-1);
           const p = greatCircle(a,b,t);
-
-          // add slight meander so it reads like a river, not airline routes
           const n = new THREE.Vector3(
             (Math.random()-0.5)*0.02,
             (Math.random()-0.5)*0.02,
             (Math.random()-0.5)*0.02
           );
           p.add(n).normalize();
-
-          pts.push(p.multiplyScalar(1.955)); // slightly above surface
+          pts.push(p.multiplyScalar(1.955));
         }
 
         const geo = new THREE.BufferGeometry().setFromPoints(pts);
@@ -305,12 +576,10 @@
         });
 
         const line = new THREE.Line(geo, mat);
-        line.userData.baseOpacity = 0.0;
         line.userData.seed = Math.random()*Math.PI*2;
         riverGroup.add(line);
       }
 
-      // Droplets that “detach” from rivers (not a full shell)
       const dropletGeom = new THREE.BufferGeometry();
       let dropletPositions, dropletVelocities;
       const dropletMat = new THREE.PointsMaterial({
@@ -329,13 +598,11 @@
         dropletVelocities = new Float32Array(SETTINGS.dropletCount*3);
 
         for(let i=0;i<SETTINGS.dropletCount;i++){
-          // start droplets near surface
           const p = randomOnSphere().multiplyScalar(1.98);
           dropletPositions[i*3+0]=p.x;
           dropletPositions[i*3+1]=p.y;
           dropletPositions[i*3+2]=p.z;
 
-          // gentle outward + gravity down
           dropletVelocities[i*3+0]=(Math.random()-0.5)*0.01;
           dropletVelocities[i*3+1]=-(0.02 + Math.random()*0.03);
           dropletVelocities[i*3+2]=(Math.random()-0.5)*0.01;
@@ -344,12 +611,8 @@
         dropletGeom.setAttribute("position", new THREE.BufferAttribute(dropletPositions, 3));
       }
 
-      // ===========
-      // Build scene after textures
-      // ===========
       Promise.all([loadTex(TEX.day), loadTex(TEX.normal), loadTex(TEX.spec), loadTex(TEX.clouds)])
         .then(([day, normal, spec, cloudsTex]) => {
-          // Earth material
           const earthMat = new THREE.MeshPhongMaterial({
             map: day,
             normalMap: normal,
@@ -358,7 +621,6 @@
             shininess: 14
           });
 
-          // Desaturate + contrast tweak (Regeneration-like grey Earth vibe, but original)
           earthMat.onBeforeCompile = (shader) => {
             shader.uniforms.uDesat = { value: SETTINGS.earthDesat };
             shader.uniforms.uContrast = { value: SETTINGS.earthContrast };
@@ -367,17 +629,11 @@
             shader.fragmentShader = shader.fragmentShader.replace(
               "#include <dithering_fragment>",
               `
-                // desaturate
                 float luma = dot(gl_FragColor.rgb, vec3(0.299, 0.587, 0.114));
                 vec3 gray = vec3(luma);
                 gl_FragColor.rgb = mix(gl_FragColor.rgb, gray, uDesat);
-
-                // contrast
                 gl_FragColor.rgb = (gl_FragColor.rgb - 0.5) * uContrast + 0.5;
-
-                // brightness
                 gl_FragColor.rgb *= uBright;
-
                 #include <dithering_fragment>
               `
             );
@@ -389,7 +645,6 @@
           earth.rotation.y = 0.9;
           scene.add(earth);
 
-          // Clouds
           clouds = new THREE.Mesh(cloudsGeo, new THREE.MeshLambertMaterial({
             map: cloudsTex,
             transparent: true,
@@ -399,7 +654,6 @@
           clouds.rotation.y = earth.rotation.y + 0.35;
           scene.add(clouds);
 
-          // Atmosphere rim
           atmo = new THREE.Mesh(
             new THREE.SphereGeometry(2.05, seg, seg),
             new THREE.MeshBasicMaterial({
@@ -412,7 +666,6 @@
           );
           scene.add(atmo);
 
-          // Rivers
           for(let i=0;i<SETTINGS.riverCount;i++) makeRiverLine();
           initDroplets();
 
@@ -420,9 +673,6 @@
         })
         .catch(err => console.error("Texture load error:", err));
 
-      // ===========
-      // Animation loop
-      // ===========
       let tick = 0;
       function animate(){
         requestAnimationFrame(animate);
@@ -432,37 +682,30 @@
         tick += SETTINGS.bobSpeed;
 
         if (earth){
-          // MUCH faster and more “alive”
           earth.rotation.y += SETTINGS.baseSpin;
           earth.rotation.x = Math.sin(tick) * 0.02;
 
           if (clouds) clouds.rotation.y += SETTINGS.cloudSpin;
 
-          // Scroll-driven camera (more responsive like premium sites)
           camera.position.z = 6.2 + p * (isMobile ? 1.1 : 1.35);
           camera.position.y = 0.08 + p * 0.22;
 
-          // River opacity choreography
           const rIn = clamp01((p - SETTINGS.riversStart) / (SETTINGS.riversPeak - SETTINGS.riversStart));
           const rOut = 1.0 - clamp01((p - SETTINGS.riversPeak) / (SETTINGS.detachEnd - SETTINGS.riversPeak));
           const riverStrength = clamp01(rIn * rOut);
 
-          riverGroup.children.forEach((line, idx) => {
-            // add subtle wave so it feels organic
+          riverGroup.children.forEach((line) => {
             const pulse = 0.65 + 0.35*Math.sin(tick*1.2 + line.userData.seed);
             line.material.opacity = 0.85 * riverStrength * pulse * SETTINGS.riverGlow;
           });
 
-          // Detach: fade rivers slightly and turn on droplets
           const detach = clamp01((p - SETTINGS.detachStart) / (SETTINGS.detachEnd - SETTINGS.detachStart));
-          const detachEase = detach*detach*(3-2*detach); // smoothstep
+          const detachEase = detach*detach*(3-2*detach);
 
-          // When detaching, rivers dim a bit (they "shed")
           riverGroup.children.forEach((line) => {
             line.material.opacity *= (1.0 - detachEase*0.55);
           });
 
-          // Droplets appear strongly + fall
           dropletMat.opacity = 0.85 * detachEase;
 
           if (detachEase > 0.001){
@@ -474,7 +717,6 @@
               dropletPositions[i*3+1] += (dropletVelocities[i*3+1] - fall) * (1 + detachEase*1.7);
               dropletPositions[i*3+2] += dropletVelocities[i*3+2] * (1 + detachEase*2.0);
 
-              // recycle under frame
               if (dropletPositions[i*3+1] < -5.2){
                 const p0 = randomOnSphere().multiplyScalar(1.98);
                 dropletPositions[i*3+0]=p0.x;
@@ -490,13 +732,68 @@
       }
     })();
   </script>
-  
-<script>
-  // Auto-enter after 10 seconds (change the number if you want)
-  setTimeout(() => {
-    window.location.href = "earth/planetary.html";
-  }, 4500);
-</script>
-  
+
+  <script>
+    // ✅ Scroll button works (smooth scroll to #content)
+    const scrollBtn = document.getElementById("scrollBtn");
+    scrollBtn.addEventListener("click", () => {
+      cancelAutoEnter();
+      document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // ✅ Mobile menu button works
+    const menuBtn = document.getElementById("menuBtn");
+    const navOverlay = document.getElementById("navOverlay");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openMenu(){
+      cancelAutoEnter();
+      navOverlay.classList.add("isOpen");
+      navOverlay.setAttribute("aria-hidden", "false");
+      menuBtn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden"; // prevent background scroll while menu open
+    }
+
+    function closeMenu(){
+      navOverlay.classList.remove("isOpen");
+      navOverlay.setAttribute("aria-hidden", "true");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = ""; // restore
+    }
+
+    menuBtn.addEventListener("click", () => {
+      const open = navOverlay.classList.contains("isOpen");
+      open ? closeMenu() : openMenu();
+    });
+
+    closeBtn.addEventListener("click", closeMenu);
+
+    // close menu by tapping the dim background
+    navOverlay.addEventListener("click", (e) => {
+      if (e.target === navOverlay) closeMenu();
+    });
+
+    // close menu on link click
+    navOverlay.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => closeMenu());
+    });
+
+    // ✅ Auto-enter after 10 seconds — but cancel if user interacts/scrolls
+    let autoEnterTimer = setTimeout(() => {
+      window.location.href = "earth/planetary.html";
+    }, 10000); // <-- 10 seconds
+
+    function cancelAutoEnter(){
+      if (autoEnterTimer){
+        clearTimeout(autoEnterTimer);
+        autoEnterTimer = null;
+      }
+    }
+
+    // Any intentional interaction cancels auto-enter
+    ["wheel","touchstart","keydown","mousedown","pointerdown","scroll"].forEach(evt => {
+      window.addEventListener(evt, cancelAutoEnter, { passive: true });
+    });
+  </script>
 </body>
 </html>
