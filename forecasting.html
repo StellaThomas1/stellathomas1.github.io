@@ -4,25 +4,41 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 <title>Global Water Fund — Strategic Forecasting</title>
+
 <style>
-  html, body {
-  margin: 0;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-  .nav{
-  position:sticky;
-  top:0;
-  z-index:20;
-  backdrop-filter: blur(10px);
-  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
-  border-bottom:1px solid rgba(255,255,255,.10);
+:root{
+  --bg:#05060a; --bg2:#0b0f1a;
+  --ink:rgba(245,248,255,.92);
+  --muted:rgba(245,248,255,.70);
+  --muted2:rgba(245,248,255,.50);
+  --line:rgba(255,255,255,.10);
+  --accent:rgba(120,220,255,.85);
 }
 
+html, body{
+  margin:0;
+  width:100%;
+  height:auto;
+  min-height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+a{color:inherit;text-decoration:none}
+
+/* ===== TOP BAR (website version) ===== */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(10px);
+  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
+  border-bottom:1px solid var(--line);
+}
 .navin{
   max-width:1120px;
   margin:0 auto;
@@ -34,10 +50,19 @@
 }
 
 .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-size:11px;
   letter-spacing:.26em;
   text-transform:uppercase;
-  color:rgba(245,248,255,.50);
+  color:var(--muted2);
+  white-space:nowrap;
+}
+.dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 14px rgba(120,220,255,.30);
 }
 
 .links{
@@ -45,117 +70,252 @@
   gap:14px;
   flex-wrap:wrap;
   justify-content:flex-end;
+  align-items:center;
 }
-
 .links a{
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:rgba(245,248,255,.55);
+  color:var(--muted2);
+  padding:10px;
+  border-radius:999px;
+}
+.links a:hover{ color:var(--ink); }
+
+/* ✅ circled pill for active page */
+.links a[aria-current="page"]{
+  color:var(--ink);
+  border:1px solid rgba(120,220,255,.40);
+  background:rgba(120,220,255,.08);
 }
 
-.links a:hover{
-  color:rgba(245,248,255,.92);
-}
-
-:root{--bg:#05060a;--bg2:#0b0f1a;--ink:rgba(245,248,255,.92);--muted:rgba(245,248,255,.70);--muted2:rgba(245,248,255,.50);--line:rgba(245,248,255,.10);--accent:rgba(120,220,255,.85);}
-html,body{margin:0;background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));border-bottom:1px solid var(--line);}
-.navin{max-width:1120px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
-.links a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2)}
-.links a:hover{color:var(--ink)}
-.hero{max-width:1120px;margin:0 auto;padding:56px 18px 18px}
-.kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted2)}
-.h1{margin:14px 0 0;font-size:clamp(30px,4.2vw,60px);letter-spacing:.16em;text-transform:uppercase;line-height:1.08}
-.sub{margin:18px 0 0;max-width:860px;color:var(--muted);line-height:1.85;font-size:clamp(14px,1.25vw,16px)}
-.cols{max-width:1120px;margin:0 auto;padding:18px 18px 70px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.panel{grid-column:span 7;border:1px solid var(--line);border-radius:16px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
-.panel h3{margin:0;font-size:13px;letter-spacing:.20em;text-transform:uppercase}
-.panel p{margin:10px 0 0;color:var(--muted);line-height:1.85}
-.list{margin:14px 0 0;padding:0;list-style:none;color:var(--muted)}
-.list li{padding:9px 0;border-top:1px solid rgba(255,255,255,.06)}
-.list li:first-child{border-top:none}
-.side{grid-column:span 5;border:1px solid var(--line);border-radius:16px;padding:18px;background:linear-gradient(180deg, rgba(120,220,255,.07), rgba(255,255,255,.01))}
-.side h4{margin:0;font-size:13px;letter-spacing:.20em;text-transform:uppercase}
-.pill{display:inline-block;margin-top:12px;padding:10px 12px;border-radius:999px;border:1px solid rgba(120,220,255,.35);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(120,220,255,.85)}
-.footer{border-top:1px solid var(--line);padding:18px;color:var(--muted2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-align:center}
-@media (max-width:860px){.panel,.side{grid-column:span 12}}
-  /* ===== Global MENU (top-right) ===== */
-.menuCorner{
-  position:fixed;
-  top:12px;
-  right:12px;
-  z-index:9999;
-  pointer-events:auto;
-}
+/* menu button (mobile) */
 .menuBtn{
-  font:inherit;
+  appearance:none;
+  border:1px solid rgba(245,248,255,.26);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  cursor:pointer;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.hamburger{ width:18px; height:12px; position:relative; }
+.hamburger span{ position:absolute; left:0; right:0; height:2px; background:#fff; }
+.hamburger span:nth-child(1){ top:0; }
+.hamburger span:nth-child(2){ top:5px; }
+.hamburger span:nth-child(3){ top:10px; }
+
+@media (min-width:861px){ .menuBtn{ display:none; } }
+@media (max-width:860px){ .links{ display:none; } }
+
+/* ===== MOBILE MENU ===== */
+.mobileMenu{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:none;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(8px);
+}
+.mobileMenu[aria-hidden="false"]{ display:block; }
+
+.mobilePanel{
+  position:absolute;
+  top:14px; left:14px; right:14px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  background:rgba(0,0,0,.80);
+  overflow:hidden;
+}
+.mobileTop{
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.closeBtn{
+  border:1px solid rgba(245,248,255,.26);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:10px 12px;
+  border-radius:999px;
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.62);
-  color:rgba(245,248,255,.82);
   cursor:pointer;
-  backdrop-filter:blur(10px);
 }
-.menuBtn:hover{
-  background:rgba(0,0,0,.78);
-  border-color:rgba(255,255,255,.18);
-}
-.menuList{
-  position:absolute;
-  right:0;
-  top:38px;
-  min-width:220px;
-  padding:10px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(14px);
-  display:none;
-}
-.menuCorner.open .menuList{ display:block; }
-.menuList a{
+.mobileLinks a{
   display:block;
-  padding:10px;
-  border-radius:10px;
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(245,248,255,.80);
+}
+.mobileLinks a[aria-current="page"]{
+  background:rgba(120,220,255,.10);
+  color:var(--ink);
+}
+
+/* ===== PAGE CONTENT ===== */
+.hero{
+  max-width:1120px;
+  margin:0 auto;
+  padding:56px 18px 18px;
+}
+.kicker{
   font-size:11px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted2);
+}
+.h1{
+  margin:14px 0 0;
+  font-size:clamp(30px,4.2vw,60px);
   letter-spacing:.16em;
   text-transform:uppercase;
-  color:rgba(245,248,255,.72);
-  text-decoration:none;
-  white-space:nowrap;
+  line-height:1.08;
 }
-.menuList a:hover{
-  background:rgba(255,255,255,.06);
-  color:rgba(245,248,255,.95);
+.sub{
+  margin:18px 0 0;
+  max-width:860px;
+  color:var(--muted);
+  line-height:1.85;
+  font-size:clamp(14px,1.25vw,16px);
+}
+
+.cols{
+  max-width:1120px;
+  margin:0 auto;
+  padding:18px 18px 70px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
+}
+.panel{
+  grid-column:span 7;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+}
+.panel h3{
+  margin:0;
+  font-size:13px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+}
+.panel p{
+  margin:10px 0 0;
+  color:var(--muted);
+  line-height:1.85;
+}
+.list{
+  margin:14px 0 0;
+  padding:0;
+  list-style:none;
+  color:var(--muted);
+}
+.list li{
+  padding:9px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.list li:first-child{ border-top:none; }
+
+.side{
+  grid-column:span 5;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(120,220,255,.07), rgba(255,255,255,.01));
+}
+.side h4{
+  margin:0;
+  font-size:13px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+}
+.pill{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(120,220,255,.35);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(120,220,255,.85);
+}
+
+.footer{
+  border-top:1px solid rgba(255,255,255,.10);
+  padding:18px;
+  color:var(--muted2);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  text-align:center;
+}
+
+@media (max-width:860px){
+  .panel,.side{ grid-column:span 12; }
 }
 </style>
 </head>
+
 <body>
-  
-<nav class="nav">
+
+<div class="nav">
   <div class="navin">
-    <div class="brand">GLOBAL WATER FUND</div>
+    <a class="brand" href="index.html"><span class="dot"></span>GLOBAL WATER FUND</a>
+
     <div class="links">
       <a href="index.html">Earth</a>
-      <a href="planetary.html">Planetary</a>
+      <a href="planetary.html">Stability</a>
       <a href="map.html">Map</a>
       <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Foresight</a>
+      <a href="forecasting.html" aria-current="page">Foresight</a>
+      <a href="maritime.html">Maritime</a>
+      <a href="capital.html">Capital</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <button class="menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="mobileMenu" aria-expanded="false">
+      <span class="hamburger"><span></span><span></span><span></span></span>
+      Menu
+    </button>
+  </div>
+</div>
+
+<div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="mobilePanel" role="document">
+    <div class="mobileTop">
+      <div class="brand"><span class="dot"></span> GLOBAL WATER FUND</div>
+      <button class="closeBtn" id="closeBtn">Close</button>
+    </div>
+
+    <div class="mobileLinks">
+      <a href="index.html">Earth</a>
+      <a href="planetary.html">Stability</a>
+      <a href="map.html">Map</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="forecasting.html" aria-current="page">Foresight</a>
       <a href="maritime.html">Maritime</a>
       <a href="capital.html">Capital</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </div>
-</nav>
+</div>
 
 <section class="hero">
   <div class="kicker">Early warning for governments, investors, operators</div>
@@ -188,6 +348,7 @@ a{color:inherit;text-decoration:none}
     <div class="pill">Quarterly Scenario Review</div><br/>
     <div class="pill">Basin / Portfolio Deep-Dive</div><br/>
     <div class="pill">Crisis Early Warning Cell</div>
+
     <p style="margin:14px 0 0;color:rgba(245,248,255,.72);line-height:1.75">
       Built for senior decision-makers who need clarity, not complexity.
     </p>
@@ -195,32 +356,28 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <div class="footer">GLOBAL WATER FUND — FORECAST • DECIDE • STABILIZE</div>
-  <script>
+
+<script>
 (function(){
-  const menu = document.getElementById('menuCorner');
-  const btn  = document.getElementById('menuBtn');
-  if(!menu || !btn) return;
+  const menuBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-  const list = menu.querySelector('.menuList');
-
-  btn.addEventListener('click', (e)=>{
-    e.stopPropagation();
-    menu.classList.toggle('open');
-  });
-
-  window.addEventListener('click', (e)=>{
-    if(!menu.contains(e.target)) menu.classList.remove('open');
-  });
-
-  window.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') menu.classList.remove('open');
-  });
-
-  if(list){
-    list.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click', ()=> menu.classList.remove('open'));
-    });
+  function openMenu(){
+    mobileMenu.setAttribute('aria-hidden','false');
+    menuBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
   }
+  function closeMenu(){
+    mobileMenu.setAttribute('aria-hidden','true');
+    menuBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  mobileMenu.addEventListener('click', (e)=>{ if(e.target === mobileMenu) closeMenu(); });
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
 })();
 </script>
 
