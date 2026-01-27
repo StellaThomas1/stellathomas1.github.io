@@ -6,15 +6,6 @@
 <title>Global Water Fund — Systems Map</title>
 
 <style>
-  html, body {
-  margin: 0;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
 :root{
   --bg:#05060a;
   --bg2:#0b0f1a;
@@ -23,15 +14,27 @@
   --muted2:rgba(245,248,255,.50);
   --grid:rgba(245,248,255,.06);
   --grid2:rgba(245,248,255,.035);
+  --line:rgba(255,255,255,.12);
+  --accent:rgba(120,220,255,.85);
+  --glass:rgba(0,0,0,.62);
 }
 
+/* ✅ allow scrolling (your old code had overflow:hidden) */
 html,body{
   margin:0;
+  width:100%;
+  height:auto;
+  min-height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
   color:var(--ink);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  overflow:hidden;
 }
+
+/* ✅ no underlines */
+a{ color:inherit; text-decoration:none; }
 
 /* ===== BASE MAP ===== */
 .mapLayer{
@@ -167,7 +170,7 @@ html,body{
   pointer-events:none;
 }
 
-/* ===== Planetary-style MENU (Top-Right) ===== */
+/* ===== MENU (Top-Right) ===== */
 .menuCorner{
   position:fixed;
   top:12px;
@@ -183,7 +186,7 @@ html,body{
   padding:8px 10px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.62);
+  background:var(--glass);
   color:rgba(245,248,255,.82);
   cursor:pointer;
   backdrop-filter:blur(10px);
@@ -192,6 +195,7 @@ html,body{
   background:rgba(0,0,0,.78);
   border-color:rgba(255,255,255,.18);
 }
+
 .menuList{
   position:absolute;
   right:0;
@@ -205,6 +209,7 @@ html,body{
   display:none;
 }
 .menuCorner.open .menuList{ display:block; }
+
 .menuList a{
   display:block;
   padding:10px 10px;
@@ -213,15 +218,19 @@ html,body{
   letter-spacing:.16em;
   text-transform:uppercase;
   color:rgba(245,248,255,.72);
-  text-decoration:none;
   white-space:nowrap;
 }
 .menuList a:hover{
   background:rgba(255,255,255,.06);
   color:rgba(245,248,255,.95);
 }
+/* ✅ active pill in dropdown */
+.menuList a[aria-current="page"]{
+  border:1px solid rgba(120,220,255,.35);
+  background:rgba(120,220,255,.10);
+  color:rgba(245,248,255,.95);
+}
 
-/* ===== Mobile tightening (prevents crowding) ===== */
 @media (max-width: 720px){
   .center h1{ font-size:28px; letter-spacing:.12em; }
   .systems{ font-size:10px; letter-spacing:.14em; margin-top:8px; }
@@ -233,13 +242,12 @@ html,body{
 
 <body>
 
-<!-- MENU dropdown (MUST be in BODY, not in STYLE) -->
 <div class="menuCorner" id="menuCorner">
   <button class="menuBtn" id="menuBtn" type="button">MENU</button>
   <div class="menuList" id="menuList">
     <a href="index.html">Earth</a>
     <a href="planetary.html">Stability</a>
-    <a href="map.html">Map</a>
+    <a href="map.html" aria-current="page">Map</a>
     <a href="capabilities.html">Capabilities</a>
     <a href="forecasting.html">Foresight</a>
     <a href="maritime.html">Maritime</a>
@@ -312,7 +320,7 @@ function drawLights(){
 }
 resize();
 
-/* MENU behavior (Planetary-style) */
+/* Menu behavior */
 (function(){
   const box = document.getElementById('menuCorner');
   const btn = document.getElementById('menuBtn');
