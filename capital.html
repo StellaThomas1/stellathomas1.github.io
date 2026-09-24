@@ -1,45 +1,29 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8" />
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1, viewport-fit=cover"
-/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
 <title>Global Water Fund — Capital & Intervention</title>
-
 
 <style>
 
 /* =========================================================
-   GLOBAL VARIABLES
+   GLOBAL WATER FUND — CAPITAL
    ========================================================= */
 
 :root{
-
   --bg:#05060a;
-
   --bg2:#0b0f1a;
-
   --ink:rgba(245,248,255,.92);
-
-  --muted:rgba(245,248,255,.72);
-
-  --muted2:rgba(245,248,255,.55);
-
-  --line:rgba(245,248,255,.12);
-
+  --muted:rgba(245,248,255,.70);
+  --muted2:rgba(245,248,255,.50);
+  --line:rgba(245,248,255,.10);
   --accent:#78dcff;
-
 }
 
-
 /* =========================================================
-   GLOBAL RESET + MOBILE SCROLL
+   RESET + MOBILE SCROLL
    ========================================================= */
 
 *{
@@ -47,166 +31,106 @@
 }
 
 html{
-
   margin:0;
-
   padding:0;
-
   width:100%;
-
   min-height:100%;
-
   overflow-x:hidden;
-
   overflow-y:auto;
-
   -webkit-text-size-adjust:100%;
-
 }
 
-
 body{
-
   margin:0;
-
   padding:0;
 
   width:100%;
-
   min-height:100vh;
-
   min-height:100dvh;
 
   overflow-x:hidden;
-
   overflow-y:auto;
 
   -webkit-overflow-scrolling:touch;
 
-
   background:
-
     radial-gradient(
-
       1200px 900px at 60% 30%,
-
       var(--bg2) 0%,
-
       var(--bg) 60%,
-
       #04050a 100%
-
     );
-
 
   color:var(--ink);
 
-
   font-family:
-
     system-ui,
-
     -apple-system,
-
     BlinkMacSystemFont,
-
     "Segoe UI",
-
     Roboto,
-
     Arial,
-
     sans-serif;
-
 }
-
 
 a{
-
   color:inherit;
-
   text-decoration:none;
-
 }
 
-
 /* =========================================================
-   HEADER
+   TOP HEADER
    ========================================================= */
 
 .siteHeader{
-
   position:sticky;
-
   top:0;
 
   z-index:1000;
 
   width:100%;
 
-
   background:
-
     linear-gradient(
-
       to bottom,
-
       rgba(0,0,0,.88),
-
       rgba(0,0,0,.48)
-
     );
 
-
-  border-bottom:
-
-    1px solid var(--line);
-
+  border-bottom:1px solid var(--line);
 
   backdrop-filter:blur(12px);
-
   -webkit-backdrop-filter:blur(12px);
-
 }
 
-
 .headerInner{
-
   width:100%;
-
   max-width:1120px;
 
   margin:0 auto;
 
   padding:14px 18px;
 
-
   display:flex;
 
   align-items:center;
-
   justify-content:space-between;
 
   gap:20px;
-
 }
 
-
 /* =========================================================
-   GLOBAL WATER FUND
+   GLOBAL WATER FUND BRAND
    ========================================================= */
 
 .brand{
-
   display:flex;
 
   align-items:center;
 
-  gap:10px;
-
+  gap:9px;
 
   color:var(--muted2);
-
 
   font-size:11px;
 
@@ -216,74 +140,47 @@ a{
 
   white-space:nowrap;
 
-
   transition:color .25s ease;
-
 }
-
 
 .brand:hover{
-
-  color:#ffffff;
-
+  color:#fff;
 }
 
+.brandDot{
+  width:8px;
+  height:8px;
 
-.dot{
-
-  width:9px;
-
-  height:9px;
-
-  flex:0 0 9px;
-
+  flex:0 0 8px;
 
   border-radius:50%;
 
-
   background:var(--accent);
 
-
   box-shadow:
-
-    0 0 14px
-
-    rgba(120,220,255,.38);
-
+    0 0 14px rgba(120,220,255,.38);
 }
-
 
 /* =========================================================
    MENU BUTTON
    ========================================================= */
 
-.menuButton{
-
+.menuBtn{
   appearance:none;
-
   -webkit-appearance:none;
 
-
   border:
-
     1px solid rgba(245,248,255,.24);
 
-
   background:
-
     rgba(255,255,255,.04);
 
-
   color:
-
     rgba(245,248,255,.90);
-
 
   padding:10px 15px;
 
-
   border-radius:999px;
-
 
   font-family:inherit;
 
@@ -293,186 +190,124 @@ a{
 
   text-transform:uppercase;
 
-
   cursor:pointer;
 
-
   transition:
-
     border-color .25s ease,
-
     background .25s ease,
-
     color .25s ease;
-
 }
 
-
-.menuButton:hover{
-
-  color:#ffffff;
-
+.menuBtn:hover{
+  color:#fff;
 
   border-color:
-
     rgba(120,220,255,.55);
 
-
   background:
-
     rgba(120,220,255,.08);
-
 }
-
 
 /* =========================================================
    FULL SCREEN MENU
    ========================================================= */
 
 .menuOverlay{
-
   position:fixed;
 
   inset:0;
 
-  z-index:3000;
-
+  z-index:5000;
 
   display:none;
-
 
   width:100%;
 
   height:100vh;
-
   height:100dvh;
 
-
   overflow-x:hidden;
-
   overflow-y:auto;
-
 
   -webkit-overflow-scrolling:touch;
 
-
   background:
-
     radial-gradient(
-
       900px 700px at 50% 30%,
-
       rgba(11,15,26,.99) 0%,
-
       rgba(5,6,10,.99) 65%,
-
       #04050a 100%
-
     );
-
 }
-
 
 .menuOverlay.open{
-
   display:block;
-
 }
 
-
 /* =========================================================
-   MENU TOP
+   MENU TOP BAR
    ========================================================= */
 
 .menuTop{
-
   position:sticky;
 
   top:0;
 
-  z-index:5;
-
+  z-index:10;
 
   width:100%;
 
-
   padding:14px 18px;
-
 
   display:flex;
 
   align-items:center;
-
   justify-content:space-between;
 
   gap:20px;
 
-
   background:
-
     rgba(5,6,10,.97);
 
-
   border-bottom:
-
     1px solid var(--line);
 
-
   backdrop-filter:blur(12px);
-
   -webkit-backdrop-filter:blur(12px);
-
 }
 
-
-.menuTitle{
-
+.menuBrand{
   display:flex;
 
   align-items:center;
 
-  gap:10px;
-
+  gap:9px;
 
   color:var(--muted2);
-
 
   font-size:11px;
 
   letter-spacing:.26em;
 
   text-transform:uppercase;
-
 }
 
-
-.closeButton{
-
+.closeBtn{
   appearance:none;
-
   -webkit-appearance:none;
 
-
   border:
-
     1px solid rgba(245,248,255,.24);
 
-
   background:
-
     rgba(255,255,255,.04);
 
-
   color:
-
     rgba(245,248,255,.88);
-
 
   padding:10px 14px;
 
-
   border-radius:999px;
-
 
   font-family:inherit;
 
@@ -482,756 +317,462 @@ a{
 
   text-transform:uppercase;
 
-
   cursor:pointer;
-
 }
-
 
 /* =========================================================
    MENU LINKS
    ========================================================= */
 
 .menuCenter{
-
   width:100%;
 
-
   min-height:
-
     calc(100vh - 65px);
 
-
   min-height:
-
     calc(100dvh - 65px);
-
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
-
-  padding:40px 24px 60px;
-
+  padding:
+    40px 24px 60px;
 }
 
-
 .menuLinks{
-
   width:min(520px,100%);
-
 
   display:flex;
 
   flex-direction:column;
 
-
   text-align:center;
-
 }
 
-
 .menuLinks a{
-
   position:relative;
-
 
   display:block;
 
-
-  padding:14px 10px;
-
+  padding:
+    14px 10px;
 
   color:
-
     rgba(245,248,255,.60);
 
-
   font-size:
-
     clamp(15px,2vw,19px);
-
 
   letter-spacing:.22em;
 
-
   text-transform:uppercase;
 
-
   transition:
-
     color .25s ease,
-
     letter-spacing .25s ease;
-
 }
-
 
 .menuLinks a:hover{
-
-  color:#ffffff;
+  color:#fff;
 
   letter-spacing:.27em;
-
 }
 
+/* CURRENT PAGE */
 
 .menuLinks a.current{
-
-  color:#ffffff;
-
+  color:#fff;
 }
 
-
 .menuLinks a.current::after{
-
   content:"";
 
-
   position:absolute;
-
 
   left:50%;
 
   bottom:6px;
 
-
   transform:
-
     translateX(-50%);
-
 
   width:30px;
 
   height:1px;
 
-
   background:var(--accent);
 
-
   opacity:.85;
-
 }
 
-
 /* =========================================================
-   MAIN CONTENT
+   HERO
    ========================================================= */
 
-main{
-
+.hero{
   max-width:1120px;
-
 
   margin:0 auto;
 
-
   padding:
-
-    70px 18px
-
-    80px;
-
+    70px 18px 22px;
 }
 
-
 .kicker{
-
   font-size:11px;
-
 
   letter-spacing:.26em;
 
-
   text-transform:uppercase;
-
 
   color:var(--muted2);
-
 }
 
-
-h1{
-
-  margin:16px 0 0;
-
+.h1{
+  margin:
+    14px 0 0;
 
   font-size:
-
     clamp(30px,4.2vw,60px);
 
-
-  letter-spacing:.14em;
-
+  letter-spacing:.16em;
 
   text-transform:uppercase;
 
-
-  line-height:1.10;
-
+  line-height:1.08;
 }
 
-
 .sub{
-
-  margin-top:22px;
-
+  margin:
+    20px 0 0;
 
   max-width:900px;
 
-
   color:var(--muted);
 
-
-  line-height:1.90;
-
+  line-height:1.85;
 
   font-size:
-
     clamp(14px,1.25vw,16px);
-
 }
-
-
-/* =========================================================
-   DIVIDER
-   ========================================================= */
-
-.signalLine{
-
-  margin-top:34px;
-
-
-  height:1px;
-
-
-  width:100%;
-
-
-  background:
-
-    linear-gradient(
-
-      90deg,
-
-      rgba(120,220,255,.45),
-
-      rgba(255,255,255,.12),
-
-      transparent
-
-    );
-
-}
-
 
 /* =========================================================
    CAPITAL GRID
    ========================================================= */
 
 .grid{
+  max-width:1120px;
 
-  margin-top:34px;
+  margin:0 auto;
 
+  padding:
+    22px 18px 80px;
 
   display:grid;
 
-
   grid-template-columns:
-
     repeat(12,1fr);
 
-
   gap:16px;
-
 }
 
+/* =========================================================
+   CAPITAL CARDS
+   ========================================================= */
 
 .card{
-
   position:relative;
 
-
-  grid-column:span 6;
-
-
-  overflow:hidden;
-
+  grid-column:
+    span 6;
 
   border:
-
     1px solid var(--line);
 
+  border-radius:
+    16px;
 
-  border-radius:18px;
-
-
-  padding:24px;
-
+  padding:
+    22px;
 
   background:
-
     linear-gradient(
-
       180deg,
-
       rgba(255,255,255,.035),
-
-      rgba(255,255,255,.012)
-
+      rgba(255,255,255,.01)
     );
-
 
   transition:
-
-    transform .3s ease,
-
-    border-color .3s ease,
-
-    background .3s ease;
-
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease;
 }
-
-
-.card::before{
-
-  content:"";
-
-
-  position:absolute;
-
-
-  left:0;
-
-  top:0;
-
-
-  width:100%;
-
-  height:1px;
-
-
-  background:
-
-    linear-gradient(
-
-      90deg,
-
-      transparent,
-
-      rgba(120,220,255,.42),
-
-      transparent
-
-    );
-
-
-  opacity:.45;
-
-}
-
 
 .card:hover{
-
   transform:
-
-    translateY(-3px);
-
+    translateY(-2px);
 
   border-color:
-
     rgba(120,220,255,.25);
 
-
   background:
-
     linear-gradient(
-
       180deg,
-
-      rgba(120,220,255,.055),
-
-      rgba(255,255,255,.012)
-
+      rgba(120,220,255,.05),
+      rgba(255,255,255,.01)
     );
-
 }
-
-
-.cardNumber{
-
-  margin-bottom:18px;
-
-
-  font-size:10px;
-
-
-  letter-spacing:.24em;
-
-
-  text-transform:uppercase;
-
-
-  color:
-
-    rgba(120,220,255,.65);
-
-}
-
 
 .card h3{
-
   margin:0;
-
 
   font-size:13px;
 
-
   letter-spacing:.20em;
-
 
   text-transform:uppercase;
 
+  line-height:1.5;
 }
 
-
 .card p{
-
-  margin:12px 0 0;
-
+  margin:
+    12px 0 0;
 
   color:var(--muted);
 
-
   line-height:1.85;
-
-
-  font-size:15px;
-
 }
-
 
 /* =========================================================
-   CAPITAL STATEMENT
+   CARD ACCENT
    ========================================================= */
 
-.capitalStatement{
+.card::before{
+  content:"";
 
-  margin-top:34px;
+  position:absolute;
 
+  top:0;
 
-  border:
+  left:22px;
 
-    1px solid rgba(120,220,255,.15);
+  width:34px;
 
-
-  border-radius:18px;
-
-
-  padding:26px 24px;
-
+  height:1px;
 
   background:
-
-    linear-gradient(
-
-      135deg,
-
-      rgba(120,220,255,.06),
-
-      rgba(255,255,255,.012)
-
-    );
-
+    rgba(120,220,255,.55);
 }
-
-
-.statementLabel{
-
-  font-size:10px;
-
-
-  letter-spacing:.24em;
-
-
-  text-transform:uppercase;
-
-
-  color:
-
-    rgba(120,220,255,.70);
-
-}
-
-
-.statementText{
-
-  margin-top:12px;
-
-
-  max-width:900px;
-
-
-  font-size:
-
-    clamp(15px,1.4vw,18px);
-
-
-  line-height:1.8;
-
-
-  color:
-
-    rgba(245,248,255,.78);
-
-}
-
 
 /* =========================================================
    FOOTER
    ========================================================= */
 
-footer{
-
+.footer{
   border-top:
-
     1px solid var(--line);
 
+  padding:
+    20px 18px;
 
-  padding:20px 18px;
+  color:
+    var(--muted2);
 
+  font-size:
+    11px;
 
-  font-size:11px;
+  letter-spacing:
+    .18em;
 
+  text-transform:
+    uppercase;
 
-  letter-spacing:.18em;
-
-
-  text-transform:uppercase;
-
-
-  color:var(--muted2);
-
-
-  text-align:center;
-
+  text-align:
+    center;
 }
 
-
 /* =========================================================
-   TABLET + MOBILE
+   TABLET
    ========================================================= */
 
 @media (max-width:860px){
 
-
-  .headerInner{
-
-    padding:12px 16px;
-
+  .card{
+    grid-column:
+      span 12;
   }
-
-
-  .brand{
-
-    font-size:10px;
-
-    letter-spacing:.18em;
-
-  }
-
-
-  .dot{
-
-    width:8px;
-
-    height:8px;
-
-    flex-basis:8px;
-
-  }
-
-
-  .menuButton{
-
-    padding:9px 12px;
-
-    font-size:9px;
-
-    letter-spacing:.20em;
-
-  }
-
-
-  .menuTop{
-
-    padding:12px 16px;
-
-  }
-
-
-  .menuTitle{
-
-    font-size:10px;
-
-    letter-spacing:.18em;
-
-  }
-
-
-  .closeButton{
-
-    padding:9px 12px;
-
-    font-size:9px;
-
-  }
-
 
   .menuCenter{
-
     min-height:0;
 
-
-    align-items:flex-start;
-
-
-    padding:
-
-      38px 20px
-
-      70px;
-
-  }
-
-
-  .menuLinks a{
-
-    padding:12px 8px;
-
-
-    font-size:15px;
-
-
-    letter-spacing:.18em;
-
-  }
-
-
-  main{
+    align-items:
+      flex-start;
 
     padding:
-
-      52px 18px
-
-      70px;
-
-  }
-
-
-  h1{
-
-    letter-spacing:.10em;
-
-  }
-
-
-  .card{
-
-    grid-column:span 12;
-
+      38px 20px 70px;
   }
 
 }
 
-
 /* =========================================================
-   SMALL MOBILE
+   MOBILE
    ========================================================= */
 
 @media (max-width:520px){
 
-
-  main{
-
-    padding-top:42px;
-
+  .headerInner{
+    padding:
+      12px 15px;
   }
 
+  .brand{
+    font-size:
+      10px;
 
-  .kicker{
-
-    font-size:10px;
-
-
-    letter-spacing:.18em;
-
+    letter-spacing:
+      .18em;
   }
 
+  .brandDot{
+    width:
+      7px;
 
-  h1{
+    height:
+      7px;
+
+    flex-basis:
+      7px;
+  }
+
+  .menuBtn{
+    font-size:
+      9px;
+
+    letter-spacing:
+      .20em;
+
+    padding:
+      9px 12px;
+  }
+
+  .menuTop{
+    padding:
+      12px 15px;
+  }
+
+  .menuBrand{
+    font-size:
+      10px;
+
+    letter-spacing:
+      .18em;
+  }
+
+  .closeBtn{
+    font-size:
+      9px;
+
+    padding:
+      9px 12px;
+  }
+
+  .menuCenter{
+    padding:
+      28px 18px 60px;
+  }
+
+  .menuLinks a{
+    padding:
+      13px 8px;
 
     font-size:
+      15px;
 
+    letter-spacing:
+      .18em;
+  }
+
+  .hero{
+    padding:
+      52px 18px 20px;
+  }
+
+  .kicker{
+    font-size:
+      10px;
+
+    letter-spacing:
+      .18em;
+  }
+
+  .h1{
+    font-size:
       clamp(28px,9vw,40px);
 
+    letter-spacing:
+      .10em;
 
-    letter-spacing:.08em;
-
-
-    line-height:1.12;
-
+    line-height:
+      1.12;
   }
-
 
   .sub{
+    font-size:
+      14px;
 
-    font-size:14px;
-
-
-    line-height:1.75;
-
+    line-height:
+      1.75;
   }
 
+  .grid{
+    padding:
+      18px 18px 65px;
+  }
 
   .card{
-
-    padding:20px;
-
+    padding:
+      20px;
   }
 
+  .card::before{
+    left:
+      20px;
+  }
 
-  .card p{
+  .footer{
+    font-size:
+      9px;
 
-    font-size:14px;
+    letter-spacing:
+      .14em;
 
-
-    line-height:1.75;
-
+    line-height:
+      1.6;
   }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================================================
+<!-- =====================================================
      HEADER
-     ========================================================= -->
+     ===================================================== -->
 
 <header class="siteHeader">
 
-
   <div class="headerInner">
 
+    <!--
+      GLOBAL WATER FUND GOES TO MAIN WEBSITE
+      NOT EARTH/INDEX.HTML
+    -->
 
     <a
       class="brand"
@@ -1239,63 +780,65 @@ footer{
       aria-label="Global Water Fund homepage"
     >
 
-      <span class="dot"></span>
+      <span class="brandDot"></span>
 
-      GLOBAL WATER FUND
+      <span>
+        GLOBAL WATER FUND
+      </span>
 
     </a>
 
 
     <button
-      class="menuButton"
-      id="menuButton"
+      class="menuBtn"
+      id="menuBtn"
       type="button"
       aria-label="Open navigation menu"
+      aria-controls="menuOverlay"
       aria-expanded="false"
-      aria-controls="siteMenu"
     >
 
       MENU
 
     </button>
 
-
   </div>
-
 
 </header>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FULL SCREEN MENU
-     ========================================================= -->
+     ===================================================== -->
 
 <div
   class="menuOverlay"
-  id="siteMenu"
+  id="menuOverlay"
   aria-hidden="true"
 >
 
+  <!-- MENU HEADER -->
 
   <div class="menuTop">
 
-
     <a
-      class="menuTitle"
+      class="menuBrand"
       href="/"
       aria-label="Global Water Fund homepage"
     >
 
-      <span class="dot"></span>
+      <span class="brandDot"></span>
 
-      GLOBAL WATER FUND
+      <span>
+        GLOBAL WATER FUND
+      </span>
 
     </a>
 
 
     <button
-      class="closeButton"
-      id="menuClose"
+      class="closeBtn"
+      id="closeBtn"
       type="button"
       aria-label="Close navigation menu"
     >
@@ -1304,16 +847,16 @@ footer{
 
     </button>
 
-
   </div>
 
 
-  <div class="menuCenter">
+  <!-- MENU LINKS -->
 
+  <div class="menuCenter">
 
     <nav
       class="menuLinks"
-      aria-label="Primary navigation"
+      aria-label="Global Water Fund navigation"
     >
 
 
@@ -1379,30 +922,29 @@ footer{
 
     </nav>
 
-
   </div>
-
 
 </div>
 
 
-<!-- =========================================================
-     CAPITAL PAGE CONTENT
-     ========================================================= -->
+<!-- =====================================================
+     CAPITAL HERO
+     ===================================================== -->
 
 <main>
 
+<section class="hero">
 
   <div class="kicker">
 
-    FINANCE ALIGNED WITH STABILITY
+    Finance aligned with stability
 
   </div>
 
 
-  <h1>
+  <h1 class="h1">
 
-    CAPITAL &amp; INTERVENTION
+    Capital &amp; Intervention
 
   </h1>
 
@@ -1415,294 +957,246 @@ footer{
 
   </div>
 
+</section>
 
-  <div class="signalLine"></div>
 
+<!-- =====================================================
+     CAPITAL CAPABILITIES
+     ===================================================== -->
 
-  <!-- =======================================================
-       CAPITAL CARDS
-       ======================================================= -->
+<section
+  class="grid"
+  aria-label="Capital and intervention capabilities"
+>
 
-  <section class="grid">
 
+  <!-- PPP -->
 
-    <div class="card">
+  <article class="card">
 
+    <h3>
 
-      <div class="cardNumber">
+      Public–Private Partnerships
 
-        01 — PARTNERSHIPS
+    </h3>
 
-      </div>
+    <p>
 
+      Bankable delivery structures with clear governance,
+      measurable outcomes, and disciplined risk allocation.
 
-      <h3>
+    </p>
 
-        PUBLIC–PRIVATE PARTNERSHIPS
+  </article>
 
-      </h3>
 
+  <!-- BLUE & GREEN BONDS -->
 
-      <p>
+  <article class="card">
 
-        Bankable delivery structures with clear governance,
-        measurable outcomes, and disciplined risk allocation
-        across public and private stakeholders.
+    <h3>
 
-      </p>
+      Blue &amp; Green Bonds
 
+    </h3>
 
-    </div>
+    <p>
 
+      Resilience-linked financing with transparent metrics,
+      reporting, accountability, and investment integrity.
 
-    <div class="card">
+    </p>
 
+  </article>
 
-      <div class="cardNumber">
 
-        02 — MARKETS
+  <!-- BLENDED FINANCE -->
 
-      </div>
+  <article class="card">
 
+    <h3>
 
-      <h3>
+      Blended Finance
 
-        BLUE &amp; GREEN BONDS
+    </h3>
 
-      </h3>
+    <p>
 
+      Align catalytic capital, development finance institutions,
+      public resources, and private investors to unlock scale.
 
-      <p>
+    </p>
 
-        Resilience-linked financing structures with transparent
-        metrics, credible reporting, and investment integrity.
+  </article>
 
-      </p>
 
+  <!-- PORTFOLIO RESILIENCE -->
 
-    </div>
+  <article class="card">
 
+    <h3>
 
-    <div class="card">
+      Portfolio Resilience
 
+    </h3>
 
-      <div class="cardNumber">
+    <p>
 
-        03 — CATALYTIC CAPITAL
+      Risk-adjusted strategies for infrastructure, utilities,
+      ports, cities, and long-horizon institutional investors.
 
-      </div>
+    </p>
 
+  </article>
 
-      <h3>
 
-        BLENDED FINANCE
-
-      </h3>
-
-
-      <p>
-
-        Align catalytic capital, development finance institutions,
-        governments, and private investors to unlock projects
-        and accelerate scale.
-
-      </p>
-
-
-    </div>
-
-
-    <div class="card">
-
-
-      <div class="cardNumber">
-
-        04 — INVESTMENT RISK
-
-      </div>
-
-
-      <h3>
-
-        PORTFOLIO RESILIENCE
-
-      </h3>
-
-
-      <p>
-
-        Risk-adjusted strategies for infrastructure, utilities,
-        ports, cities, and long-horizon investors exposed to
-        water and climate instability.
-
-      </p>
-
-
-    </div>
-
-
-  </section>
-
-
-  <!-- =======================================================
-       CAPITAL STRATEGY STATEMENT
-       ======================================================= -->
-
-  <section class="capitalStatement">
-
-
-    <div class="statementLabel">
-
-      FROM RISK TO INVESTMENT
-
-    </div>
-
-
-    <div class="statementText">
-
-      Water security requires more than identifying risk.
-      It requires converting resilience priorities into financeable
-      interventions — connecting public purpose, institutional capital,
-      infrastructure delivery, and measurable long-term outcomes.
-
-    </div>
-
-
-  </section>
-
+</section>
 
 </main>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FOOTER
-     ========================================================= -->
+     ===================================================== -->
 
-<footer>
+<footer class="footer">
 
   GLOBAL WATER FUND — CAPITAL • DELIVERY • RESILIENCE
 
 </footer>
 
 
-<!-- =========================================================
+<!-- =====================================================
      MENU JAVASCRIPT
-     ========================================================= -->
+     ===================================================== -->
 
 <script>
 
 (function(){
 
+  const menuBtn =
+    document.getElementById("menuBtn");
 
-  const menuButton =
-    document.getElementById("menuButton");
+  const closeBtn =
+    document.getElementById("closeBtn");
 
-
-  const menuClose =
-    document.getElementById("menuClose");
-
-
-  const siteMenu =
-    document.getElementById("siteMenu");
+  const menuOverlay =
+    document.getElementById("menuOverlay");
 
 
+  /* OPEN MENU */
 
   function openMenu(){
 
+    menuOverlay
+      .classList
+      .add("open");
 
-    siteMenu.classList.add("open");
+    menuOverlay
+      .setAttribute(
+        "aria-hidden",
+        "false"
+      );
 
-
-    siteMenu.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      "true"
-    );
-
+    menuBtn
+      .setAttribute(
+        "aria-expanded",
+        "true"
+      );
 
   }
 
 
+  /* CLOSE MENU */
 
   function closeMenu(){
 
+    menuOverlay
+      .classList
+      .remove("open");
 
-    siteMenu.classList.remove("open");
+    menuOverlay
+      .setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
-
-    siteMenu.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
+    menuBtn
+      .setAttribute(
+        "aria-expanded",
+        "false"
+      );
 
   }
 
 
+  /* MENU BUTTON */
 
-  menuButton.addEventListener(
-    "click",
-    openMenu
-  );
-
-
-
-  menuClose.addEventListener(
-    "click",
-    closeMenu
-  );
+  menuBtn
+    .addEventListener(
+      "click",
+      openMenu
+    );
 
 
+  /* CLOSE BUTTON */
 
-  document.addEventListener(
-    "keydown",
-    function(event){
+  closeBtn
+    .addEventListener(
+      "click",
+      closeMenu
+    );
 
 
-      if(event.key === "Escape"){
+  /* ESCAPE KEY */
 
+  document
+    .addEventListener(
+      "keydown",
+      function(event){
 
-        closeMenu();
+        if(
+          event.key === "Escape"
+        ){
 
+          closeMenu();
+
+        }
 
       }
+    );
 
 
-    }
-  );
+  /* CLOSE AFTER SELECTING A MENU LINK */
 
-
-
-  siteMenu
-    .querySelectorAll("a")
-    .forEach(function(link){
-
-
-      link.addEventListener(
-        "click",
-        closeMenu
+  const menuLinks =
+    menuOverlay
+      .querySelectorAll(
+        ".menuLinks a"
       );
 
 
-    });
+  menuLinks
+    .forEach(
+      function(link){
+
+        link
+          .addEventListener(
+            "click",
+            function(){
+
+              closeMenu();
+
+            }
+          );
+
+      }
+    );
 
 
 })();
 
 </script>
 
-
 </body>
-
 </html>
