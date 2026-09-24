@@ -3,9 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>Global Water Fund — Systems Map</title>
 
 <style>
+
+/* =========================================================
+   GLOBAL WATER FUND — SYSTEMS MAP
+   ========================================================= */
+
 :root{
   --bg:#05060a;
   --bg2:#0b0f1a;
@@ -15,335 +21,1507 @@
   --grid:rgba(245,248,255,.06);
   --grid2:rgba(245,248,255,.035);
   --line:rgba(255,255,255,.12);
-  --accent:rgba(120,220,255,.85);
-  --glass:rgba(0,0,0,.62);
+  --accent:#78dcff;
+  --glass:rgba(0,0,0,.78);
 }
 
-/* ✅ allow scrolling (your old code had overflow:hidden) */
-html,body{
+
+/* =========================================================
+   RESET + MOBILE SCROLL
+   ========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
   margin:0;
+  padding:0;
+
   width:100%;
-  height:auto;
   min-height:100%;
+
   overflow-x:hidden;
   overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  background: radial-gradient(1200px 900px at 60% 30%, var(--bg2) 0%, var(--bg) 60%, #04050a 100%);
-  color:var(--ink);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  -webkit-text-size-adjust:100%;
 }
 
-/* ✅ no underlines */
-a{ color:inherit; text-decoration:none; }
+body{
+  margin:0;
+  padding:0;
 
-/* ===== BASE MAP ===== */
+  width:100%;
+  min-height:100vh;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+
+  background:
+    radial-gradient(
+      1200px 900px at 60% 30%,
+      var(--bg2) 0%,
+      var(--bg) 60%,
+      #04050a 100%
+    );
+
+  color:var(--ink);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================================
+   PAGE HEIGHT
+   Gives mobile a natural document to scroll.
+   ========================================================= */
+
+.page{
+  position:relative;
+
+  z-index:1;
+
+  width:100%;
+
+  min-height:115vh;
+  min-height:115svh;
+}
+
+
+/* =========================================================
+   BASE MAP
+   ========================================================= */
+
 .mapLayer{
   position:fixed;
+
   inset:0;
-  background:url("world.topo.bathy.200412.3x5400x2700.jpg") center/cover no-repeat;
-  filter: contrast(1.05) saturate(.95) brightness(.6);
+
+  z-index:0;
+
+  background:
+    url("world.topo.bathy.200412.3x5400x2700.jpg")
+    center / cover
+    no-repeat;
+
+  filter:
+    contrast(1.05)
+    saturate(.95)
+    brightness(.6);
+
   opacity:0;
+
   transform:translateY(14px);
-  transition:opacity 2s ease, transform 2s ease, filter 2s ease;
+
+  transition:
+    opacity 2s ease,
+    transform 2s ease,
+    filter 2s ease;
+
+  pointer-events:none;
 }
+
 .mapLayer.on{
   opacity:.92;
+
   transform:translateY(0);
-  filter: contrast(1.05) saturate(1) brightness(.78);
+
+  filter:
+    contrast(1.05)
+    saturate(1)
+    brightness(.78);
 }
 
-/* ===== GRID ===== */
-.grid{
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.map-grid{
   position:fixed;
+
   inset:0;
+
+  z-index:1;
+
   pointer-events:none;
+
   background:
-    repeating-linear-gradient(90deg, transparent 0, transparent 84px, var(--grid) 85px, transparent 86px),
-    repeating-linear-gradient(0deg,  transparent 0, transparent 58px, var(--grid2) 59px, transparent 60px);
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 84px,
+      var(--grid) 85px,
+      transparent 86px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 58px,
+      var(--grid2) 59px,
+      transparent 60px
+    );
 }
 
-/* ===== VIGNETTE ===== */
+
+/* =========================================================
+   VIGNETTE
+   ========================================================= */
+
 .vignette{
   position:fixed;
+
   inset:0;
+
+  z-index:2;
+
   pointer-events:none;
-  background:radial-gradient(900px 650px at 50% 45%, rgba(0,0,0,0), rgba(0,0,0,.35), rgba(0,0,0,.75));
+
+  background:
+    radial-gradient(
+      900px 650px at 50% 45%,
+      rgba(0,0,0,0),
+      rgba(0,0,0,.35),
+      rgba(0,0,0,.75)
+    );
 }
 
-/* ===== WATER FLOW ===== */
+
+/* =========================================================
+   WATER FLOW
+   ========================================================= */
+
 .water{
   position:fixed;
+
   inset:-12%;
+
+  z-index:3;
+
   pointer-events:none;
+
   background:
-    linear-gradient(120deg, transparent, rgba(120,200,255,.08), transparent),
-    radial-gradient(900px 520px at 30% 55%, rgba(120,200,255,.05), transparent),
-    radial-gradient(760px 460px at 70% 40%, rgba(120,200,255,.04), transparent);
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(120,200,255,.08),
+      transparent
+    ),
+    radial-gradient(
+      900px 520px at 30% 55%,
+      rgba(120,200,255,.05),
+      transparent
+    ),
+    radial-gradient(
+      760px 460px at 70% 40%,
+      rgba(120,200,255,.04),
+      transparent
+    );
+
   mix-blend-mode:screen;
+
   opacity:.32;
+
   animation:ocean 22s ease-in-out infinite;
 }
+
 @keyframes ocean{
-  0%{transform:translate(-3%,-2%);}
-  50%{transform:translate(3%,2%);}
-  100%{transform:translate(-3%,-2%);}
+
+  0%{
+    transform:translate(-3%,-2%);
+  }
+
+  50%{
+    transform:translate(3%,2%);
+  }
+
+  100%{
+    transform:translate(-3%,-2%);
+  }
+
 }
 
-/* ===== CITY LIGHTS ===== */
+
+/* =========================================================
+   CITY LIGHTS
+   ========================================================= */
+
 #lights{
   position:fixed;
+
   inset:0;
+
+  z-index:4;
+
+  width:100%;
+  height:100%;
+
   pointer-events:none;
+
   mix-blend-mode:screen;
+
   opacity:.55;
 }
 
-/* ===== BASINS ===== */
+
+/* =========================================================
+   BASINS
+   ========================================================= */
+
 #basins{
   position:fixed;
+
   inset:0;
+
+  z-index:5;
+
+  width:100%;
+  height:100%;
+
   pointer-events:none;
 }
+
 .basin{
   fill:none;
+
   stroke:rgba(120,220,255,.35);
+
   stroke-width:1.4;
+
   stroke-dasharray:6 10;
+
   animation:flow 30s linear infinite;
 }
-@keyframes flow{ to{ stroke-dashoffset:-500; } }
 
-/* ===== TEXT ===== */
-.topbar{
+@keyframes flow{
+
+  to{
+    stroke-dashoffset:-500;
+  }
+
+}
+
+
+/* =========================================================
+   GLOBAL HEADER
+   ========================================================= */
+
+.site-header{
   position:fixed;
-  top:14px;
+
+  top:0;
+  left:0;
+  right:0;
+
+  z-index:1000;
+
   width:100%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.84),
+      rgba(0,0,0,.42)
+    );
+
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.header-inner{
+  width:100%;
+  max-width:1120px;
+
+  margin:0 auto;
+
+  padding:14px 18px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+
+/* =========================================================
+   GLOBAL WATER FUND HOME LINK
+   ========================================================= */
+
+.brand{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:var(--muted2);
+
+  font-size:11px;
+
+  letter-spacing:.26em;
+
+  text-transform:uppercase;
+
+  white-space:nowrap;
+
+  cursor:pointer;
+
+  transition:color .25s ease;
+}
+
+.brand:hover{
+  color:#fff;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+
+  flex:0 0 9px;
+
+  border-radius:50%;
+
+  background:var(--accent);
+
+  box-shadow:
+    0 0 14px rgba(120,220,255,.35);
+}
+
+
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
+
+.menu-button{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:
+    1px solid rgba(245,248,255,.24);
+
+  background:
+    rgba(255,255,255,.04);
+
+  color:
+    rgba(245,248,255,.88);
+
+  padding:10px 15px;
+
+  border-radius:999px;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.24em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease;
+}
+
+.menu-button:hover{
+  color:#fff;
+
+  border-color:
+    rgba(120,220,255,.55);
+
+  background:
+    rgba(120,220,255,.08);
+}
+
+
+/* =========================================================
+   FULL SCREEN MENU
+   ========================================================= */
+
+.menu-overlay{
+  position:fixed;
+
+  inset:0;
+
+  z-index:3000;
+
+  display:none;
+
+  width:100%;
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+
+  background:
+    radial-gradient(
+      900px 700px at 50% 30%,
+      rgba(11,15,26,.98) 0%,
+      rgba(5,6,10,.99) 65%,
+      #04050a 100%
+    );
+}
+
+.menu-overlay.open{
+  display:block;
+}
+
+
+/* =========================================================
+   MENU TOP
+   ========================================================= */
+
+.menu-top{
+  position:sticky;
+
+  top:0;
+
+  z-index:2;
+
+  width:100%;
+
+  padding:14px 18px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  background:
+    rgba(5,6,10,.96);
+
+  border-bottom:
+    1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.menu-title{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:var(--muted2);
+
+  font-size:11px;
+
+  letter-spacing:.26em;
+
+  text-transform:uppercase;
+}
+
+.menu-close{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:
+    1px solid rgba(245,248,255,.24);
+
+  background:
+    rgba(255,255,255,.04);
+
+  color:
+    rgba(245,248,255,.85);
+
+  padding:10px 14px;
+
+  border-radius:999px;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+}
+
+.menu-close:hover{
+  color:#fff;
+
+  border-color:
+    rgba(120,220,255,.55);
+
+  background:
+    rgba(120,220,255,.08);
+}
+
+
+/* =========================================================
+   MENU LINKS
+   ========================================================= */
+
+.menu-center{
+  width:100%;
+
+  min-height:
+    calc(100vh - 65px);
+
+  min-height:
+    calc(100dvh - 65px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:40px 24px 60px;
+}
+
+.menu-links{
+  width:min(520px,100%);
+
+  display:flex;
+
+  flex-direction:column;
+
   text-align:center;
+}
+
+.menu-links a{
+  position:relative;
+
+  display:block;
+
+  padding:14px 10px;
+
+  color:
+    rgba(245,248,255,.60);
+
+  font-size:
+    clamp(15px,2vw,19px);
+
+  font-weight:400;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
+  transition:
+    color .25s ease,
+    letter-spacing .25s ease;
+}
+
+.menu-links a:hover{
+  color:#fff;
+
+  letter-spacing:.27em;
+}
+
+.menu-links a.current{
+  color:#fff;
+}
+
+.menu-links a.current::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+
+  bottom:6px;
+
+  transform:
+    translateX(-50%);
+
+  width:30px;
+
+  height:1px;
+
+  background:var(--accent);
+
+  opacity:.8;
+}
+
+
+/* =========================================================
+   SYSTEMS LABEL
+   ========================================================= */
+
+.systems-bar{
+  position:relative;
+
+  z-index:20;
+
+  width:100%;
+
+  padding:
+    calc(88px + env(safe-area-inset-top))
+    18px
+    0;
+
+  text-align:center;
+
   pointer-events:none;
 }
-.brand{
-  font-size:11px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--muted2);
-}
+
 .systems{
-  margin-top:10px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
   color:var(--muted);
-  padding:0 14px;
-  line-height:1.35;
+
+  font-size:11px;
+
+  letter-spacing:.20em;
+
+  line-height:1.55;
+
+  text-transform:uppercase;
 }
+
+
+/* =========================================================
+   CENTER MESSAGE
+   ========================================================= */
 
 .center{
-  position:fixed;
-  inset:0;
+  position:relative;
+
+  z-index:20;
+
+  width:100%;
+
+  min-height:calc(100vh - 170px);
+  min-height:calc(100svh - 170px);
+
   display:grid;
+
   place-items:center;
+
   text-align:center;
+
   pointer-events:none;
-  padding:0 18px;
+
+  padding:
+    50px
+    18px
+    110px;
 }
+
+.center-inner{
+  width:min(900px,100%);
+
+  padding:28px 20px;
+
+  background:
+    radial-gradient(
+      500px 240px at 50% 50%,
+      rgba(0,0,0,.36),
+      rgba(0,0,0,.10),
+      transparent 75%
+    );
+}
+
 .center h1{
-  font-size:48px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
   margin:0;
+
+  color:var(--ink);
+
+  font-size:
+    clamp(30px,4.2vw,58px);
+
+  line-height:1.12;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  text-shadow:
+    0 2px 20px rgba(0,0,0,.65);
 }
+
 .center p{
   max-width:700px;
+
   margin:18px auto 0;
+
   color:var(--muted);
-  line-height:1.7;
+
+  font-size:
+    clamp(14px,1.3vw,17px);
+
+  line-height:1.75;
+
+  text-shadow:
+    0 2px 16px rgba(0,0,0,.8);
 }
 
+
+/* =========================================================
+   BOTTOM OPERATING PICTURE
+   ========================================================= */
+
 .bottom{
-  position:fixed;
-  bottom:0;
+  position:relative;
+
+  z-index:20;
+
   width:100%;
-  text-align:center;
-  font-size:11px;
-  letter-spacing:.2em;
+
+  margin-top:auto;
+
+  padding:
+    20px
+    18px
+    calc(24px + env(safe-area-inset-bottom));
+
   color:var(--muted2);
-  padding:16px 14px;
+
+  font-size:11px;
+
+  letter-spacing:.20em;
+
+  line-height:1.7;
+
+  text-align:center;
+
+  text-transform:uppercase;
+
   pointer-events:none;
 }
 
-/* ===== MENU (Top-Right) ===== */
-.menuCorner{
-  position:fixed;
-  top:12px;
-  right:12px;
-  z-index:9999;
-  pointer-events:auto;
-}
-.menuBtn{
-  font:inherit;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:var(--glass);
-  color:rgba(245,248,255,.82);
-  cursor:pointer;
-  backdrop-filter:blur(10px);
-}
-.menuBtn:hover{
-  background:rgba(0,0,0,.78);
-  border-color:rgba(255,255,255,.18);
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:720px){
+
+  html,
+  body{
+    height:auto;
+
+    min-height:100%;
+
+    overflow-x:hidden;
+
+    overflow-y:auto;
+  }
+
+  .page{
+    min-height:125vh;
+  }
+
+  .header-inner{
+    padding:12px 16px;
+  }
+
+  .brand{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .dot{
+    width:8px;
+
+    height:8px;
+
+    flex-basis:8px;
+  }
+
+  .menu-button{
+    padding:9px 12px;
+
+    font-size:9px;
+
+    letter-spacing:.20em;
+  }
+
+  .menu-top{
+    padding:12px 16px;
+  }
+
+  .menu-title{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .menu-close{
+    padding:9px 12px;
+
+    font-size:9px;
+  }
+
+  .menu-center{
+    min-height:0;
+
+    align-items:flex-start;
+
+    padding:38px 20px 70px;
+  }
+
+  .menu-links a{
+    padding:12px 8px;
+
+    font-size:15px;
+
+    letter-spacing:.18em;
+  }
+
+  .systems-bar{
+    padding-top:
+      calc(78px + env(safe-area-inset-top));
+
+    padding-left:18px;
+
+    padding-right:18px;
+  }
+
+  .systems{
+    font-size:9px;
+
+    letter-spacing:.13em;
+
+    line-height:1.65;
+  }
+
+  .center{
+    min-height:calc(100vh - 150px);
+    min-height:calc(100svh - 150px);
+
+    padding:
+      45px
+      20px
+      100px;
+  }
+
+  .center-inner{
+    padding:
+      30px
+      4px;
+  }
+
+  .center h1{
+    font-size:
+      clamp(27px,8vw,38px);
+
+    letter-spacing:.10em;
+
+    line-height:1.18;
+  }
+
+  .center p{
+    max-width:520px;
+
+    margin-top:20px;
+
+    font-size:14px;
+
+    line-height:1.7;
+  }
+
+  .bottom{
+    padding-left:20px;
+
+    padding-right:20px;
+
+    font-size:9px;
+
+    letter-spacing:.13em;
+
+    line-height:1.8;
+  }
+
 }
 
-.menuList{
-  position:absolute;
-  right:0;
-  top:38px;
-  min-width:220px;
-  padding:10px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(14px);
-  display:none;
-}
-.menuCorner.open .menuList{ display:block; }
 
-.menuList a{
-  display:block;
-  padding:10px 10px;
-  border-radius:10px;
-  font-size:11px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:rgba(245,248,255,.72);
-  white-space:nowrap;
-}
-.menuList a:hover{
-  background:rgba(255,255,255,.06);
-  color:rgba(245,248,255,.95);
-}
-/* ✅ active pill in dropdown */
-.menuList a[aria-current="page"]{
-  border:1px solid rgba(120,220,255,.35);
-  background:rgba(120,220,255,.10);
-  color:rgba(245,248,255,.95);
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+
+    transition:none !important;
+  }
+
 }
 
-@media (max-width: 720px){
-  .center h1{ font-size:28px; letter-spacing:.12em; }
-  .systems{ font-size:10px; letter-spacing:.14em; margin-top:8px; }
-  .topbar{ top:12px; }
-  .bottom{ font-size:10px; letter-spacing:.14em; }
-}
 </style>
 </head>
 
+
 <body>
 
-<div class="menuCorner" id="menuCorner">
-  <button class="menuBtn" id="menuBtn" type="button">MENU</button>
-  <div class="menuList" id="menuList">
-    <a href="index.html">Earth</a>
-    <a href="planetary.html">Stability</a>
-    <a href="map.html" aria-current="page">Map</a>
-    <a href="capabilities.html">Capabilities</a>
-    <a href="forecasting.html">Foresight</a>
-    <a href="maritime.html">Maritime</a>
-    <a href="capital.html">Capital</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+
+<!-- ======================================================
+     MAP BACKGROUND
+     ====================================================== -->
+
+<div
+  id="map"
+  class="mapLayer">
 </div>
 
-<div id="map" class="mapLayer"></div>
-<div class="grid"></div>
+<div class="map-grid"></div>
+
 <div class="vignette"></div>
+
 <div class="water"></div>
+
 <canvas id="lights"></canvas>
 
-<svg id="basins" viewBox="0 0 1000 500" preserveAspectRatio="none">
-  <path class="basin" d="M120,210 C300,140 500,140 700,210"/>
-  <path class="basin" d="M200,350 C350,300 600,300 800,350"/>
+
+<svg
+  id="basins"
+  viewBox="0 0 1000 500"
+  preserveAspectRatio="none"
+  aria-hidden="true">
+
+  <path
+    class="basin"
+    d="M120,210 C300,140 500,140 700,210">
+  </path>
+
+  <path
+    class="basin"
+    d="M200,350 C350,300 600,300 800,350">
+  </path>
+
 </svg>
 
-<div class="topbar">
-  <div class="brand">GLOBAL WATER FUND</div>
-  <div class="systems">BASINS • NETWORKS • CASCADING RISKS • EARLY WARNING • ECOSYSTEMS • HUMAN SECURITY</div>
-</div>
 
-<div class="center">
-  <div>
-    <h1>WATER IS EARTH’S OPERATING SYSTEM</h1>
-    <p>We translate basin stress and cross-border dependencies into decision-ready risk signals for governments, investors, and operators.</p>
+<!-- ======================================================
+     GLOBAL HEADER
+     ====================================================== -->
+
+<header class="site-header">
+
+  <div class="header-inner">
+
+
+    <!-- GLOBAL WATER FUND RETURNS TO MAIN HOMEPAGE -->
+
+    <a
+      class="brand"
+      href="/"
+      aria-label="Return to Global Water Fund homepage">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
+    </a>
+
+
+    <!-- MENU -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="siteMenu">
+
+      MENU
+
+    </button>
+
+
   </div>
+
+</header>
+
+
+<!-- ======================================================
+     FULL SCREEN MENU
+     ====================================================== -->
+
+<div
+  class="menu-overlay"
+  id="siteMenu"
+  aria-hidden="true">
+
+
+  <div class="menu-top">
+
+
+    <div class="menu-title">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
+    </div>
+
+
+    <button
+      class="menu-close"
+      id="menuClose"
+      type="button"
+      aria-label="Close navigation menu">
+
+      CLOSE
+
+    </button>
+
+
+  </div>
+
+
+  <div class="menu-center">
+
+
+    <nav
+      class="menu-links"
+      aria-label="Primary navigation">
+
+
+      <a href="/planetary.html">
+
+        Planetary
+
+      </a>
+
+
+      <a
+        href="/map.html"
+        class="current"
+        aria-current="page">
+
+        Map
+
+      </a>
+
+
+      <a href="/capabilities.html">
+
+        Capabilities
+
+      </a>
+
+
+      <a href="/forecasting.html">
+
+        Foresight
+
+      </a>
+
+
+      <a href="/maritime.html">
+
+        Maritime
+
+      </a>
+
+
+      <a href="/capital.html">
+
+        Capital
+
+      </a>
+
+
+      <a href="/about.html">
+
+        About
+
+      </a>
+
+
+      <a href="/contact.html">
+
+        Contact
+
+      </a>
+
+
+    </nav>
+
+
+  </div>
+
 </div>
 
-<div class="bottom">
-  GLOBAL OPERATING PICTURE — WATER, FOOD, ENERGY, HEALTH, MARITIME, MIGRATION, SECURITY, ECONOMY
-</div>
+
+<!-- ======================================================
+     MAP PAGE CONTENT
+     ====================================================== -->
+
+<main class="page">
+
+
+  <!-- SYSTEMS LINE -->
+
+  <div class="systems-bar">
+
+    <div class="systems">
+
+      BASINS • NETWORKS • CASCADING RISKS • EARLY WARNING • ECOSYSTEMS • HUMAN SECURITY
+
+    </div>
+
+  </div>
+
+
+  <!-- MAIN MESSAGE -->
+
+  <section class="center">
+
+    <div class="center-inner">
+
+
+      <h1>
+
+        WATER IS EARTH’S OPERATING SYSTEM
+
+      </h1>
+
+
+      <p>
+
+        We translate basin stress and cross-border dependencies into decision-ready risk signals for governments, investors, and operators.
+
+      </p>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM LINE -->
+
+  <div class="bottom">
+
+    GLOBAL OPERATING PICTURE — WATER, FOOD, ENERGY, HEALTH, MARITIME, MIGRATION, SECURITY, ECONOMY
+
+  </div>
+
+
+</main>
+
+
+<!-- ======================================================
+     MAP + CITY LIGHTS JAVASCRIPT
+     ====================================================== -->
 
 <script>
-/* Fade in map once image is ready */
-const map = document.getElementById("map");
-const img = new Image();
-img.src = "world.topo.bathy.200412.3x5400x2700.jpg";
-img.onload = () => map.classList.add("on");
 
-/* City lights canvas */
-const c = document.getElementById("lights");
-const ctx = c.getContext("2d");
+/* ---------------------------------------------------------
+   FADE MAP IN WHEN IMAGE IS READY
+   --------------------------------------------------------- */
+
+const map =
+  document.getElementById("map");
+
+const img =
+  new Image();
+
+img.src =
+  "world.topo.bathy.200412.3x5400x2700.jpg";
+
+img.onload =
+  () => {
+
+    map.classList.add("on");
+
+  };
+
+
+/* ---------------------------------------------------------
+   CITY LIGHTS
+   --------------------------------------------------------- */
+
+const c =
+  document.getElementById("lights");
+
+const ctx =
+  c.getContext("2d");
+
 
 function resize(){
-  const d = Math.min(devicePixelRatio || 1, 2);
-  c.width  = innerWidth * d;
-  c.height = innerHeight * d;
-  c.style.width  = innerWidth + "px";
-  c.style.height = innerHeight + "px";
-  ctx.setTransform(d,0,0,d,0,0);
+
+  const d =
+    Math.min(
+      devicePixelRatio || 1,
+      2
+    );
+
+
+  c.width =
+    innerWidth * d;
+
+
+  c.height =
+    innerHeight * d;
+
+
+  c.style.width =
+    innerWidth + "px";
+
+
+  c.style.height =
+    innerHeight + "px";
+
+
+  ctx.setTransform(
+    d,
+    0,
+    0,
+    d,
+    0,
+    0
+  );
+
+
   drawLights();
+
 }
-addEventListener("resize", resize);
+
+
+addEventListener(
+  "resize",
+  resize
+);
+
 
 function drawLights(){
-  ctx.clearRect(0,0,innerWidth,innerHeight);
-  const clusters = [[22,28],[48,26],[62,34],[74,28],[30,42],[78,44]];
-  clusters.forEach(p=>{
-    for(let i=0;i<800;i++){
-      const x = (p[0] + (Math.random() - .5) * 8) * innerWidth / 100;
-      const y = (p[1] + (Math.random() - .5) * 6) * innerHeight / 100;
-      ctx.fillStyle = "rgba(255,200,140,.08)";
-      ctx.fillRect(x,y,1,1);
+
+  ctx.clearRect(
+    0,
+    0,
+    innerWidth,
+    innerHeight
+  );
+
+
+  const clusters = [
+
+    [22,28],
+
+    [48,26],
+
+    [62,34],
+
+    [74,28],
+
+    [30,42],
+
+    [78,44]
+
+  ];
+
+
+  clusters.forEach(
+
+    point => {
+
+
+      for(
+        let i = 0;
+        i < 800;
+        i++
+      ){
+
+        const x =
+          (
+            point[0] +
+            (Math.random() - .5) * 8
+          ) *
+          innerWidth /
+          100;
+
+
+        const y =
+          (
+            point[1] +
+            (Math.random() - .5) * 6
+          ) *
+          innerHeight /
+          100;
+
+
+        ctx.fillStyle =
+          "rgba(255,200,140,.08)";
+
+
+        ctx.fillRect(
+          x,
+          y,
+          1,
+          1
+        );
+
+      }
+
     }
-  });
+
+  );
+
 }
+
+
 resize();
 
-/* Menu behavior */
-(function(){
-  const box = document.getElementById('menuCorner');
-  const btn = document.getElementById('menuBtn');
-  if(!box || !btn) return;
-
-  btn.addEventListener('click', (e)=>{
-    e.stopPropagation();
-    box.classList.toggle('open');
-  });
-
-  window.addEventListener('click', (e)=>{
-    if(!box.contains(e.target)) box.classList.remove('open');
-  });
-
-  window.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') box.classList.remove('open');
-  });
-
-  box.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', ()=> box.classList.remove('open'));
-  });
-})();
 </script>
+
+
+<!-- ======================================================
+     MENU JAVASCRIPT
+     ====================================================== -->
+
+<script>
+
+(function(){
+
+
+  const menuButton =
+    document.getElementById(
+      "menuButton"
+    );
+
+
+  const menuClose =
+    document.getElementById(
+      "menuClose"
+    );
+
+
+  const siteMenu =
+    document.getElementById(
+      "siteMenu"
+    );
+
+
+  /* OPEN */
+
+  function openMenu(){
+
+    siteMenu.classList.add(
+      "open"
+    );
+
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+  }
+
+
+  /* CLOSE */
+
+  function closeMenu(){
+
+    siteMenu.classList.remove(
+      "open"
+    );
+
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+
+  menuButton.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  menuClose.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  document.addEventListener(
+
+    "keydown",
+
+    function(event){
+
+      if(event.key === "Escape"){
+
+        closeMenu();
+
+      }
+
+    }
+
+  );
+
+
+  const navigationLinks =
+    siteMenu.querySelectorAll(
+      "a"
+    );
+
+
+  navigationLinks.forEach(
+
+    function(link){
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    }
+
+  );
+
+
+})();
+
+</script>
+
 
 </body>
 </html>
