@@ -1,385 +1,1360 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>Global Water Fund — Strategic Forecasting</title>
 
 <style>
+
 :root{
-  --bg:#05060a; --bg2:#0b0f1a;
+  --bg:#05060a;
+  --bg2:#0b0f1a;
   --ink:rgba(245,248,255,.92);
   --muted:rgba(245,248,255,.70);
   --muted2:rgba(245,248,255,.50);
   --line:rgba(255,255,255,.10);
-  --accent:rgba(120,220,255,.85);
+  --accent:#78dcff;
 }
 
-html, body{
+
+/* =========================================
+   RESET + MOBILE SCROLL
+   ========================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
   margin:0;
+  padding:0;
   width:100%;
-  height:auto;
   min-height:100%;
   overflow-x:hidden;
   overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
-  color:var(--ink);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
 }
 
-a{color:inherit;text-decoration:none}
+body{
+  margin:0;
+  padding:0;
 
-/* ===== TOP BAR (website version) ===== */
-.nav{
+  width:100%;
+  min-height:100vh;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+
+  background:
+    radial-gradient(
+      1200px 900px at 60% 30%,
+      var(--bg2) 0%,
+      var(--bg) 60%,
+      #04050a 100%
+    );
+
+  color:var(--ink);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.site-header{
   position:sticky;
   top:0;
-  z-index:10;
-  backdrop-filter:blur(10px);
-  background:linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.28));
+  z-index:1000;
+
+  width:100%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.48)
+    );
+
   border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
-.navin{
+
+.header-inner{
+  width:100%;
   max-width:1120px;
+
   margin:0 auto;
+
   padding:14px 18px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
+
+  gap:20px;
 }
+
+
+/* =========================================
+   GLOBAL WATER FUND
+   ========================================= */
 
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
+
+  color:var(--muted2);
+
   font-size:11px;
   letter-spacing:.26em;
   text-transform:uppercase;
-  color:var(--muted2);
+
   white-space:nowrap;
+
+  cursor:pointer;
+
+  transition:color .25s ease;
 }
+
+.brand:hover{
+  color:#fff;
+}
+
 .dot{
-  width:10px;height:10px;border-radius:50%;
+  width:9px;
+  height:9px;
+
+  flex:0 0 9px;
+
+  border-radius:50%;
+
   background:var(--accent);
-  box-shadow:0 0 14px rgba(120,220,255,.30);
+
+  box-shadow:
+    0 0 14px rgba(120,220,255,.38);
 }
 
-.links{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-  align-items:center;
-}
-.links a{
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted2);
-  padding:10px;
-  border-radius:999px;
-}
-.links a:hover{ color:var(--ink); }
 
-/* ✅ circled pill for active page */
-.links a[aria-current="page"]{
-  color:var(--ink);
-  border:1px solid rgba(120,220,255,.40);
-  background:rgba(120,220,255,.08);
-}
+/* =========================================
+   MENU BUTTON
+   ========================================= */
 
-/* menu button (mobile) */
-.menuBtn{
+.menu-button{
   appearance:none;
-  border:1px solid rgba(245,248,255,.26);
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  padding:10px 14px;
+  -webkit-appearance:none;
+
+  border:
+    1px solid rgba(245,248,255,.24);
+
+  background:
+    rgba(255,255,255,.04);
+
+  color:
+    rgba(245,248,255,.90);
+
+  padding:10px 15px;
+
   border-radius:999px;
-  font-size:12px;
-  letter-spacing:.22em;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.24em;
+
   text-transform:uppercase;
+
   cursor:pointer;
-  display:flex;
-  gap:10px;
-  align-items:center;
+
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease;
 }
-.hamburger{ width:18px; height:12px; position:relative; }
-.hamburger span{ position:absolute; left:0; right:0; height:2px; background:#fff; }
-.hamburger span:nth-child(1){ top:0; }
-.hamburger span:nth-child(2){ top:5px; }
-.hamburger span:nth-child(3){ top:10px; }
 
-@media (min-width:861px){ .menuBtn{ display:none; } }
-@media (max-width:860px){ .links{ display:none; } }
+.menu-button:hover{
+  color:#fff;
 
-/* ===== MOBILE MENU ===== */
-.mobileMenu{
+  border-color:
+    rgba(120,220,255,.55);
+
+  background:
+    rgba(120,220,255,.08);
+}
+
+
+/* =========================================
+   FULL SCREEN MENU
+   ========================================= */
+
+.menu-overlay{
   position:fixed;
-  inset:0;
-  z-index:1200;
-  display:none;
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(8px);
-}
-.mobileMenu[aria-hidden="false"]{ display:block; }
 
-.mobilePanel{
-  position:absolute;
-  top:14px; left:14px; right:14px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px;
-  background:rgba(0,0,0,.80);
-  overflow:hidden;
+  inset:0;
+
+  z-index:3000;
+
+  display:none;
+
+  width:100%;
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+
+  background:
+    radial-gradient(
+      900px 700px at 50% 30%,
+      rgba(11,15,26,.99) 0%,
+      rgba(5,6,10,.99) 65%,
+      #04050a 100%
+    );
 }
-.mobileTop{
-  padding:14px;
+
+.menu-overlay.open{
+  display:block;
+}
+
+
+/* =========================================
+   MENU TOP
+   ========================================= */
+
+.menu-top{
+  position:sticky;
+
+  top:0;
+
+  z-index:2;
+
+  width:100%;
+
+  padding:14px 18px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,.12);
+
+  gap:20px;
+
+  background:
+    rgba(5,6,10,.97);
+
+  border-bottom:
+    1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
-.closeBtn{
-  border:1px solid rgba(245,248,255,.26);
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  padding:10px 12px;
-  border-radius:999px;
+
+.menu-title{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:var(--muted2);
+
   font-size:11px;
-  letter-spacing:.18em;
+
+  letter-spacing:.26em;
+
   text-transform:uppercase;
+}
+
+.menu-close{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:
+    1px solid rgba(245,248,255,.24);
+
+  background:
+    rgba(255,255,255,.04);
+
+  color:
+    rgba(245,248,255,.88);
+
+  padding:10px 14px;
+
+  border-radius:999px;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
   cursor:pointer;
 }
-.mobileLinks a{
-  display:block;
-  padding:14px;
-  border-top:1px solid rgba(255,255,255,.08);
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(245,248,255,.80);
-}
-.mobileLinks a[aria-current="page"]{
-  background:rgba(120,220,255,.10);
-  color:var(--ink);
+
+
+/* =========================================
+   MENU LINKS
+   ========================================= */
+
+.menu-center{
+  width:100%;
+
+  min-height:
+    calc(100vh - 65px);
+
+  min-height:
+    calc(100dvh - 65px);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:40px 24px 60px;
 }
 
-/* ===== PAGE CONTENT ===== */
-.hero{
-  max-width:1120px;
-  margin:0 auto;
-  padding:56px 18px 18px;
-}
-.kicker{
-  font-size:11px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--muted2);
-}
-.h1{
-  margin:14px 0 0;
-  font-size:clamp(30px,4.2vw,60px);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  line-height:1.08;
-}
-.sub{
-  margin:18px 0 0;
-  max-width:860px;
-  color:var(--muted);
-  line-height:1.85;
-  font-size:clamp(14px,1.25vw,16px);
-}
+.menu-links{
+  width:min(520px,100%);
 
-.cols{
-  max-width:1120px;
-  margin:0 auto;
-  padding:18px 18px 70px;
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:16px;
-}
-.panel{
-  grid-column:span 7;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:16px;
-  padding:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-}
-.panel h3{
-  margin:0;
-  font-size:13px;
-  letter-spacing:.20em;
-  text-transform:uppercase;
-}
-.panel p{
-  margin:10px 0 0;
-  color:var(--muted);
-  line-height:1.85;
-}
-.list{
-  margin:14px 0 0;
-  padding:0;
-  list-style:none;
-  color:var(--muted);
-}
-.list li{
-  padding:9px 0;
-  border-top:1px solid rgba(255,255,255,.06);
-}
-.list li:first-child{ border-top:none; }
+  display:flex;
 
-.side{
-  grid-column:span 5;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:16px;
-  padding:18px;
-  background:linear-gradient(180deg, rgba(120,220,255,.07), rgba(255,255,255,.01));
-}
-.side h4{
-  margin:0;
-  font-size:13px;
-  letter-spacing:.20em;
-  text-transform:uppercase;
-}
-.pill{
-  display:inline-block;
-  margin-top:12px;
-  padding:10px 12px;
-  border-radius:999px;
-  border:1px solid rgba(120,220,255,.35);
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:rgba(120,220,255,.85);
-}
+  flex-direction:column;
 
-.footer{
-  border-top:1px solid rgba(255,255,255,.10);
-  padding:18px;
-  color:var(--muted2);
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
   text-align:center;
 }
 
-@media (max-width:860px){
-  .panel,.side{ grid-column:span 12; }
+.menu-links a{
+  position:relative;
+
+  display:block;
+
+  padding:14px 10px;
+
+  color:
+    rgba(245,248,255,.60);
+
+  font-size:
+    clamp(15px,2vw,19px);
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
+  transition:
+    color .25s ease,
+    letter-spacing .25s ease;
 }
+
+.menu-links a:hover{
+  color:#fff;
+
+  letter-spacing:.27em;
+}
+
+.menu-links a.current{
+  color:#fff;
+}
+
+.menu-links a.current::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+
+  bottom:6px;
+
+  transform:
+    translateX(-50%);
+
+  width:30px;
+
+  height:1px;
+
+  background:var(--accent);
+
+  opacity:.85;
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero{
+  width:100%;
+
+  max-width:1120px;
+
+  margin:0 auto;
+
+  padding:60px 18px 18px;
+}
+
+.kicker{
+  font-size:11px;
+
+  letter-spacing:.26em;
+
+  text-transform:uppercase;
+
+  color:var(--muted2);
+}
+
+.h1{
+  margin:14px 0 0;
+
+  font-size:
+    clamp(30px,4.2vw,60px);
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  line-height:1.08;
+}
+
+.sub{
+  margin:20px 0 0;
+
+  max-width:860px;
+
+  color:var(--muted);
+
+  line-height:1.85;
+
+  font-size:
+    clamp(14px,1.25vw,16px);
+}
+
+
+/* =========================================
+   FORESIGHT CONTENT
+   ========================================= */
+
+.cols{
+  width:100%;
+
+  max-width:1120px;
+
+  margin:0 auto;
+
+  padding:18px 18px 80px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(12,1fr);
+
+  gap:16px;
+}
+
+
+/* MAIN PANEL */
+
+.panel{
+  position:relative;
+
+  grid-column:span 7;
+
+  overflow:hidden;
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
+  border-radius:16px;
+
+  padding:22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.01)
+    );
+}
+
+.panel::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(120,220,255,.28),
+      transparent
+    );
+}
+
+.panel h3{
+  margin:0;
+
+  font-size:13px;
+
+  letter-spacing:.20em;
+
+  text-transform:uppercase;
+}
+
+.panel p{
+  margin:12px 0 0;
+
+  color:var(--muted);
+
+  line-height:1.85;
+}
+
+
+/* LIST */
+
+.list{
+  margin:15px 0 0;
+
+  padding:0;
+
+  list-style:none;
+
+  color:var(--muted);
+}
+
+.list li{
+  position:relative;
+
+  padding:
+    11px
+    0
+    11px
+    17px;
+
+  border-top:
+    1px solid rgba(255,255,255,.06);
+
+  line-height:1.65;
+}
+
+.list li:first-child{
+  border-top:none;
+}
+
+.list li::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+
+  top:20px;
+
+  width:4px;
+  height:4px;
+
+  border-radius:50%;
+
+  background:
+    rgba(120,220,255,.70);
+
+  box-shadow:
+    0 0 8px rgba(120,220,255,.25);
+}
+
+.list b{
+  color:
+    rgba(245,248,255,.88);
+
+  font-weight:600;
+}
+
+
+/* =========================================
+   ENGAGEMENT PANEL
+   ========================================= */
+
+.side{
+  position:relative;
+
+  grid-column:span 5;
+
+  overflow:hidden;
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
+  border-radius:16px;
+
+  padding:22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(120,220,255,.07),
+      rgba(255,255,255,.01)
+    );
+}
+
+.side::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(120,220,255,.35),
+      transparent
+    );
+}
+
+.side h4{
+  margin:0;
+
+  font-size:13px;
+
+  letter-spacing:.20em;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================
+   ENGAGEMENT PILLS
+   ========================================= */
+
+.pill{
+  display:inline-block;
+
+  margin-top:12px;
+
+  padding:10px 12px;
+
+  border-radius:999px;
+
+  border:
+    1px solid rgba(120,220,255,.35);
+
+  background:
+    rgba(120,220,255,.025);
+
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  line-height:1.4;
+
+  text-transform:uppercase;
+
+  color:
+    rgba(120,220,255,.85);
+}
+
+.side-copy{
+  margin:18px 0 0;
+
+  color:
+    rgba(245,248,255,.72);
+
+  line-height:1.75;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer{
+  width:100%;
+
+  border-top:
+    1px solid rgba(255,255,255,.10);
+
+  padding:
+    20px
+    18px
+    calc(20px + env(safe-area-inset-bottom));
+
+  color:var(--muted2);
+
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  line-height:1.6;
+
+  text-transform:uppercase;
+
+  text-align:center;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width:860px){
+
+  .panel,
+  .side{
+    grid-column:span 12;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width:600px){
+
+  html,
+  body{
+    height:auto;
+
+    min-height:100%;
+
+    overflow-x:hidden;
+
+    overflow-y:auto;
+  }
+
+  .header-inner{
+    padding:12px 16px;
+  }
+
+  .brand{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .dot{
+    width:8px;
+
+    height:8px;
+
+    flex-basis:8px;
+  }
+
+  .menu-button{
+    padding:9px 12px;
+
+    font-size:9px;
+
+    letter-spacing:.20em;
+  }
+
+  .menu-top{
+    padding:12px 16px;
+  }
+
+  .menu-title{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .menu-close{
+    padding:9px 12px;
+
+    font-size:9px;
+  }
+
+  .menu-center{
+    min-height:0;
+
+    align-items:flex-start;
+
+    padding:
+      38px
+      20px
+      70px;
+  }
+
+  .menu-links a{
+    padding:12px 8px;
+
+    font-size:15px;
+
+    letter-spacing:.18em;
+  }
+
+  .hero{
+    padding:
+      48px
+      18px
+      18px;
+  }
+
+  .kicker{
+    font-size:10px;
+
+    letter-spacing:.18em;
+
+    line-height:1.6;
+  }
+
+  .h1{
+    margin-top:14px;
+
+    font-size:
+      clamp(30px,10vw,42px);
+
+    letter-spacing:.11em;
+  }
+
+  .sub{
+    margin-top:18px;
+
+    font-size:14px;
+
+    line-height:1.8;
+  }
+
+  .cols{
+    padding:
+      16px
+      18px
+      70px;
+
+    gap:14px;
+  }
+
+  .panel,
+  .side{
+    padding:20px 18px;
+
+    border-radius:14px;
+  }
+
+  .panel h3,
+  .side h4{
+    font-size:12px;
+
+    letter-spacing:.16em;
+  }
+
+  .panel p,
+  .side-copy{
+    font-size:14px;
+
+    line-height:1.75;
+  }
+
+  .list{
+    font-size:14px;
+  }
+
+  .pill{
+    max-width:100%;
+
+    font-size:10px;
+
+    letter-spacing:.14em;
+
+    white-space:normal;
+  }
+
+  .footer{
+    font-size:9px;
+
+    letter-spacing:.14em;
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    transition:none !important;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div class="nav">
-  <div class="navin">
-    <a class="brand" href="index.html"><span class="dot"></span>GLOBAL WATER FUND</a>
 
-    <div class="links">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="map.html">Map</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html" aria-current="page">Foresight</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
+<!-- =========================================
+     HEADER
+     ========================================= -->
 
-    <button class="menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="mobileMenu" aria-expanded="false">
-      <span class="hamburger"><span></span><span></span><span></span></span>
-      Menu
+<header class="site-header">
+
+  <div class="header-inner">
+
+
+    <!-- RETURNS TO SPINNING EARTH HOMEPAGE -->
+
+    <a
+      class="brand"
+      href="/"
+      aria-label="Return to Global Water Fund homepage">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
+    </a>
+
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="siteMenu">
+
+      MENU
+
     </button>
+
+
   </div>
+
+</header>
+
+
+<!-- =========================================
+     FULL SCREEN MENU
+     ========================================= -->
+
+<div
+  class="menu-overlay"
+  id="siteMenu"
+  aria-hidden="true">
+
+
+  <div class="menu-top">
+
+
+    <a
+      class="menu-title"
+      href="/"
+      aria-label="Global Water Fund homepage">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
+    </a>
+
+
+    <button
+      class="menu-close"
+      id="menuClose"
+      type="button"
+      aria-label="Close navigation menu">
+
+      CLOSE
+
+    </button>
+
+
+  </div>
+
+
+  <div class="menu-center">
+
+
+    <nav
+      class="menu-links"
+      aria-label="Primary navigation">
+
+
+      <a href="/planetary.html">
+
+        PLANETARY
+
+      </a>
+
+
+      <a href="/map.html">
+
+        MAP
+
+      </a>
+
+
+      <a href="/capabilities.html">
+
+        CAPABILITIES
+
+      </a>
+
+
+      <a
+        href="/forecasting.html"
+        class="current"
+        aria-current="page">
+
+        FORESIGHT
+
+      </a>
+
+
+      <a href="/maritime.html">
+
+        MARITIME
+
+      </a>
+
+
+      <a href="/capital.html">
+
+        CAPITAL
+
+      </a>
+
+
+      <a href="/about.html">
+
+        ABOUT
+
+      </a>
+
+
+      <a href="/contact.html">
+
+        CONTACT
+
+      </a>
+
+
+    </nav>
+
+
+  </div>
+
 </div>
 
-<div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="mobilePanel" role="document">
-    <div class="mobileTop">
-      <div class="brand"><span class="dot"></span> GLOBAL WATER FUND</div>
-      <button class="closeBtn" id="closeBtn">Close</button>
-    </div>
 
-    <div class="mobileLinks">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="map.html">Map</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html" aria-current="page">Foresight</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</div>
+<!-- =========================================
+     HERO
+     ========================================= -->
 
 <section class="hero">
-  <div class="kicker">Early warning for governments, investors, operators</div>
-  <div class="h1">Strategic Water Forecasting</div>
-  <div class="sub">
-    Traditional risk is reported after damage occurs. Global Water Fund delivers forward-looking water-security scenarios
-    that translate basin stress into decision windows — and actionable intervention pathways.
+
+
+  <div class="kicker">
+
+    EARLY WARNING FOR GOVERNMENTS, INVESTORS, OPERATORS
+
   </div>
+
+
+  <div class="h1">
+
+    STRATEGIC WATER FORECASTING
+
+  </div>
+
+
+  <div class="sub">
+
+    Traditional risk is reported after damage occurs. Global Water Fund delivers forward-looking water-security scenarios that translate basin stress into decision windows — and actionable intervention pathways.
+
+  </div>
+
+
 </section>
+
+
+<!-- =========================================
+     FORESIGHT CONTENT
+     ========================================= -->
 
 <section class="cols">
+
+
+  <!-- WHAT WE DELIVER -->
+
   <div class="panel">
-    <h3>What We Deliver</h3>
+
+
+    <h3>
+
+      WHAT WE DELIVER
+
+    </h3>
+
+
     <p>
-      Decision-grade forecasting that integrates hydrology, climate variability, food systems, energy constraints,
-      coastal exposure, and geopolitical dynamics.
+
+      Decision-grade forecasting that integrates hydrology, climate variability, food systems, energy constraints, coastal exposure, and geopolitical dynamics.
+
     </p>
+
+
     <ul class="list">
-      <li><b>Scenario cones</b> with confidence bands and leading indicators</li>
-      <li><b>Basin stress trajectories</b> (drought/flood/quality) and cross-border dependencies</li>
-      <li><b>Cascading risk mapping</b> (food, energy, migration, instability)</li>
-      <li><b>Intervention windows</b> — where policy and capital can prevent regime shift</li>
-      <li><b>Executive outputs</b>: briefs, maps, risk dashboards, board-ready narratives</li>
+
+
+      <li>
+
+        <b>Scenario cones</b> with confidence bands and leading indicators
+
+      </li>
+
+
+      <li>
+
+        <b>Basin stress trajectories</b> (drought/flood/quality) and cross-border dependencies
+
+      </li>
+
+
+      <li>
+
+        <b>Cascading risk mapping</b> (food, energy, migration, instability)
+
+      </li>
+
+
+      <li>
+
+        <b>Intervention windows</b> — where policy and capital can prevent regime shift
+
+      </li>
+
+
+      <li>
+
+        <b>Executive outputs</b>: briefs, maps, risk dashboards, board-ready narratives
+
+      </li>
+
+
     </ul>
+
+
   </div>
+
+
+  <!-- ENGAGEMENT OPTIONS -->
 
   <div class="side">
-    <h4>Engagement Options</h4>
-    <div class="pill">Monthly Intelligence Brief</div><br/>
-    <div class="pill">Quarterly Scenario Review</div><br/>
-    <div class="pill">Basin / Portfolio Deep-Dive</div><br/>
-    <div class="pill">Crisis Early Warning Cell</div>
 
-    <p style="margin:14px 0 0;color:rgba(245,248,255,.72);line-height:1.75">
+
+    <h4>
+
+      ENGAGEMENT OPTIONS
+
+    </h4>
+
+
+    <div class="pill">
+
+      MONTHLY INTELLIGENCE BRIEF
+
+    </div>
+
+    <br>
+
+
+    <div class="pill">
+
+      QUARTERLY SCENARIO REVIEW
+
+    </div>
+
+    <br>
+
+
+    <div class="pill">
+
+      BASIN / PORTFOLIO DEEP-DIVE
+
+    </div>
+
+    <br>
+
+
+    <div class="pill">
+
+      CRISIS EARLY WARNING CELL
+
+    </div>
+
+
+    <p class="side-copy">
+
       Built for senior decision-makers who need clarity, not complexity.
+
     </p>
+
+
   </div>
+
+
 </section>
 
-<div class="footer">GLOBAL WATER FUND — FORECAST • DECIDE • STABILIZE</div>
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<div class="footer">
+
+  GLOBAL WATER FUND — FORECAST • DECIDE • STABILIZE
+
+</div>
+
+
+<!-- =========================================
+     MENU SCRIPT
+     ========================================= -->
 
 <script>
+
 (function(){
-  const menuBtn = document.getElementById('menuBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+
+  const menuClose =
+    document.getElementById("menuClose");
+
+
+  const siteMenu =
+    document.getElementById("siteMenu");
+
 
   function openMenu(){
-    mobileMenu.setAttribute('aria-hidden','false');
-    menuBtn.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
-  }
-  function closeMenu(){
-    mobileMenu.setAttribute('aria-hidden','true');
-    menuBtn.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
+
+    siteMenu.classList.add("open");
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
   }
 
-  menuBtn.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-  mobileMenu.addEventListener('click', (e)=>{ if(e.target === mobileMenu) closeMenu(); });
-  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+
+  function closeMenu(){
+
+    siteMenu.classList.remove("open");
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+
+  menuButton.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  menuClose.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    function(event){
+
+      if(event.key === "Escape"){
+
+        closeMenu();
+
+      }
+
+    }
+  );
+
+
+  siteMenu
+    .querySelectorAll("a")
+    .forEach(function(link){
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
 })();
+
 </script>
+
 
 </body>
 </html>
