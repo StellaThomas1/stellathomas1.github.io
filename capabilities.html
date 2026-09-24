@@ -1,8 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>Global Water Fund — Capabilities</title>
 
@@ -17,11 +22,6 @@
   --line:rgba(245,248,255,.12);
   --accent:#78dcff;
 }
-
-
-/* =========================================================
-   RESET + MOBILE SCROLL
-   ========================================================= */
 
 *{
   box-sizing:border-box;
@@ -42,10 +42,8 @@ body{
   padding:0;
   width:100%;
   min-height:100vh;
-
   overflow-x:hidden;
   overflow-y:auto;
-
   -webkit-overflow-scrolling:touch;
 
   background:
@@ -74,23 +72,21 @@ a{
 }
 
 
-/* =========================================================
-   GLOBAL HEADER
-   ========================================================= */
+/* ==================================================
+   HEADER
+   ================================================== */
 
-.site-header{
+.siteHeader{
   position:sticky;
   top:0;
-
   z-index:1000;
-
   width:100%;
 
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,.84),
-      rgba(0,0,0,.42)
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.48)
     );
 
   border-bottom:1px solid var(--line);
@@ -99,25 +95,22 @@ a{
   -webkit-backdrop-filter:blur(12px);
 }
 
-.header-inner{
+.headerInner{
   width:100%;
   max-width:1120px;
-
   margin:0 auto;
-
   padding:14px 18px;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
 }
 
 
-/* =========================================================
-   GLOBAL WATER FUND HOME LINK
-   ========================================================= */
+/* ==================================================
+   GLOBAL WATER FUND
+   ================================================== */
 
 .brand{
   display:flex;
@@ -132,8 +125,6 @@ a{
 
   white-space:nowrap;
 
-  cursor:pointer;
-
   transition:color .25s ease;
 }
 
@@ -144,7 +135,6 @@ a{
 .dot{
   width:9px;
   height:9px;
-
   flex:0 0 9px;
 
   border-radius:50%;
@@ -152,15 +142,15 @@ a{
   background:var(--accent);
 
   box-shadow:
-    0 0 14px rgba(120,220,255,.35);
+    0 0 14px rgba(120,220,255,.38);
 }
 
 
-/* =========================================================
+/* ==================================================
    MENU BUTTON
-   ========================================================= */
+   ================================================== */
 
-.menu-button{
+.menuButton{
   appearance:none;
   -webkit-appearance:none;
 
@@ -171,18 +161,15 @@ a{
     rgba(255,255,255,.04);
 
   color:
-    rgba(245,248,255,.88);
+    rgba(245,248,255,.90);
 
   padding:10px 15px;
 
   border-radius:999px;
 
   font-family:inherit;
-
   font-size:10px;
-
   letter-spacing:.24em;
-
   text-transform:uppercase;
 
   cursor:pointer;
@@ -193,7 +180,7 @@ a{
     color .25s ease;
 }
 
-.menu-button:hover{
+.menuButton:hover{
   color:#fff;
 
   border-color:
@@ -204,13 +191,12 @@ a{
 }
 
 
-/* =========================================================
+/* ==================================================
    FULL SCREEN MENU
-   ========================================================= */
+   ================================================== */
 
-.menu-overlay{
+.menuOverlay{
   position:fixed;
-
   inset:0;
 
   z-index:3000;
@@ -230,26 +216,24 @@ a{
   background:
     radial-gradient(
       900px 700px at 50% 30%,
-      rgba(11,15,26,.98) 0%,
+      rgba(11,15,26,.99) 0%,
       rgba(5,6,10,.99) 65%,
       #04050a 100%
     );
 }
 
-.menu-overlay.open{
+.menuOverlay.open{
   display:block;
 }
 
 
-/* =========================================================
-   MENU TOP
-   ========================================================= */
+/* ==================================================
+   MENU HEADER
+   ================================================== */
 
-.menu-top{
+.menuTop{
   position:sticky;
-
   top:0;
-
   z-index:2;
 
   width:100%;
@@ -257,15 +241,12 @@ a{
   padding:14px 18px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   gap:20px;
 
   background:
-    rgba(5,6,10,.96);
+    rgba(5,6,10,.97);
 
   border-bottom:
     1px solid var(--line);
@@ -274,23 +255,19 @@ a{
   -webkit-backdrop-filter:blur(12px);
 }
 
-.menu-title{
+.menuTitle{
   display:flex;
-
   align-items:center;
-
   gap:10px;
 
   color:var(--muted2);
 
   font-size:11px;
-
   letter-spacing:.26em;
-
   text-transform:uppercase;
 }
 
-.menu-close{
+.closeButton{
   appearance:none;
   -webkit-appearance:none;
 
@@ -301,39 +278,26 @@ a{
     rgba(255,255,255,.04);
 
   color:
-    rgba(245,248,255,.85);
+    rgba(245,248,255,.88);
 
   padding:10px 14px;
 
   border-radius:999px;
 
   font-family:inherit;
-
   font-size:10px;
-
   letter-spacing:.22em;
-
   text-transform:uppercase;
 
   cursor:pointer;
 }
 
-.menu-close:hover{
-  color:#fff;
 
-  border-color:
-    rgba(120,220,255,.55);
-
-  background:
-    rgba(120,220,255,.08);
-}
-
-
-/* =========================================================
+/* ==================================================
    MENU LINKS
-   ========================================================= */
+   ================================================== */
 
-.menu-center{
+.menuCenter{
   width:100%;
 
   min-height:
@@ -343,25 +307,22 @@ a{
     calc(100dvh - 65px);
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   padding:40px 24px 60px;
 }
 
-.menu-links{
+.menuLinks{
   width:min(520px,100%);
 
   display:flex;
-
   flex-direction:column;
 
   text-align:center;
 }
 
-.menu-links a{
+.menuLinks a{
   position:relative;
 
   display:block;
@@ -374,8 +335,6 @@ a{
   font-size:
     clamp(15px,2vw,19px);
 
-  font-weight:400;
-
   letter-spacing:.22em;
 
   text-transform:uppercase;
@@ -385,62 +344,52 @@ a{
     letter-spacing .25s ease;
 }
 
-.menu-links a:hover{
+.menuLinks a:hover{
   color:#fff;
-
   letter-spacing:.27em;
 }
 
-.menu-links a.current{
+.menuLinks a.current{
   color:#fff;
 }
 
-.menu-links a.current::after{
+.menuLinks a.current::after{
   content:"";
 
   position:absolute;
 
   left:50%;
-
   bottom:6px;
 
   transform:
     translateX(-50%);
 
   width:30px;
-
   height:1px;
 
   background:var(--accent);
 
-  opacity:.8;
+  opacity:.85;
 }
 
 
-/* =========================================================
+/* ==================================================
    MAIN CONTENT
-   ========================================================= */
+   ================================================== */
 
 main{
   width:100%;
-
   max-width:1120px;
 
   margin:0 auto;
 
-  padding:
-    64px
-    18px
-    90px;
+  padding:56px 18px 80px;
 }
 
 .kicker{
   font-size:11px;
-
   letter-spacing:.26em;
-
   text-transform:uppercase;
-
   color:var(--muted2);
 }
 
@@ -458,25 +407,25 @@ h1{
 }
 
 .sub{
-  margin-top:20px;
+  margin-top:18px;
 
   max-width:860px;
 
   color:var(--muted);
 
-  line-height:1.9;
+  line-height:1.85;
 
   font-size:
     clamp(14px,1.25vw,16px);
 }
 
 
-/* =========================================================
+/* ==================================================
    CAPABILITIES GRID
-   ========================================================= */
+   ================================================== */
 
 .grid{
-  margin-top:34px;
+  margin-top:28px;
 
   display:grid;
 
@@ -487,9 +436,9 @@ h1{
 }
 
 .card{
-  grid-column:span 6;
-
   position:relative;
+
+  grid-column:span 6;
 
   overflow:hidden;
 
@@ -498,19 +447,14 @@ h1{
 
   border-radius:16px;
 
-  padding:22px;
+  padding:20px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,.035),
+      rgba(255,255,255,.03),
       rgba(255,255,255,.01)
     );
-
-  transition:
-    border-color .3s ease,
-    transform .3s ease,
-    background .3s ease;
 }
 
 .card::before{
@@ -518,8 +462,8 @@ h1{
 
   position:absolute;
 
-  left:0;
   top:0;
+  left:0;
 
   width:100%;
   height:1px;
@@ -528,22 +472,8 @@ h1{
     linear-gradient(
       90deg,
       transparent,
-      rgba(120,220,255,.25),
+      rgba(120,220,255,.28),
       transparent
-    );
-}
-
-.card:hover{
-  transform:translateY(-2px);
-
-  border-color:
-    rgba(120,220,255,.22);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(120,220,255,.045),
-      rgba(255,255,255,.01)
     );
 }
 
@@ -554,21 +484,26 @@ h1{
 
   letter-spacing:.20em;
 
-  line-height:1.45;
-
   text-transform:uppercase;
+
+  line-height:1.45;
 }
 
 .card p{
-  margin:12px 0 0;
+  margin:10px 0 0;
 
   color:var(--muted);
 
   line-height:1.85;
 }
 
+
+/* ==================================================
+   BULLET LIST
+   ================================================== */
+
 .bul{
-  margin:15px 0 0;
+  margin:12px 0 0;
 
   padding:0;
 
@@ -581,15 +516,19 @@ h1{
   position:relative;
 
   padding:
-    10px
+    9px
     0
-    10px
+    9px
     17px;
 
   border-top:
     1px solid rgba(255,255,255,.06);
 
-  line-height:1.55;
+  line-height:1.6;
+}
+
+.bul li:first-child{
+  border-top:none;
 }
 
 .bul li::before{
@@ -598,7 +537,6 @@ h1{
   position:absolute;
 
   left:0;
-
   top:18px;
 
   width:4px;
@@ -607,35 +545,31 @@ h1{
   border-radius:50%;
 
   background:
-    rgba(120,220,255,.68);
+    rgba(120,220,255,.70);
 
   box-shadow:
     0 0 8px rgba(120,220,255,.25);
 }
 
-.bul li:first-child{
-  border-top:none;
-}
-
 .tag{
   display:inline-block;
 
-  margin-top:15px;
-
-  font-size:10px;
-
-  letter-spacing:.20em;
-
-  text-transform:uppercase;
+  margin-top:12px;
 
   color:
-    rgba(120,220,255,.78);
+    rgba(120,220,255,.75);
+
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
 }
 
 
-/* =========================================================
+/* ==================================================
    FOOTER
-   ========================================================= */
+   ================================================== */
 
 footer{
   width:100%;
@@ -644,9 +578,11 @@ footer{
     1px solid var(--line);
 
   padding:
-    20px
     18px
-    calc(20px + env(safe-area-inset-bottom));
+    18px
+    calc(18px + env(safe-area-inset-bottom));
+
+  color:var(--muted2);
 
   font-size:11px;
 
@@ -656,15 +592,13 @@ footer{
 
   text-transform:uppercase;
 
-  color:var(--muted2);
-
   text-align:center;
 }
 
 
-/* =========================================================
+/* ==================================================
    TABLET
-   ========================================================= */
+   ================================================== */
 
 @media (max-width:860px){
 
@@ -675,66 +609,59 @@ footer{
 }
 
 
-/* =========================================================
+/* ==================================================
    MOBILE
-   ========================================================= */
+   ================================================== */
 
 @media (max-width:600px){
 
   html,
   body{
     height:auto;
-
     min-height:100%;
 
     overflow-x:hidden;
-
     overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
   }
 
-  .header-inner{
+  .headerInner{
     padding:12px 16px;
   }
 
   .brand{
     font-size:10px;
-
     letter-spacing:.18em;
   }
 
   .dot{
     width:8px;
-
     height:8px;
-
     flex-basis:8px;
   }
 
-  .menu-button{
+  .menuButton{
     padding:9px 12px;
-
     font-size:9px;
-
     letter-spacing:.20em;
   }
 
-  .menu-top{
+  .menuTop{
     padding:12px 16px;
   }
 
-  .menu-title{
+  .menuTitle{
     font-size:10px;
-
     letter-spacing:.18em;
   }
 
-  .menu-close{
+  .closeButton{
     padding:9px 12px;
-
     font-size:9px;
   }
 
-  .menu-center{
+  .menuCenter{
     min-height:0;
 
     align-items:flex-start;
@@ -745,7 +672,7 @@ footer{
       70px;
   }
 
-  .menu-links a{
+  .menuLinks a{
     padding:12px 8px;
 
     font-size:15px;
@@ -813,12 +740,6 @@ footer{
     font-size:14px;
   }
 
-  .bul li{
-    padding-top:10px;
-
-    padding-bottom:10px;
-  }
-
   footer{
     font-size:9px;
 
@@ -827,38 +748,24 @@ footer{
 
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    transition:none !important;
-  }
-
-}
-
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ======================================================
-     GLOBAL HEADER
-     ====================================================== -->
+<!-- ==================================================
+     HEADER
+     ================================================== -->
 
-<header class="site-header">
+<header class="siteHeader">
 
-  <div class="header-inner">
+  <div class="headerInner">
 
 
-    <!-- CLICKING THIS RETURNS TO THE SPINNING EARTH HOMEPAGE -->
+    <!-- GLOBAL WATER FUND RETURNS TO MAIN HOMEPAGE -->
 
     <a
       class="brand"
@@ -873,7 +780,7 @@ footer{
 
 
     <button
-      class="menu-button"
+      class="menuButton"
       id="menuButton"
       type="button"
       aria-label="Open navigation menu"
@@ -890,30 +797,33 @@ footer{
 </header>
 
 
-<!-- ======================================================
+<!-- ==================================================
      FULL SCREEN MENU
-     ====================================================== -->
+     ================================================== -->
 
 <div
-  class="menu-overlay"
+  class="menuOverlay"
   id="siteMenu"
   aria-hidden="true">
 
 
-  <div class="menu-top">
+  <div class="menuTop">
 
 
-    <div class="menu-title">
+    <a
+      class="menuTitle"
+      href="/"
+      aria-label="Return to Global Water Fund homepage">
 
       <span class="dot"></span>
 
       GLOBAL WATER FUND
 
-    </div>
+    </a>
 
 
     <button
-      class="menu-close"
+      class="closeButton"
       id="menuClose"
       type="button"
       aria-label="Close navigation menu">
@@ -926,69 +836,69 @@ footer{
   </div>
 
 
-  <div class="menu-center">
+  <div class="menuCenter">
 
 
     <nav
-      class="menu-links"
+      class="menuLinks"
       aria-label="Primary navigation">
 
 
-      <a href="/planetary.html">
+      <a href="/earth/planetary.html">
 
-        Planetary
+        PLANETARY
 
       </a>
 
 
-      <a href="/map.html">
+      <a href="/earth/map.html">
 
-        Map
+        MAP
 
       </a>
 
 
       <a
-        href="/capabilities.html"
+        href="/earth/capabilities.html"
         class="current"
         aria-current="page">
 
-        Capabilities
+        CAPABILITIES
 
       </a>
 
 
-      <a href="/forecasting.html">
+      <a href="/earth/forecasting.html">
 
-        Foresight
-
-      </a>
-
-
-      <a href="/maritime.html">
-
-        Maritime
+        FORESIGHT
 
       </a>
 
 
-      <a href="/capital.html">
+      <a href="/earth/maritime.html">
 
-        Capital
-
-      </a>
-
-
-      <a href="/about.html">
-
-        About
+        MARITIME
 
       </a>
 
 
-      <a href="/contact.html">
+      <a href="/earth/capital.html">
 
-        Contact
+        CAPITAL
+
+      </a>
+
+
+      <a href="/earth/about.html">
+
+        ABOUT
+
+      </a>
+
+
+      <a href="/earth/contact.html">
+
+        CONTACT
 
       </a>
 
@@ -1001,9 +911,9 @@ footer{
 </div>
 
 
-<!-- ======================================================
-     CAPABILITIES
-     ====================================================== -->
+<!-- ==================================================
+     CAPABILITIES CONTENT
+     ================================================== -->
 
 <main>
 
@@ -1034,7 +944,7 @@ footer{
 
     <!-- GLOBAL OPERATING PICTURE -->
 
-    <article class="card">
+    <div class="card">
 
 
       <h3>
@@ -1053,11 +963,13 @@ footer{
 
       <ul class="bul">
 
+
         <li>
 
           Basin stress + cross-border dependency mapping
 
         </li>
+
 
         <li>
 
@@ -1065,11 +977,13 @@ footer{
 
         </li>
 
+
         <li>
 
           Critical infrastructure exposure
 
         </li>
+
 
       </ul>
 
@@ -1081,12 +995,12 @@ footer{
       </div>
 
 
-    </article>
+    </div>
 
 
     <!-- STRATEGIC FORECASTING -->
 
-    <article class="card">
+    <div class="card">
 
 
       <h3>
@@ -1098,12 +1012,13 @@ footer{
 
       <p>
 
-        Forward-looking scenarios integrating hydrology, climate variability, and geopolitical dynamics.
+        Forward-looking scenarios integrating hydrology, climate variability, and geopolitics.
 
       </p>
 
 
       <ul class="bul">
+
 
         <li>
 
@@ -1111,17 +1026,20 @@ footer{
 
         </li>
 
-        <li>
-
-          Risk trajectories and decision windows
-
-        </li>
 
         <li>
 
-          Policy and investment implications
+          Risk trajectories
 
         </li>
+
+
+        <li>
+
+          Decision windows
+
+        </li>
+
 
       </ul>
 
@@ -1133,12 +1051,12 @@ footer{
       </div>
 
 
-    </article>
+    </div>
 
 
     <!-- INTERVENTION DESIGN -->
 
-    <article class="card">
+    <div class="card">
 
 
       <h3>
@@ -1150,30 +1068,34 @@ footer{
 
       <p>
 
-        From risk to resilience: define interventions that stabilize systems and protect growth.
+        Translate risk into resilience strategies that stabilize systems and protect growth.
 
       </p>
 
 
       <ul class="bul">
 
-        <li>
-
-          Resilience strategies at basin, city, and coastal scale
-
-        </li>
 
         <li>
 
-          Priority actions, sequencing, and governance models
+          Basin, city, and coastal strategies
 
         </li>
+
 
         <li>
 
-          Implementation partnerships and delivery support
+          Sequencing and governance
 
         </li>
+
+
+        <li>
+
+          Delivery partnerships
+
+        </li>
+
 
       </ul>
 
@@ -1185,12 +1107,12 @@ footer{
       </div>
 
 
-    </article>
+    </div>
 
 
     <!-- CAPITAL MOBILIZATION -->
 
-    <article class="card">
+    <div class="card">
 
 
       <h3>
@@ -1209,23 +1131,27 @@ footer{
 
       <ul class="bul">
 
-        <li>
-
-          PPP structuring and investment vehicles
-
-        </li>
 
         <li>
 
-          Blue/green bonds and blended finance
+          PPP and blended finance
 
         </li>
+
 
         <li>
 
-          Portfolio resilience and risk-adjusted strategies
+          Blue and green bonds
 
         </li>
+
+
+        <li>
+
+          Portfolio resilience
+
+        </li>
+
 
       </ul>
 
@@ -1237,7 +1163,7 @@ footer{
       </div>
 
 
-    </article>
+    </div>
 
 
   </section>
@@ -1246,56 +1172,43 @@ footer{
 </main>
 
 
-<!-- ======================================================
+<!-- ==================================================
      FOOTER
-     ====================================================== -->
+     ================================================== -->
 
 <footer>
 
-  GLOBAL WATER FUND — STRATEGY • SYSTEMS • DELIVERY
+  GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY
 
 </footer>
 
 
-<!-- ======================================================
+<!-- ==================================================
      MENU JAVASCRIPT
-     ====================================================== -->
+     ================================================== -->
 
 <script>
 
 (function(){
 
-
   const menuButton =
-    document.getElementById(
-      "menuButton"
-    );
-
+    document.getElementById("menuButton");
 
   const menuClose =
-    document.getElementById(
-      "menuClose"
-    );
-
+    document.getElementById("menuClose");
 
   const siteMenu =
-    document.getElementById(
-      "siteMenu"
-    );
+    document.getElementById("siteMenu");
 
 
   function openMenu(){
 
-    siteMenu.classList.add(
-      "open"
-    );
-
+    siteMenu.classList.add("open");
 
     siteMenu.setAttribute(
       "aria-hidden",
       "false"
     );
-
 
     menuButton.setAttribute(
       "aria-expanded",
@@ -1307,16 +1220,12 @@ footer{
 
   function closeMenu(){
 
-    siteMenu.classList.remove(
-      "open"
-    );
-
+    siteMenu.classList.remove("open");
 
     siteMenu.setAttribute(
       "aria-hidden",
       "true"
     );
-
 
     menuButton.setAttribute(
       "aria-expanded",
@@ -1339,9 +1248,7 @@ footer{
 
 
   document.addEventListener(
-
     "keydown",
-
     function(event){
 
       if(event.key === "Escape"){
@@ -1351,28 +1258,19 @@ footer{
       }
 
     }
-
   );
 
 
-  const navigationLinks =
-    siteMenu.querySelectorAll(
-      "a"
-    );
-
-
-  navigationLinks.forEach(
-
-    function(link){
+  siteMenu
+    .querySelectorAll("a")
+    .forEach(function(link){
 
       link.addEventListener(
         "click",
         closeMenu
       );
 
-    }
-
-  );
+    });
 
 
 })();
@@ -1381,4 +1279,5 @@ footer{
 
 
 </body>
+
 </html>
