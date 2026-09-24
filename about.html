@@ -1,412 +1,1149 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Global Water Fund — About</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <style>
-    :root{
-      --bg:#05060a;
-      --bg2:#0b0f1a;
-      --ink:rgba(245,248,255,.92);
-      --muted:rgba(245,248,255,.72);
-      --muted2:rgba(245,248,255,.55);
-      --line:rgba(245,248,255,.12);
-      --accent:#78dcff;
-      --glass:rgba(0,0,0,.78);
-    }
+<title>Global Water Fund — About</title>
 
-    /* ✅ SCROLL-SAFE: desktop + mobile */
-    html, body{
-      margin:0;
-      padding:0;
-      width:100%;
-      height:auto;
-      min-height:100%;
-      overflow-x:hidden;
-      overflow-y:auto;
-      -webkit-overflow-scrolling:touch;
-      background:radial-gradient(1200px 900px at 60% 30%,var(--bg2) 0%,var(--bg) 60%,#04050a 100%);
-      color:var(--ink);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    }
+<style>
 
-    a{ color:inherit; text-decoration:none; }
+/* =========================================================
+   GLOBAL WATER FUND — ABOUT
+   ========================================================= */
 
-    .strong{ color:rgba(245,248,255,.92); font-weight:700; }
+:root{
+  --bg:#05060a;
+  --bg2:#0b0f1a;
+  --ink:rgba(245,248,255,.92);
+  --muted:rgba(245,248,255,.72);
+  --muted2:rgba(245,248,255,.55);
+  --line:rgba(245,248,255,.12);
+  --accent:#78dcff;
+  --glass:rgba(0,0,0,.78);
+}
 
-    /* ===== HEADER ===== */
-    header{
-      position:sticky;
-      top:0; left:0; right:0;
-      z-index:1000;
-      padding:14px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      background:var(--glass);
-      border-bottom:1px solid var(--line);
-      backdrop-filter:blur(10px);
-    }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      white-space:nowrap;
-    }
+/* =========================================================
+   RESET + MOBILE SCROLL
+   ========================================================= */
 
-    .dot{
-      width:10px; height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 14px rgba(120,220,255,.35);
-    }
+*{
+  box-sizing:border-box;
+}
 
-    nav.top-nav{
-      display:flex;
-      gap:14px;
-    }
+html{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-text-size-adjust:100%;
+}
 
-    nav.top-nav a{
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:rgba(245,248,255,.74);
-      padding:10px;
-      border-radius:999px;
-    }
+body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100vh;
 
-    nav.top-nav a:hover{ color:var(--ink); }
+  overflow-x:hidden;
+  overflow-y:auto;
 
-    nav.top-nav a[aria-current="page"]{
-      color:var(--ink);
-      border:1px solid rgba(120,220,255,.4);
-      background:rgba(120,220,255,.08);
-    }
+  -webkit-overflow-scrolling:touch;
 
-    .menuBtn{
-      appearance:none;
-      border:1px solid rgba(245,248,255,.26);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      cursor:pointer;
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+  background:
+    radial-gradient(
+      1200px 900px at 60% 30%,
+      var(--bg2) 0%,
+      var(--bg) 60%,
+      #04050a 100%
+    );
 
-    .hamburger{
-      width:18px; height:12px; position:relative;
-    }
-    .hamburger span{
-      position:absolute; left:0; right:0;
-      height:2px; background:#fff;
-    }
-    .hamburger span:nth-child(1){ top:0; }
-    .hamburger span:nth-child(2){ top:5px; }
-    .hamburger span:nth-child(3){ top:10px; }
+  color:var(--ink);
 
-    @media (min-width: 861px){
-      .menuBtn{ display:none; }
-    }
-    @media (max-width: 860px){
-      nav.top-nav{ display:none; }
-    }
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
 
-    /* ===== MOBILE MENU PANEL ===== */
-    .mobileMenu{
-      position:fixed;
-      inset:0;
-      z-index:1200;
-      display:none;
-      background:rgba(0,0,0,.65);
-      backdrop-filter:blur(8px);
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .mobileMenu[aria-hidden="false"]{ display:block; }
+.strong{
+  color:rgba(245,248,255,.92);
+  font-weight:700;
+}
 
-    .mobilePanel{
-      position:absolute;
-      top:14px; right:14px; left:14px;
-      border:1px solid var(--line);
-      border-radius:18px;
-      background:rgba(0,0,0,.80);
-      overflow:hidden;
-    }
 
-    .mobileTop{
-      padding:14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid var(--line);
-    }
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-    .closeBtn{
-      border:1px solid rgba(245,248,255,.26);
-      background:rgba(255,255,255,.06);
-      color:#fff;
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
 
-    .mobileLinks{
-      display:grid;
-      gap:0;
-    }
+  width:100%;
 
-    .mobileLinks a{
-      padding:14px 14px;
-      border-top:1px solid rgba(255,255,255,.08);
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(245,248,255,.80);
-    }
+  background:var(--glass);
 
-    .mobileLinks a:first-child{ border-top:0; }
+  border-bottom:1px solid var(--line);
 
-    .mobileLinks a[aria-current="page"]{
-      background:rgba(120,220,255,.10);
-      color:var(--ink);
-    }
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
 
-    /* ===== CONTENT ===== */
-    main{
-      padding:60px 18px 40px;
-      max-width:1120px;
-      margin:0 auto;
-    }
+.header-inner{
+  width:100%;
+  max-width:1120px;
 
-    .kicker{
-      font-size:11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color:var(--muted2);
-    }
+  margin:0 auto;
+  padding:14px 18px;
 
-    .grid{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: 1.4fr .6fr;
-      gap:36px;
-      align-items:start;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    @media (max-width:900px){
-      .grid{ grid-template-columns:1fr; }
-    }
+  gap:20px;
+}
 
-    h1{
-      margin:10px 0 0;
-      font-size:clamp(30px,4vw,56px);
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
 
-    p{
-      margin-top:18px;
-      max-width:900px;
-      line-height:1.95;
-      font-size:clamp(14px,1.25vw,16px);
-      color:var(--muted);
-    }
+/* =========================================================
+   GLOBAL WATER FUND HOME LINK
+   ========================================================= */
 
-    /* spacing control per paragraph */
-    .p1{ margin-top:18px; } /* after name */
-    .p2{ margin-top:28px; } /* more space away from Stella paragraph */
-    .p3{ margin-top:12px; } /* closer to Global Water Fund paragraph */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
 
-    .mutedBlock{ color:rgba(245,248,255,.62); }
+  font-size:11px;
+  letter-spacing:.26em;
 
-    hr{
-      margin:26px 0;
-      border:0;
-      border-top:1px solid var(--line);
-    }
+  text-transform:uppercase;
 
-    /* ===== PHOTO CARD ===== */
-    .photo-card{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-      position:sticky;
-      top:110px;
-    }
+  color:var(--muted2);
 
-    @media (max-width:900px){
-      .photo-card{ position:relative; top:auto; }
-    }
+  white-space:nowrap;
 
-    .headshot{
-      width:100%;
-      display:block;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-    }
+  cursor:pointer;
 
-    .caption{
-      margin-top:12px;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      line-height:1.5;
-    }
+  transition:color .25s ease;
+}
 
-    footer{
-      max-width:1120px;
-      margin:30px auto 0;
-      padding:18px 18px 26px;
-      border-top:1px solid var(--line);
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      text-align:center;
-    }
-  </style>
+.brand:hover{
+  color:#fff;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+
+  flex:0 0 9px;
+
+  border-radius:50%;
+
+  background:var(--accent);
+
+  box-shadow:
+    0 0 14px rgba(120,220,255,.35);
+}
+
+
+/* =========================================================
+   MENU BUTTON
+   VISIBLE ON DESKTOP AND MOBILE
+   ========================================================= */
+
+.menu-button{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:1px solid rgba(245,248,255,.24);
+
+  background:rgba(255,255,255,.04);
+
+  color:rgba(245,248,255,.88);
+
+  padding:10px 15px;
+
+  border-radius:999px;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.24em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease;
+}
+
+.menu-button:hover{
+  color:#fff;
+
+  border-color:rgba(120,220,255,.55);
+
+  background:rgba(120,220,255,.08);
+}
+
+
+/* =========================================================
+   FULL SCREEN MENU
+   ========================================================= */
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+
+  z-index:2000;
+
+  display:none;
+
+  width:100%;
+
+  min-height:100vh;
+  min-height:100dvh;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+
+  background:
+    radial-gradient(
+      900px 700px at 50% 30%,
+      rgba(11,15,26,.98) 0%,
+      rgba(5,6,10,.99) 65%,
+      #04050a 100%
+    );
+}
+
+.menu-overlay.open{
+  display:block;
+}
+
+
+/* =========================================================
+   MENU TOP BAR
+   ========================================================= */
+
+.menu-top{
+  position:sticky;
+  top:0;
+
+  z-index:2;
+
+  width:100%;
+
+  padding:14px 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  background:rgba(5,6,10,.96);
+
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.menu-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:11px;
+  letter-spacing:.26em;
+
+  text-transform:uppercase;
+
+  color:var(--muted2);
+}
+
+.menu-close{
+  appearance:none;
+  -webkit-appearance:none;
+
+  border:1px solid rgba(245,248,255,.24);
+
+  background:rgba(255,255,255,.04);
+
+  color:rgba(245,248,255,.85);
+
+  padding:10px 14px;
+
+  border-radius:999px;
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+}
+
+.menu-close:hover{
+  color:#fff;
+
+  border-color:rgba(120,220,255,.55);
+
+  background:rgba(120,220,255,.08);
+}
+
+
+/* =========================================================
+   MENU LINKS
+   ========================================================= */
+
+.menu-center{
+  width:100%;
+
+  min-height:calc(100vh - 65px);
+  min-height:calc(100dvh - 65px);
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:40px 24px 60px;
+}
+
+.menu-links{
+  width:min(520px,100%);
+
+  display:flex;
+  flex-direction:column;
+
+  text-align:center;
+}
+
+.menu-links a{
+  position:relative;
+
+  display:block;
+
+  padding:14px 10px;
+
+  color:rgba(245,248,255,.60);
+
+  font-size:clamp(15px,2vw,19px);
+
+  font-weight:400;
+
+  letter-spacing:.22em;
+
+  text-transform:uppercase;
+
+  transition:
+    color .25s ease,
+    letter-spacing .25s ease;
+}
+
+.menu-links a:hover{
+  color:#fff;
+
+  letter-spacing:.27em;
+}
+
+.menu-links a.current{
+  color:#fff;
+}
+
+.menu-links a.current::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  bottom:6px;
+
+  transform:translateX(-50%);
+
+  width:30px;
+  height:1px;
+
+  background:var(--accent);
+
+  opacity:.8;
+}
+
+
+/* =========================================================
+   MAIN ABOUT CONTENT
+   ========================================================= */
+
+main{
+  width:100%;
+
+  max-width:1120px;
+
+  margin:0 auto;
+
+  padding:60px 18px 50px;
+}
+
+.kicker{
+  font-size:11px;
+
+  letter-spacing:.26em;
+
+  text-transform:uppercase;
+
+  color:var(--muted2);
+}
+
+
+/* =========================================================
+   TWO COLUMN ABOUT LAYOUT
+   ========================================================= */
+
+.grid{
+  margin-top:14px;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.4fr)
+    minmax(240px,.6fr);
+
+  gap:42px;
+
+  align-items:start;
+}
+
+h1{
+  margin:10px 0 0;
+
+  font-size:clamp(30px,4vw,56px);
+
+  letter-spacing:.10em;
+
+  text-transform:uppercase;
+
+  line-height:1.1;
+}
+
+p{
+  margin:18px 0 0;
+
+  max-width:900px;
+
+  color:var(--muted);
+
+  line-height:1.95;
+
+  font-size:clamp(14px,1.25vw,16px);
+}
+
+.p1{
+  margin-top:18px;
+}
+
+.p2{
+  margin-top:28px;
+}
+
+.p3{
+  margin-top:12px;
+}
+
+.mutedBlock{
+  color:rgba(245,248,255,.62);
+}
+
+hr{
+  margin:26px 0;
+
+  border:0;
+
+  border-top:1px solid var(--line);
+}
+
+
+/* =========================================================
+   STELLA PHOTO
+   ========================================================= */
+
+.photo-card{
+  position:sticky;
+
+  top:100px;
+
+  padding:14px;
+
+  border:1px solid var(--line);
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.01)
+    );
+}
+
+.headshot{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  border-radius:14px;
+
+  border:1px solid rgba(255,255,255,.12);
+
+  filter:grayscale(100%);
+}
+
+.caption{
+  margin-top:12px;
+
+  color:var(--muted2);
+
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+  width:calc(100% - 36px);
+
+  max-width:1120px;
+
+  margin:30px auto 0;
+
+  padding:18px 18px 26px;
+
+  border-top:1px solid var(--line);
+
+  color:var(--muted2);
+
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+
+  text-align:center;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo-card{
+    position:relative;
+
+    top:auto;
+
+    width:min(360px,100%);
+
+    margin-top:10px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:600px){
+
+  html,
+  body{
+    height:auto;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .header-inner{
+    padding:12px 16px;
+  }
+
+  .brand{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .dot{
+    width:8px;
+    height:8px;
+
+    flex-basis:8px;
+  }
+
+  .menu-button{
+    padding:9px 12px;
+
+    font-size:9px;
+
+    letter-spacing:.20em;
+  }
+
+  .menu-top{
+    padding:12px 16px;
+  }
+
+  .menu-title{
+    font-size:10px;
+
+    letter-spacing:.18em;
+  }
+
+  .menu-close{
+    padding:9px 12px;
+
+    font-size:9px;
+  }
+
+  .menu-center{
+    min-height:0;
+
+    align-items:flex-start;
+
+    padding:38px 20px 70px;
+  }
+
+  .menu-links a{
+    padding:12px 8px;
+
+    font-size:15px;
+
+    letter-spacing:.18em;
+  }
+
+  main{
+    padding:46px 20px 50px;
+  }
+
+  .kicker{
+    font-size:10px;
+
+    letter-spacing:.22em;
+  }
+
+  h1{
+    font-size:clamp(30px,11vw,44px);
+
+    letter-spacing:.08em;
+  }
+
+  p{
+    line-height:1.8;
+
+    font-size:15px;
+  }
+
+  .p2{
+    margin-top:26px;
+  }
+
+  .photo-card{
+    position:relative;
+
+    top:auto;
+
+    width:min(300px,100%);
+
+    margin-top:10px;
+  }
+
+  footer{
+    width:calc(100% - 40px);
+
+    margin-top:20px;
+
+    padding-left:10px;
+    padding-right:10px;
+
+    line-height:1.7;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    transition:none !important;
+  }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<header>
-  <a class="brand" href="index.html">
-    <span class="dot"></span>
-    GLOBAL WATER FUND
-  </a>
 
-  <nav class="top-nav">
-    <a href="index.html">Earth</a>
-    <a href="planetary.html">Stability</a>
-    <a href="map.html">Map</a>
-    <a href="capabilities.html">Capabilities</a>
-    <a href="forecasting.html">Forecasting</a>
-    <a href="maritime.html">Maritime</a>
-    <a href="capital.html">Capital</a>
-    <a href="about.html" aria-current="page">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- ======================================================
+     TOP HEADER
+     ====================================================== -->
 
-  <button class="menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="mobileMenu" aria-expanded="false">
-    <span class="hamburger"><span></span><span></span><span></span></span>
-    Menu
-  </button>
+<header class="site-header">
+
+  <div class="header-inner">
+
+
+    <!--
+      CLICKING GLOBAL WATER FUND
+      RETURNS TO THE MAIN HOMEPAGE / SPINNING EARTH
+    -->
+
+    <a
+      class="brand"
+      href="/"
+      aria-label="Return to Global Water Fund homepage">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
+    </a>
+
+
+    <!--
+      ONE MENU BUTTON
+      SAME ON DESKTOP AND MOBILE
+    -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="siteMenu">
+
+      MENU
+
+    </button>
+
+
+  </div>
+
 </header>
 
-<!-- Mobile Menu -->
-<div class="mobileMenu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="mobilePanel" role="document">
-    <div class="mobileTop">
-      <div class="brand"><span class="dot"></span> GLOBAL WATER FUND</div>
-      <button class="closeBtn" id="closeBtn">Close</button>
+
+
+<!-- ======================================================
+     FULL SCREEN NAVIGATION MENU
+     ====================================================== -->
+
+<div
+  class="menu-overlay"
+  id="siteMenu"
+  aria-hidden="true">
+
+
+  <!-- MENU HEADER -->
+
+  <div class="menu-top">
+
+
+    <div class="menu-title">
+
+      <span class="dot"></span>
+
+      GLOBAL WATER FUND
+
     </div>
-    <div class="mobileLinks">
-      <a href="index.html">Earth</a>
-      <a href="planetary.html">Stability</a>
-      <a href="map.html">Map</a>
-      <a href="capabilities.html">Capabilities</a>
-      <a href="forecasting.html">Forecasting</a>
-      <a href="maritime.html">Maritime</a>
-      <a href="capital.html">Capital</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
+
+
+    <button
+      class="menu-close"
+      id="menuClose"
+      type="button"
+      aria-label="Close navigation menu">
+
+      CLOSE
+
+    </button>
+
+
   </div>
+
+
+
+  <!-- MENU LINKS -->
+
+  <div class="menu-center">
+
+
+    <nav
+      class="menu-links"
+      aria-label="Primary navigation">
+
+
+      <a href="/planetary.html">
+
+        Planetary
+
+      </a>
+
+
+      <a href="/map.html">
+
+        Map
+
+      </a>
+
+
+      <a href="/capabilities.html">
+
+        Capabilities
+
+      </a>
+
+
+      <a href="/forecasting.html">
+
+        Foresight
+
+      </a>
+
+
+      <a href="/maritime.html">
+
+        Maritime
+
+      </a>
+
+
+      <a href="/capital.html">
+
+        Capital
+
+      </a>
+
+
+      <a
+        href="/about.html"
+        class="current"
+        aria-current="page">
+
+        About
+
+      </a>
+
+
+      <a href="/contact.html">
+
+        Contact
+
+      </a>
+
+
+    </nav>
+
+
+  </div>
+
+
 </div>
 
+
+
+<!-- ======================================================
+     ABOUT PAGE CONTENT
+     ====================================================== -->
+
 <main>
-  <div class="kicker">Founder &amp; Managing Director</div>
+
+
+  <div class="kicker">
+
+    Founder &amp; Managing Director
+
+  </div>
+
+
 
   <div class="grid">
+
+
+    <!-- ==================================================
+         LEFT SIDE — TEXT
+         ================================================== -->
+
     <section>
-      <h1>Stella Thomas</h1>
+
+
+      <h1>
+
+        Stella Thomas
+
+      </h1>
+
+
 
       <p class="p1">
+
         Stella Thomas is a global water-security strategist and systems thinker working at the intersection of water,
         climate, infrastructure, and finance, with a focus on geopolitical risk and strategic resilience.
+
       </p>
 
+
+
       <p class="p2">
+
         <span class="strong">Global Water Fund</span> is built on the understanding that water is a core element of human
         and national security—shaping food systems, energy reliability, coastal stability, migration pressures, and
         economic growth.
+
       </p>
-      
+
+
 
       <p class="p3 mutedBlock">
+
         Operating at the intersection of policy, science, and capital, Global Water Fund translates water and climate risk
         into decision-ready intelligence and investment-ready frameworks.
+
       </p>
 
-      <hr />
+
+
+      <hr>
+
+
 
       <p class="mutedBlock">
+
         Through a network of advisors, research collaborations, and institutional partners, the platform integrates
         scientific insight, strategic analysis, and financial structuring to anticipate systemic risk, guide
         intervention, and preserve long-term stability.
+
       </p>
+
+
     </section>
 
+
+
+    <!-- ==================================================
+         RIGHT SIDE — PHOTO
+         ================================================== -->
+
     <aside class="photo-card">
-      <img class="headshot" src="stella-thomas.jpg" alt="Stella Thomas" loading="lazy">
+
+
+      <img
+        class="headshot"
+        src="stella-thomas.jpg"
+        alt="Stella Thomas"
+        loading="lazy">
+
+
       <div class="caption">
-        Stella Thomas<br>
+
+        Stella Thomas
+
+        <br>
+
         Founder &amp; Managing Director
+
       </div>
+
+
     </aside>
+
+
   </div>
+
+
 </main>
 
-<footer>GLOBAL WATER FUND - WATER • SYSTEMS • SECURITY</footer>
-  
+
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
+
+<footer>
+
+  GLOBAL WATER FUND — WATER • SYSTEMS • SECURITY
+
+</footer>
+
+
+
+<!-- ======================================================
+     MENU JAVASCRIPT
+     ====================================================== -->
+
 <script>
-  (function(){
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
 
-    function openMenu(){
-      mobileMenu.setAttribute('aria-hidden','false');
-      menuBtn.setAttribute('aria-expanded','true');
-      document.body.style.overflow = 'hidden';
+(function(){
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const menuClose =
+    document.getElementById("menuClose");
+
+  const siteMenu =
+    document.getElementById("siteMenu");
+
+
+  /* -----------------------------------------------
+     OPEN MENU
+     ----------------------------------------------- */
+
+  function openMenu(){
+
+    siteMenu.classList.add("open");
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+  }
+
+
+  /* -----------------------------------------------
+     CLOSE MENU
+     ----------------------------------------------- */
+
+  function closeMenu(){
+
+    siteMenu.classList.remove("open");
+
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
+
+
+  /* -----------------------------------------------
+     MENU BUTTON
+     ----------------------------------------------- */
+
+  menuButton.addEventListener(
+    "click",
+    openMenu
+  );
+
+
+  /* -----------------------------------------------
+     CLOSE BUTTON
+     ----------------------------------------------- */
+
+  menuClose.addEventListener(
+    "click",
+    closeMenu
+  );
+
+
+  /* -----------------------------------------------
+     ESCAPE KEY
+     ----------------------------------------------- */
+
+  document.addEventListener(
+    "keydown",
+    function(event){
+
+      if(event.key === "Escape"){
+
+        closeMenu();
+
+      }
+
     }
+  );
 
-    function closeMenu(){
-      mobileMenu.setAttribute('aria-hidden','true');
-      menuBtn.setAttribute('aria-expanded','false');
-      document.body.style.overflow = '';
+
+  /* -----------------------------------------------
+     CLOSE MENU WHEN A NAVIGATION LINK IS CLICKED
+     ----------------------------------------------- */
+
+  const navigationLinks =
+    siteMenu.querySelectorAll("a");
+
+
+  navigationLinks.forEach(
+    function(link){
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
     }
+  );
 
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
 
-    mobileMenu.addEventListener('click', (e)=>{
-      if(e.target === mobileMenu) closeMenu();
-    });
+})();
 
-    window.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') closeMenu();
-    });
-  })();
 </script>
+
 
 </body>
 </html>
