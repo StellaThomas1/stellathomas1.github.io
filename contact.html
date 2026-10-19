@@ -1,1263 +1,1082 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="utf-8" />
+<title>About | Global Water Fund</title>
 
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,viewport-fit=cover"
-/>
-
-<title>Global Water Fund — Contact</title>
+<meta name="description"
+content="Learn about Global Water Fund, our approach to global water intelligence, and our leadership.">
 
 <style>
 
-/* =========================================================
-   GLOBAL WATER FUND — CONTACT
-   ========================================================= */
+/* ==========================================
+   GLOBAL WATER FUND — ABOUT PAGE
+   ========================================== */
 
-:root{
-  --bg:#05060a;
-  --bg2:#0b0f1a;
-  --ink:rgba(245,248,255,.92);
-  --muted:rgba(245,248,255,.70);
-  --muted2:rgba(245,248,255,.50);
-  --line:rgba(245,248,255,.10);
-  --accent:#78dcff;
+:root {
+  --bg: #05060a;
+  --bg2: #0b0f1a;
+  --text: rgba(245,248,255,.92);
+  --muted: rgba(245,248,255,.70);
+  --soft: rgba(245,248,255,.50);
+  --line: rgba(245,248,255,.12);
+  --accent: #78dcff;
 }
 
-
-/* =========================================================
-   RESET + SCROLL
-   ========================================================= */
-
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-html{
-  margin:0;
-  padding:0;
-
-  width:100%;
-  min-height:100%;
-
-  overflow-x:hidden;
-  overflow-y:auto;
-
-  -webkit-text-size-adjust:100%;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-  margin:0;
-  padding:0;
-
-  width:100%;
-
-  min-height:100vh;
-  min-height:100dvh;
-
-  overflow-x:hidden;
-  overflow-y:auto;
-
-  -webkit-overflow-scrolling:touch;
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 
   background:
     radial-gradient(
-      1200px 900px at 60% 30%,
-      var(--bg2) 0%,
-      var(--bg) 60%,
-      #04050a 100%
-    );
+      ellipse at 70% 0%,
+      rgba(22,42,65,.24),
+      transparent 55%
+    ),
+    var(--bg);
 
-  color:var(--ink);
+  color: var(--text);
 
   font-family:
-    system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Roboto,
     Arial,
     sans-serif;
+
+  -webkit-font-smoothing: antialiased;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
 
-/* =========================================================
+/* ==========================================
    HEADER
-   ========================================================= */
+   ========================================== */
 
-.siteHeader{
-  position:sticky;
+.site-header {
+  position: relative;
+  z-index: 20;
 
-  top:0;
+  width: 100%;
+  border-bottom: 1px solid var(--line);
 
-  z-index:1000;
-
-  width:100%;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.88),
-      rgba(0,0,0,.48)
-    );
-
-  border-bottom:
-    1px solid var(--line);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+  background: rgba(5,6,10,.85);
 }
 
-.headerInner{
-  width:100%;
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
 
-  max-width:1120px;
+  padding: 23px 38px;
 
-  margin:0 auto;
-
-  padding:14px 18px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
+/* ==========================================
+   ILLUMINATED GLOBAL WATER FUND BRANDING
+   ========================================== */
 
-/* =========================================================
-   GLOBAL WATER FUND BRAND
-   ========================================================= */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 
-.brand{
-  display:flex;
+  font-size: 12px;
+  font-weight: 600;
 
-  align-items:center;
+  letter-spacing: .23em;
+  text-transform: uppercase;
 
-  gap:9px;
+  color: rgba(245,248,255,.94);
 
-  color:var(--muted2);
+  text-shadow:
+    0 0 9px rgba(120,220,255,.28),
+    0 0 22px rgba(120,220,255,.12);
 
-  font-size:11px;
+  animation: brandGlow 4.8s ease-in-out infinite;
 
-  letter-spacing:.26em;
-
-  text-transform:uppercase;
-
-  white-space:nowrap;
-
-  transition:color .25s ease;
+  transition:
+    color .3s ease,
+    text-shadow .3s ease;
 }
 
-.brand:hover{
-  color:#fff;
+.brand:hover,
+.brand:focus-visible {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 12px rgba(120,220,255,.75),
+    0 0 28px rgba(120,220,255,.40),
+    0 0 45px rgba(120,220,255,.18);
 }
 
-.brandDot{
-  width:8px;
+@keyframes brandGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 8px rgba(120,220,255,.20),
+      0 0 20px rgba(120,220,255,.08);
+  }
 
-  height:8px;
+  50% {
+    text-shadow:
+      0 0 12px rgba(120,220,255,.52),
+      0 0 27px rgba(120,220,255,.22);
+  }
+}
 
-  flex:0 0 8px;
+.brand-dot {
+  width: 6px;
+  height: 6px;
 
-  border-radius:50%;
+  flex-shrink: 0;
 
-  background:var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
 
   box-shadow:
-    0 0 14px rgba(120,220,255,.38);
+    0 0 9px rgba(120,220,255,.8),
+    0 0 20px rgba(120,220,255,.4);
 }
 
-
-/* =========================================================
+/* ==========================================
    MENU BUTTON
-   ========================================================= */
+   ========================================== */
 
-.menuBtn{
-  appearance:none;
+.menu-button {
+  appearance: none;
 
-  -webkit-appearance:none;
+  padding: 10px 17px;
 
-  border:
-    1px solid rgba(245,248,255,.24);
+  border: 1px solid rgba(255,255,255,.20);
+  border-radius: 999px;
 
-  background:
-    rgba(255,255,255,.04);
+  background: transparent;
+  color: var(--text);
 
-  color:
-    rgba(245,248,255,.90);
+  font-size: 10px;
+  letter-spacing: .23em;
 
-  padding:10px 15px;
-
-  border-radius:999px;
-
-  font-family:inherit;
-
-  font-size:10px;
-
-  letter-spacing:.24em;
-
-  text-transform:uppercase;
-
-  cursor:pointer;
+  cursor: pointer;
 
   transition:
-    border-color .25s ease,
-    background .25s ease,
-    color .25s ease;
+    border-color .3s ease,
+    background .3s ease;
 }
 
-.menuBtn:hover{
-  color:#fff;
-
-  border-color:
-    rgba(120,220,255,.55);
-
-  background:
-    rgba(120,220,255,.08);
+.menu-button:hover {
+  border-color: rgba(120,220,255,.55);
+  background: rgba(120,220,255,.06);
 }
 
+/* ==========================================
+   FULL SCREEN DROPDOWN MENU
+   ========================================== */
 
-/* =========================================================
-   FULL SCREEN MENU
-   ========================================================= */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
 
-.menuOverlay{
-  position:fixed;
+  z-index: 100;
 
-  inset:0;
+  display: flex;
+  flex-direction: column;
 
-  z-index:5000;
+  background: rgba(5,7,12,.98);
 
-  display:none;
+  opacity: 0;
+  visibility: hidden;
 
-  width:100%;
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
 
-  height:100vh;
-  height:100dvh;
+  overflow-y: auto;
+}
 
-  overflow-x:hidden;
-  overflow-y:auto;
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
 
-  -webkit-overflow-scrolling:touch;
+.menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 25px 38px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 11px;
+  letter-spacing: .22em;
+
+  color: var(--text);
+}
+
+.menu-close {
+  padding: 10px 17px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  background: transparent;
+  color: var(--text);
+
+  font-size: 10px;
+  letter-spacing: .2em;
+
+  cursor: pointer;
+}
+
+.menu-close:hover {
+  border-color: var(--accent);
+}
+
+.menu-center {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 45px 20px;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.menu-links a {
+  position: relative;
+
+  padding: 12px 16px;
+
+  font-size: clamp(17px, 2.5vw, 26px);
+  font-weight: 400;
+
+  letter-spacing: .20em;
+  text-transform: uppercase;
+
+  color: rgba(245,248,255,.65);
+
+  transition:
+    color .3s ease,
+    text-shadow .3s ease;
+}
+
+.menu-links a:hover,
+.menu-links a:focus-visible {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 20px rgba(120,220,255,.40);
+}
+
+.menu-links a.current {
+  color: #ffffff;
+}
+
+.menu-links a.current::after {
+  content: "";
+
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+
+  width: 28px;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: var(--accent);
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+main {
+  width: 100%;
+  max-width: 1120px;
+
+  margin: 0 auto;
+
+  padding: 95px 38px 70px;
+}
+
+section {
+  width: 100%;
+}
+
+.kicker {
+  margin-bottom: 20px;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+
+  font-size: clamp(28px, 3.5vw, 43px);
+  font-weight: 400;
+
+  line-height: 1.25;
+
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+p {
+  max-width: 850px;
+
+  margin: 24px 0 0;
+
+  color: var(--muted);
+
+  font-size: clamp(15px, 1.35vw, 17px);
+
+  line-height: 1.95;
+}
+
+p.secondary {
+  color: rgba(245,248,255,.58);
+}
+
+/* ==========================================
+   SECTION 01 — ABOUT GLOBAL WATER FUND
+   ========================================== */
+
+.institution {
+  max-width: 930px;
+}
+
+.institution .intro {
+  margin-top: 38px;
+
+  font-size: clamp(17px, 1.65vw, 20px);
+
+  line-height: 1.9;
+
+  color: rgba(245,248,255,.83);
+}
+
+/* ==========================================
+   SECTION DIVIDERS
+   ========================================== */
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 85px 0;
 
   background:
-    radial-gradient(
-      900px 700px at 50% 30%,
-      rgba(11,15,26,.99) 0%,
-      rgba(5,6,10,.99) 65%,
-      #04050a 100%
+    linear-gradient(
+      90deg,
+      rgba(120,220,255,.25),
+      rgba(255,255,255,.10),
+      transparent
     );
 }
 
-.menuOverlay.open{
-  display:block;
+/* ==========================================
+   SECTION 02 — OUR APPROACH
+   ========================================== */
+
+.approach {
+  max-width: 930px;
 }
 
-
-/* =========================================================
-   MENU TOP BAR
-   ========================================================= */
-
-.menuTop{
-  position:sticky;
-
-  top:0;
-
-  z-index:10;
-
-  width:100%;
-
-  padding:14px 18px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:20px;
-
-  background:
-    rgba(5,6,10,.97);
-
-  border-bottom:
-    1px solid var(--line);
-
-  backdrop-filter:blur(12px);
-
-  -webkit-backdrop-filter:blur(12px);
-}
-
-.menuBrand{
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-  color:var(--muted2);
-
-  font-size:11px;
-
-  letter-spacing:.26em;
-
-  text-transform:uppercase;
-}
-
-.closeBtn{
-  appearance:none;
-
-  -webkit-appearance:none;
-
-  border:
-    1px solid rgba(245,248,255,.24);
-
-  background:
-    rgba(255,255,255,.04);
-
-  color:
-    rgba(245,248,255,.88);
-
-  padding:10px 14px;
-
-  border-radius:999px;
-
-  font-family:inherit;
-
-  font-size:10px;
-
-  letter-spacing:.22em;
-
-  text-transform:uppercase;
-
-  cursor:pointer;
-}
-
-
-/* =========================================================
-   MENU LINKS
-   ========================================================= */
-
-.menuCenter{
-  width:100%;
-
-  min-height:
-    calc(100vh - 65px);
-
-  min-height:
-    calc(100dvh - 65px);
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:
-    40px 24px 60px;
-}
-
-.menuLinks{
-  width:min(520px,100%);
-
-  display:flex;
-
-  flex-direction:column;
-
-  text-align:center;
-}
-
-.menuLinks a{
-  position:relative;
-
-  display:block;
-
-  padding:14px 10px;
-
-  color:
-    rgba(245,248,255,.60);
-
-  font-size:
-    clamp(15px,2vw,19px);
-
-  letter-spacing:.22em;
-
-  text-transform:uppercase;
-
-  transition:
-    color .25s ease,
-    letter-spacing .25s ease;
-}
-
-.menuLinks a:hover{
-  color:#fff;
-
-  letter-spacing:.27em;
-}
-
-
-/* CURRENT PAGE */
-
-.menuLinks a.current{
-  color:#fff;
-}
-
-.menuLinks a.current::after{
-  content:"";
-
-  position:absolute;
-
-  left:50%;
-
-  bottom:6px;
-
-  transform:
-    translateX(-50%);
-
-  width:30px;
-
-  height:1px;
-
-  background:var(--accent);
-
-  opacity:.85;
-}
-
-
-/* =========================================================
-   CONTACT HERO
-   ========================================================= */
-
-.hero{
-  max-width:1120px;
-
-  margin:0 auto;
-
-  padding:
-    70px 18px 24px;
-}
-
-.kicker{
-  font-size:11px;
-
-  letter-spacing:.26em;
-
-  text-transform:uppercase;
-
-  color:var(--muted2);
-}
-
-.h1{
-  margin:14px 0 0;
-
-  font-size:
-    clamp(30px,4.2vw,60px);
-
-  letter-spacing:.16em;
-
-  text-transform:uppercase;
-
-  line-height:1.08;
-}
-
-.sub{
-  margin:18px 0 0;
-
-  max-width:860px;
-
-  color:var(--muted);
-
-  line-height:1.85;
-
-  font-size:
-    clamp(14px,1.25vw,16px);
-}
-
-
-/* =========================================================
-   CONTACT PANEL
-   ========================================================= */
-
-.panel{
-  max-width:1120px;
-
-  margin:0 auto;
-
-  padding:
-    24px 18px 80px;
-
-  display:grid;
+/* ==========================================
+   SECTION 03 — LEADERSHIP
+   ========================================== */
+
+.leadership-grid {
+  display: grid;
 
   grid-template-columns:
-    repeat(12,1fr);
+    minmax(0, 1.4fr)
+    minmax(230px, .6fr);
 
-  gap:18px;
+  gap: 65px;
+
+  align-items: start;
+
+  margin-top: 22px;
 }
 
+.leadership-copy {
+  min-width: 0;
+}
 
-/* =========================================================
-   CONTACT BOXES
-   ========================================================= */
+.role {
+  margin-top: 16px;
 
-.box{
-  position:relative;
+  color: var(--accent);
 
-  grid-column:
-    span 6;
+  font-size: 11px;
 
-  border:
-    1px solid var(--line);
+  letter-spacing: .20em;
+  text-transform: uppercase;
+}
 
-  border-radius:16px;
+.leadership-copy p {
+  margin-top: 35px;
+}
 
-  padding:22px;
+/* ==========================================
+   PORTRAIT
+   ========================================== */
+
+.photo-card {
+  padding: 13px;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,.03),
-      rgba(255,255,255,.01)
-    );
-
-  transition:
-    transform .25s ease,
-    border-color .25s ease,
-    background .25s ease;
-}
-
-.box::before{
-  content:"";
-
-  position:absolute;
-
-  top:0;
-
-  left:22px;
-
-  width:34px;
-
-  height:1px;
-
-  background:
-    rgba(120,220,255,.55);
-}
-
-.box:hover{
-  transform:
-    translateY(-2px);
-
-  border-color:
-    rgba(120,220,255,.25);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(120,220,255,.05),
-      rgba(255,255,255,.01)
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
     );
 }
 
-.box h3{
-  margin:0;
+.headshot {
+  display: block;
 
-  font-size:13px;
+  width: 100%;
+  height: auto;
 
-  letter-spacing:.20em;
+  border-radius: 11px;
 
-  text-transform:uppercase;
+  filter: grayscale(100%);
 
-  line-height:1.5;
+  border: 1px solid rgba(255,255,255,.10);
 }
 
-.box p{
-  margin:
-    12px 0 0;
+.photo-caption {
+  padding: 14px 4px 4px;
 
-  color:var(--muted);
+  color: var(--soft);
 
-  line-height:1.85;
+  font-size: 10px;
+
+  line-height: 1.8;
+
+  letter-spacing: .17em;
+  text-transform: uppercase;
 }
 
+.photo-fallback {
+  padding: 35px 15px;
 
-/* =========================================================
-   EMAIL LINKS
-   ========================================================= */
+  color: var(--soft);
 
-.email{
-  margin-top:18px;
-
-  font-size:
-    clamp(15px,2vw,18px);
-
-  letter-spacing:.06em;
-
-  overflow-wrap:anywhere;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-.email a{
-  color:
-    rgba(120,220,255,.92);
-
-  transition:
-    color .2s ease;
+.photo-fallback[hidden] {
+  display: none;
 }
 
-.email a:hover{
-  color:#fff;
-}
-
-
-/* =========================================================
-   NOTES
-   ========================================================= */
-
-.note{
-  margin-top:14px;
-
-  font-size:13px;
-
-  color:var(--muted2);
-
-  line-height:1.7;
-}
-
-
-/* =========================================================
+/* ==========================================
    FOOTER
-   ========================================================= */
+   ========================================== */
 
-.footer{
-  border-top:
-    1px solid var(--line);
+footer {
+  max-width: 1120px;
 
-  padding:
-    20px 18px;
+  margin: 20px auto 0;
 
-  color:var(--muted2);
+  padding: 30px 38px 40px;
 
-  font-size:11px;
+  border-top: 1px solid var(--line);
 
-  letter-spacing:.18em;
+  color: var(--soft);
 
-  text-transform:uppercase;
+  font-size: 10px;
 
-  text-align:center;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  text-align: center;
 }
 
-
-/* =========================================================
+/* ==========================================
    TABLET
-   ========================================================= */
+   ========================================== */
 
-@media (max-width:860px){
+@media (max-width: 900px) {
 
-  .box{
-    grid-column:
-      span 12;
+  main {
+    padding: 75px 28px 55px;
   }
 
-  .menuCenter{
-    min-height:0;
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
 
-    align-items:flex-start;
+  .photo-card {
+    width: min(330px, 100%);
+  }
 
-    padding:
-      38px 20px 70px;
+  .section-divider {
+    margin: 65px 0;
   }
 
 }
 
-
-/* =========================================================
+/* ==========================================
    MOBILE
-   ========================================================= */
+   ========================================== */
 
-@media (max-width:520px){
+@media (max-width: 600px) {
 
-  .headerInner{
-    padding:
-      12px 15px;
+  .header-inner {
+    padding: 18px 19px;
   }
 
-  .brand{
-    font-size:10px;
-
-    letter-spacing:.18em;
+  .brand {
+    font-size: 10px;
+    letter-spacing: .14em;
+    gap: 8px;
   }
 
-  .brandDot{
-    width:7px;
-
-    height:7px;
-
-    flex-basis:7px;
+  .menu-button {
+    padding: 9px 13px;
+    font-size: 9px;
   }
 
-  .menuBtn{
-    font-size:9px;
-
-    letter-spacing:.20em;
-
-    padding:9px 12px;
+  .menu-top {
+    padding: 19px;
   }
 
-  .menuTop{
-    padding:
-      12px 15px;
+  .menu-title {
+    font-size: 9px;
+    letter-spacing: .14em;
   }
 
-  .menuBrand{
-    font-size:10px;
-
-    letter-spacing:.18em;
+  .menu-center {
+    align-items: flex-start;
+    padding: 45px 20px 65px;
   }
 
-  .closeBtn{
-    font-size:9px;
-
-    padding:9px 12px;
+  .menu-links a {
+    padding: 12px;
+    font-size: 16px;
+    letter-spacing: .17em;
   }
 
-  .menuCenter{
-    padding:
-      28px 18px 60px;
+  main {
+    padding: 62px 22px 45px;
   }
 
-  .menuLinks a{
-    padding:
-      13px 8px;
-
-    font-size:15px;
-
-    letter-spacing:.18em;
+  h1 {
+    font-size: clamp(32px, 9vw, 44px);
   }
 
-  .hero{
-    padding:
-      52px 18px 20px;
+  h2 {
+    font-size: clamp(26px, 7vw, 36px);
   }
 
-  .kicker{
-    font-size:10px;
-
-    letter-spacing:.18em;
+  p {
+    font-size: 15px;
+    line-height: 1.85;
   }
 
-  .h1{
-    font-size:
-      clamp(28px,9vw,40px);
-
-    letter-spacing:.10em;
-
-    line-height:1.12;
+  .institution .intro {
+    font-size: 17px;
   }
 
-  .sub{
-    font-size:14px;
-
-    line-height:1.75;
+  .section-divider {
+    margin: 52px 0;
   }
 
-  .panel{
-    padding:
-      18px 18px 65px;
+  .leadership-grid {
+    gap: 30px;
   }
 
-  .box{
-    padding:20px;
+  .photo-card {
+    width: min(300px, 100%);
   }
 
-  .box::before{
-    left:20px;
+  footer {
+    margin: 0 22px;
+    padding: 26px 5px 35px;
+
+    font-size: 9px;
+    line-height: 1.8;
   }
 
-  .email{
-    font-size:15px;
+}
 
-    letter-spacing:.02em;
-  }
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
 
-  .footer{
-    font-size:9px;
+@media (prefers-reduced-motion: reduce) {
 
-    letter-spacing:.14em;
-
-    line-height:1.6;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- ==========================================
      HEADER
-     ===================================================== -->
+     ========================================== -->
 
-<header class="siteHeader">
+<header class="site-header">
 
-  <div class="headerInner">
-
-
-    <!--
-      MAIN GLOBAL WATER FUND HOMEPAGE
-      THIS DOES NOT GO TO EARTH/INDEX.HTML
-    -->
+  <div class="header-inner">
 
     <a
-      class="brand"
       href="/"
-      aria-label="Global Water Fund homepage"
-    >
+      class="brand"
+      aria-label="Global Water Fund homepage">
 
-      <span class="brandDot"></span>
+      <span class="brand-dot"></span>
 
-      <span>
-        GLOBAL WATER FUND
-      </span>
+      GLOBAL WATER FUND
 
     </a>
 
-
     <button
-      class="menuBtn"
-      id="menuBtn"
+      class="menu-button"
+      id="menuButton"
       type="button"
       aria-label="Open navigation menu"
-      aria-controls="menuOverlay"
-      aria-expanded="false"
-    >
+      aria-controls="siteMenu"
+      aria-expanded="false">
 
       MENU
 
     </button>
 
-
   </div>
 
 </header>
 
-
-<!-- =====================================================
-     FULL SCREEN MENU
-     ===================================================== -->
+<!-- ==========================================
+     NAVIGATION MENU
+     ========================================== -->
 
 <div
-  class="menuOverlay"
-  id="menuOverlay"
-  aria-hidden="true"
->
+  class="menu-overlay"
+  id="siteMenu"
+  aria-hidden="true">
 
+  <div class="menu-top">
 
-  <!-- MENU HEADER -->
+    <div class="menu-title">
 
-  <div class="menuTop">
+      <span class="brand-dot"></span>
 
+      GLOBAL WATER FUND
 
-    <a
-      class="menuBrand"
-      href="/"
-      aria-label="Global Water Fund homepage"
-    >
-
-      <span class="brandDot"></span>
-
-      <span>
-        GLOBAL WATER FUND
-      </span>
-
-    </a>
-
+    </div>
 
     <button
-      class="closeBtn"
-      id="closeBtn"
+      class="menu-close"
+      id="menuClose"
       type="button"
-      aria-label="Close navigation menu"
-    >
+      aria-label="Close navigation menu">
 
       CLOSE
 
     </button>
 
-
   </div>
 
-
-  <!-- MENU LINKS -->
-
-  <div class="menuCenter">
-
+  <div class="menu-center">
 
     <nav
-      class="menuLinks"
-      aria-label="Global Water Fund navigation"
-    >
+      class="menu-links"
+      aria-label="Primary navigation">
 
-
-      <a href="/earth/planetary.html">
-
-        PLANETARY
-
+      <a href="/planetary.html">
+        Planetary
       </a>
 
-
-      <a href="/earth/map.html">
-
-        MAP
-
+      <a href="/map.html">
+        Map
       </a>
 
-
-      <a href="/earth/capabilities.html">
-
-        CAPABILITIES
-
+      <a href="/capabilities.html">
+        Capabilities
       </a>
 
-
-      <a href="/earth/forecasting.html">
-
-        FORESIGHT
-
+      <a href="/forecasting.html">
+        Foresight
       </a>
 
-
-      <a href="/earth/maritime.html">
-
-        MARITIME
-
+      <a href="/maritime.html">
+        Maritime
       </a>
 
-
-      <a href="/earth/capital.html">
-
-        CAPITAL
-
+      <a href="/capital.html">
+        Capital
       </a>
-
-
-      <a href="/earth/about.html">
-
-        ABOUT
-
-      </a>
-
 
       <a
-        href="/earth/contact.html"
+        href="/about.html"
         class="current"
-        aria-current="page"
-      >
-
-        CONTACT
-
+        aria-current="page">
+        About
       </a>
 
+      <a href="/contact.html">
+        Contact
+      </a>
 
     </nav>
 
-
   </div>
-
 
 </div>
 
-
-<!-- =====================================================
-     CONTACT PAGE
-     ===================================================== -->
+<!-- ==========================================
+     MAIN ABOUT PAGE
+     ========================================== -->
 
 <main>
 
+  <!-- ========================================
+       01 — ABOUT GLOBAL WATER FUND
+       ======================================== -->
 
-<section class="hero">
+  <section
+    class="institution"
+    aria-labelledby="about-title">
 
+    <div class="kicker">
+      01 / About the Institution
+    </div>
 
-  <div class="kicker">
+    <h1 id="about-title">
+      Global Water Fund
+    </h1>
 
-    Engagement &amp; Inquiries
-
-  </div>
-
-
-  <h1 class="h1">
-
-    Contact
-
-  </h1>
-
-
-  <div class="sub">
-
-    Global Water Fund engages selectively with governments,
-    investors, development institutions, and strategic partners.
-
-  </div>
-
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT OPTIONS
-     ===================================================== -->
-
-<section
-  class="panel"
-  aria-label="Contact Global Water Fund"
->
-
-
-  <!-- GENERAL -->
-
-  <article class="box">
-
-
-    <h3>
-
-      General &amp; Strategic Inquiries
-
-    </h3>
-
-
-    <p>
-
-      Partnerships, government engagements,
-      investor discussions.
-
+    <p class="intro">
+      Global Water Fund is built on the
+      understanding that water is a core
+      element of human and national
+      security—shaping food systems,
+      energy reliability, coastal stability,
+      migration pressures, and economic growth.
     </p>
 
-
-    <div class="email">
-
-      <a
-        href="mailto:info@globalwaterfund.com"
-      >
-
-        info@globalwaterfund.com
-
-      </a>
-
-    </div>
-
-
-    <div class="note">
-
-      Reviewed by Global Water Fund leadership.
-
-    </div>
-
-
-  </article>
-
-
-  <!-- CONFIDENTIAL -->
-
-  <article class="box">
-
-
-    <h3>
-
-      Confidential Communications
-
-    </h3>
-
-
-    <p>
-
-      Sensitive matters related to water security,
-      geopolitics, or crisis response.
-
+    <p class="secondary">
+      Operating at the intersection of
+      policy, science, and capital,
+      Global Water Fund translates water
+      and climate risk into decision-ready
+      intelligence and investment-ready
+      frameworks.
     </p>
 
+  </section>
 
-    <div class="email">
+  <div
+    class="section-divider"
+    aria-hidden="true">
+  </div>
 
-      <a
-        href="mailto:secure@globalwaterfund.com"
-      >
+  <!-- ========================================
+       02 — OUR APPROACH
+       ======================================== -->
 
-        secure@globalwaterfund.com
+  <section
+    class="approach"
+    aria-labelledby="approach-title">
 
-      </a>
+    <div class="kicker">
+      02 / Our Approach
+    </div>
+
+    <h2 id="approach-title">
+      Intelligence for Long-Term Stability
+    </h2>
+
+    <p>
+      Through a network of advisors,
+      research collaborations, and
+      institutional partners, the platform
+      integrates scientific insight,
+      strategic analysis, and financial
+      structuring to anticipate systemic
+      risk, guide intervention, and
+      preserve long-term stability.
+    </p>
+
+  </section>
+
+  <div
+    class="section-divider"
+    aria-hidden="true">
+  </div>
+
+  <!-- ========================================
+       03 — LEADERSHIP
+       ======================================== -->
+
+  <section
+    class="leadership"
+    aria-labelledby="leadership-title">
+
+    <div class="kicker">
+      03 / Leadership
+    </div>
+
+    <div class="leadership-grid">
+
+      <!-- LEADERSHIP BIOGRAPHY -->
+
+      <div class="leadership-copy">
+
+        <h2 id="leadership-title">
+          Stella Thomas
+        </h2>
+
+        <div class="role">
+          Founder &amp; Managing Director
+        </div>
+
+        <p>
+          Stella Thomas is a global
+          water-security strategist and
+          systems thinker working at the
+          intersection of water, climate,
+          infrastructure, and finance,
+          with a focus on geopolitical
+          risk and strategic resilience.
+        </p>
+
+      </div>
+
+      <!-- LEADERSHIP PORTRAIT -->
+
+      <aside class="photo-card">
+
+        <img
+          class="headshot"
+          src="/stella-thomas.jpg"
+          alt="Portrait of Stella Thomas"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          onerror="
+            this.hidden = true;
+            this.nextElementSibling.hidden = false;
+          ">
+
+        <div
+          class="photo-fallback"
+          hidden>
+
+          Portrait temporarily unavailable.
+
+        </div>
+
+        <div class="photo-caption">
+
+          Stella Thomas
+
+          <br>
+
+          Founder &amp; Managing Director
+
+        </div>
+
+      </aside>
 
     </div>
 
-
-    <div class="note">
-
-      Encrypted communications available upon request.
-
-    </div>
-
-
-  </article>
-
-
-</section>
-
+  </section>
 
 </main>
 
-
-<!-- =====================================================
+<!-- ==========================================
      FOOTER
-     ===================================================== -->
+     ========================================== -->
 
-<footer class="footer">
+<footer>
 
-  GLOBAL WATER FUND — ENGAGE • ADVISE • STABILIZE
+  GLOBAL WATER FUND
+  &mdash;
+  WATER &bull; SYSTEMS &bull; SECURITY
 
 </footer>
 
-
-<!-- =====================================================
-     MENU JAVASCRIPT
-     ===================================================== -->
+<!-- ==========================================
+     MENU FUNCTIONALITY
+     ========================================== -->
 
 <script>
 
-(function(){
+(function () {
 
-  const menuBtn =
-    document.getElementById("menuBtn");
+  const menuButton =
+    document.getElementById("menuButton");
 
-  const closeBtn =
-    document.getElementById("closeBtn");
+  const menuClose =
+    document.getElementById("menuClose");
 
-  const menuOverlay =
-    document.getElementById("menuOverlay");
+  const siteMenu =
+    document.getElementById("siteMenu");
 
+  function openMenu() {
 
-  /* OPEN MENU */
+    siteMenu.classList.add("open");
 
-  function openMenu(){
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "false"
+    );
 
-    menuOverlay
-      .classList
-      .add("open");
+    menuButton.setAttribute(
+      "aria-expanded",
+      "true"
+    );
 
-    menuOverlay
-      .setAttribute(
-        "aria-hidden",
-        "false"
-      );
+    menuClose.focus();
 
-    menuBtn
-      .setAttribute(
-        "aria-expanded",
-        "true"
-      );
+    document.body.style.overflow = "hidden";
 
   }
 
+  function closeMenu() {
 
-  /* CLOSE MENU */
+    siteMenu.classList.remove("open");
 
-  function closeMenu(){
+    siteMenu.setAttribute(
+      "aria-hidden",
+      "true"
+    );
 
-    menuOverlay
-      .classList
-      .remove("open");
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
 
-    menuOverlay
-      .setAttribute(
-        "aria-hidden",
-        "true"
-      );
+    document.body.style.overflow = "";
 
-    menuBtn
-      .setAttribute(
-        "aria-expanded",
-        "false"
-      );
+    menuButton.focus();
 
   }
 
+  menuButton.addEventListener(
+    "click",
+    openMenu
+  );
 
-  /* OPEN BUTTON */
+  menuClose.addEventListener(
+    "click",
+    closeMenu
+  );
 
-  menuBtn
-    .addEventListener(
-      "click",
-      openMenu
-    );
+  document.addEventListener(
+    "keydown",
+    function (event) {
 
+      if (
+        event.key === "Escape" &&
+        siteMenu.classList.contains("open")
+      ) {
 
-  /* CLOSE BUTTON */
+        closeMenu();
 
-  closeBtn
-    .addEventListener(
-      "click",
-      closeMenu
-    );
+      }
 
+    }
+  );
 
-  /* ESCAPE KEY */
+  siteMenu.querySelectorAll("a").forEach(
+    function (link) {
 
-  document
-    .addEventListener(
-      "keydown",
-      function(event){
+      link.addEventListener(
+        "click",
+        function () {
 
-        if(event.key === "Escape"){
+          siteMenu.classList.remove("open");
 
-          closeMenu();
+          document.body.style.overflow = "";
 
         }
-
-      }
-    );
-
-
-  /* CLOSE MENU AFTER LINK IS SELECTED */
-
-  const menuLinks =
-    menuOverlay
-      .querySelectorAll(
-        ".menuLinks a"
       );
 
-
-  menuLinks
-    .forEach(
-      function(link){
-
-        link
-          .addEventListener(
-            "click",
-            function(){
-
-              closeMenu();
-
-            }
-          );
-
-      }
-    );
-
+    }
+  );
 
 })();
 
 </script>
-
 
 </body>
 </html>
