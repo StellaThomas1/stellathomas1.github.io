@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#05070c">
+
   <title>Contact | Global Water Fund</title>
-  <meta name="description" content="Contact Global Water Fund for institutional inquiries, strategic partnerships and collaboration.">
+  <meta name="description" content="Contact Global Water Fund for institutional partnerships, strategic collaboration and direct correspondence.">
 
   <style>
     :root {
@@ -17,23 +18,33 @@
       --line: rgba(255,255,255,.14);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(ellipse at 75% 30%,
-          rgba(26,70,100,.17), transparent 55%),
+        radial-gradient(
+          ellipse at 75% 30%,
+          rgba(26,70,100,.17),
+          transparent 55%
+        ),
         var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .header {
       position: relative;
@@ -85,7 +96,9 @@
       overflow-y: auto;
     }
 
-    .menu-overlay.open { display: flex; }
+    .menu-overlay.open {
+      display: flex;
+    }
 
     .menu-links {
       display: flex;
@@ -160,6 +173,7 @@
       font-size: 16px;
       line-height: 1.85;
       margin: 0 0 22px;
+      max-width: 390px;
     }
 
     .contact-link {
@@ -167,18 +181,13 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--blue);
       color: #f2f8fc;
-      font-size: 17px;
+      font-size: clamp(16px, 1.8vw, 20px);
       overflow-wrap: anywhere;
+      transition: color .25s ease;
     }
 
-    .contact-link:hover { color: var(--blue); }
-
-    .contact-link[hidden] { display: none; }
-
-    .locations {
-      font-size: 18px;
-      letter-spacing: .025em;
-      color: #e6eef5;
+    .contact-link:hover {
+      color: var(--blue);
     }
 
     footer {
@@ -191,16 +200,22 @@
     }
 
     @media (max-width: 700px) {
-      .header { padding: 25px 6%; }
+      .header {
+        padding: 25px 6%;
+      }
 
       .brand {
         font-size: 11px;
         letter-spacing: .12em;
       }
 
-      .menu-button { padding: 11px 14px; }
+      .menu-button {
+        padding: 11px 14px;
+      }
 
-      main { padding: 85px 0 95px; }
+      main {
+        padding: 85px 0 95px;
+      }
 
       .contact-grid {
         grid-template-columns: 1fr;
@@ -208,7 +223,15 @@
         margin-top: 70px;
       }
 
-      footer { line-height: 1.9; }
+      footer {
+        line-height: 1.9;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
     }
   </style>
 </head>
@@ -216,7 +239,12 @@
 <body>
 
   <header class="header">
-    <a class="brand" href="/" aria-label="Global Water Fund Home">
+
+    <a
+      class="brand"
+      href="/"
+      aria-label="Global Water Fund Home"
+    >
       GLOBAL WATER FUND
     </a>
 
@@ -229,71 +257,118 @@
     >
       MENU
     </button>
+
   </header>
 
-  <nav class="menu-overlay" id="menuOverlay" aria-label="Main navigation">
+  <nav
+    class="menu-overlay"
+    id="menuOverlay"
+    aria-label="Main navigation"
+  >
+
     <div class="menu-links">
+
       <a href="/">HOME</a>
-      <a href="/earth/planetary.html">PLANETARY INTELLIGENCE</a>
-      <a href="/earth/map.html">GLOBAL MAP</a>
-      <a href="/earth/capabilities.html">CAPABILITIES</a>
-      <a href="/earth/forecasting.html">FORECASTING</a>
-      <a href="/earth/maritime.html">MARITIME</a>
-      <a href="/earth/capital.html">CAPITAL</a>
-      <a href="/about.html">ABOUT</a>
-      <a href="/contact.html" aria-current="page">CONTACT</a>
+
+      <a href="/earth/planetary.html">
+        PLANETARY INTELLIGENCE
+      </a>
+
+      <a href="/earth/map.html">
+        GLOBAL MAP
+      </a>
+
+      <a href="/earth/capabilities.html">
+        CAPABILITIES
+      </a>
+
+      <a href="/earth/forecasting.html">
+        FORECASTING
+      </a>
+
+      <a href="/earth/maritime.html">
+        MARITIME
+      </a>
+
+      <a href="/earth/capital.html">
+        CAPITAL
+      </a>
+
+      <a href="/about.html">
+        ABOUT
+      </a>
+
+      <a href="/contact.html" aria-current="page">
+        CONTACT
+      </a>
+
     </div>
+
   </nav>
 
   <main>
-    <div class="eyebrow">Global Water Fund / Contact</div>
 
-    <h1>Connect with us.</h1>
+    <div class="eyebrow">
+      GLOBAL WATER FUND / CORRESPONDENCE
+    </div>
+
+    <h1>Contact.</h1>
 
     <p class="intro">
-      Water security demands collaboration across disciplines,
-      institutions, and borders.
+      Water security demands collaboration across
+      disciplines, institutions, and borders.
       <br><br>
-      Global Water Fund welcomes dialogue with governments,
+      We welcome dialogue with governments,
       multilateral institutions, research organizations,
-      strategic partners, and investors working to advance
-      long-term water and climate resilience.
+      strategic partners, and investors working
+      to advance long-term water and climate resilience.
     </p>
 
-    <section class="contact-grid">
+    <section
+      class="contact-grid"
+      aria-label="Contact information"
+    >
 
       <div class="contact-block">
-        <h2>Institutional Inquiries</h2>
+
+        <h2>01 / General Inquiries</h2>
 
         <p>
-          For strategic partnerships, research collaboration,
-          policy engagement, investment dialogue,
-          and general institutional inquiries.
+          For institutional partnerships,
+          strategic collaboration,
+          and general inquiries.
         </p>
 
-        <a class="contact-link" id="emailLink" hidden>
-          Email Global Water Fund
+        <a
+          class="contact-link"
+          href="mailto:info@globalwaterfund.com"
+        >
+          info@globalwaterfund.com
         </a>
 
-        <p id="emailNotice">
-          Contact email to be confirmed.
-        </p>
       </div>
 
       <div class="contact-block">
-        <h2>Global Engagement</h2>
+
+        <h2>02 / Direct Correspondence</h2>
 
         <p>
-          Connecting expertise, policy, science, and capital
-          to address the systemic challenges of water security.
+          Direct correspondence with
+          Stella Thomas, Founder &amp;
+          Managing Director.
         </p>
 
-        <div class="locations">
-          Global Water Fund
-        </div>
+        <a
+          class="contact-link"
+          href="mailto:sthomas@globalwaterfund.com"
+        >
+          sthomas@globalwaterfund.com
+        </a>
+
       </div>
 
     </section>
+
   </main>
 
   <footer>
@@ -301,35 +376,55 @@
   </footer>
 
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const menuOverlay = document.getElementById("menuOverlay");
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menuOverlay =
+      document.getElementById("menuOverlay");
 
     function setMenu(open) {
       menuOverlay.classList.toggle("open", open);
-      menuButton.setAttribute("aria-expanded", String(open));
-      menuButton.textContent = open ? "CLOSE" : "MENU";
-      document.body.style.overflow = open ? "hidden" : "";
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+
+      menuButton.textContent =
+        open ? "CLOSE" : "MENU";
+
+      document.body.style.overflow =
+        open ? "hidden" : "";
     }
 
-    menuButton.addEventListener("click", function () {
-      setMenu(!menuOverlay.classList.contains("open"));
-    });
+    menuButton.addEventListener(
+      "click",
+      function () {
+        setMenu(
+          !menuOverlay.classList.contains("open")
+        );
+      }
+    );
 
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") setMenu(false);
-    });
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (event.key === "Escape") {
+          setMenu(false);
+        }
+      }
+    );
 
-    // REPLACE the empty string with your public contact email.
-    // Example: const contactEmail = "your-address@your-domain.com";
-    const contactEmail = "";
-
-    if (contactEmail) {
-      const emailLink = document.getElementById("emailLink");
-      emailLink.href = "mailto:" + contactEmail;
-      emailLink.textContent = contactEmail;
-      emailLink.hidden = false;
-      document.getElementById("emailNotice").hidden = true;
-    }
+    menuOverlay
+      .querySelectorAll("a")
+      .forEach(function (link) {
+        link.addEventListener(
+          "click",
+          function () {
+            setMenu(false);
+          }
+        );
+      });
   </script>
 
 </body>
