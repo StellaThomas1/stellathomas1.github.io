@@ -7,7 +7,11 @@
   <meta name="theme-color" content="#05070c">
 
   <title>Contact | Global Water Fund</title>
-  <meta name="description" content="Contact Global Water Fund for institutional partnerships, strategic collaboration and direct correspondence.">
+
+  <meta
+    name="description"
+    content="Contact Global Water Fund for institutional partnerships, strategic collaboration, and direct correspondence."
+  >
 
   <style>
     :root {
@@ -29,6 +33,8 @@
     body {
       margin: 0;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       background:
         radial-gradient(
           ellipse at 75% 30%,
@@ -46,30 +52,58 @@
       text-decoration: none;
     }
 
+    button {
+      font: inherit;
+    }
+
+    /* HEADER */
+
     .header {
       position: relative;
       z-index: 30;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
       padding: 32px 6%;
       border-bottom: 1px solid var(--line);
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #f2f5f8;
       font-size: 15px;
       font-weight: 700;
       letter-spacing: .19em;
-      color: #e6f8ff;
-      text-shadow: 0 0 18px rgba(120,220,255,.34);
+      text-shadow:
+        0 0 18px rgba(120,220,255,.34);
       transition: text-shadow .3s ease;
     }
 
     .brand:hover {
-      text-shadow: 0 0 25px rgba(120,220,255,.8);
+      text-shadow:
+        0 0 25px rgba(120,220,255,.8);
+    }
+
+    /* ILLUMINATED BLUE DOT */
+
+    .brand::after {
+      content: "";
+      display: inline-block;
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow:
+        0 0 8px rgba(120,220,255,.8),
+        0 0 18px rgba(120,220,255,.4);
     }
 
     .menu-button {
+      flex-shrink: 0;
       border: 1px solid rgba(255,255,255,.25);
       background: transparent;
       color: white;
@@ -77,12 +111,17 @@
       font-size: 11px;
       letter-spacing: .22em;
       cursor: pointer;
+      transition:
+        border-color .25s ease,
+        color .25s ease;
     }
 
     .menu-button:hover {
       border-color: var(--blue);
       color: var(--blue);
     }
+
+    /* FULL-SCREEN MENU */
 
     .menu-overlay {
       position: fixed;
@@ -119,36 +158,50 @@
       color: var(--blue);
     }
 
+    /* MAIN CONTENT */
+
     main {
       width: min(1100px, 88%);
       margin: 0 auto;
       padding: 115px 0 130px;
-      min-height: 68vh;
-    }
-
-    .eyebrow {
-      color: var(--blue);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .28em;
-      margin-bottom: 24px;
+      flex: 1;
     }
 
     h1 {
-      font-size: clamp(52px, 8vw, 100px);
+      margin: 0;
+      color: #f2f5f8;
+      font-size: clamp(58px, 9vw, 108px);
       font-weight: 300;
       letter-spacing: -.045em;
-      line-height: 1.05;
-      margin: 0 0 38px;
+      line-height: 1.08;
+    }
+
+    /* BLUE LABEL DIRECTLY BELOW CONTACT */
+
+    .eyebrow {
+      margin-top: 26px;
+      margin-bottom: 45px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
     }
 
     .intro {
-      max-width: 690px;
+      max-width: 750px;
+      margin: 0;
       color: #b8c4d0;
       font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.8;
       font-weight: 300;
+      line-height: 1.85;
     }
+
+    .intro p {
+      margin: 0 0 23px;
+    }
+
+    /* CORRESPONDENCE SECTIONS */
 
     .contact-grid {
       display: grid;
@@ -160,20 +213,21 @@
     }
 
     .contact-block h2 {
-      font-size: 11px;
+      margin: 0 0 24px;
       color: var(--blue);
+      font-size: 12px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: .24em;
-      margin: 0 0 24px;
+      line-height: 1.7;
     }
 
     .contact-block p {
+      max-width: 390px;
+      margin: 0 0 25px;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.85;
-      margin: 0 0 22px;
-      max-width: 390px;
     }
 
     .contact-link {
@@ -183,12 +237,17 @@
       color: #f2f8fc;
       font-size: clamp(16px, 1.8vw, 20px);
       overflow-wrap: anywhere;
-      transition: color .25s ease;
+      transition:
+        color .25s ease,
+        border-color .25s ease;
     }
 
     .contact-link:hover {
       color: var(--blue);
+      border-color: var(--blue);
     }
+
+    /* CENTERED FOOTER */
 
     footer {
       border-top: 1px solid var(--line);
@@ -197,16 +256,27 @@
       font-size: 10px;
       letter-spacing: .17em;
       text-transform: uppercase;
+      text-align: center;
+      line-height: 1.9;
     }
 
+    /* MOBILE */
+
     @media (max-width: 700px) {
+
       .header {
         padding: 25px 6%;
       }
 
       .brand {
         font-size: 11px;
-        letter-spacing: .12em;
+        letter-spacing: .11em;
+        gap: 7px;
+      }
+
+      .brand::after {
+        width: 5px;
+        height: 5px;
       }
 
       .menu-button {
@@ -217,14 +287,23 @@
         padding: 85px 0 95px;
       }
 
+      .eyebrow {
+        margin-top: 22px;
+        margin-bottom: 38px;
+      }
+
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 45px;
-        margin-top: 70px;
+        gap: 55px;
+        margin-top: 75px;
+      }
+
+      .contact-block h2 {
+        font-size: 12px;
       }
 
       footer {
-        line-height: 1.9;
+        padding: 30px 6%;
       }
     }
 
@@ -232,11 +311,19 @@
       html {
         scroll-behavior: auto;
       }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- HEADER -->
 
   <header class="header">
 
@@ -260,6 +347,8 @@
 
   </header>
 
+  <!-- NAVIGATION -->
+
   <nav
     class="menu-overlay"
     id="menuOverlay"
@@ -268,7 +357,9 @@
 
     <div class="menu-links">
 
-      <a href="/">HOME</a>
+      <a href="/">
+        HOME
+      </a>
 
       <a href="/earth/planetary.html">
         PLANETARY INTELLIGENCE
@@ -298,7 +389,10 @@
         ABOUT
       </a>
 
-      <a href="/contact.html" aria-current="page">
+      <a
+        href="/contact.html"
+        aria-current="page"
+      >
         CONTACT
       </a>
 
@@ -306,23 +400,34 @@
 
   </nav>
 
+  <!-- CONTACT PAGE -->
+
   <main>
 
+    <h1>Contact</h1>
+
     <div class="eyebrow">
-      GLOBAL WATER FUND / CORRESPONDENCE
+      Correspondence
     </div>
 
-    <h1>Contact.</h1>
+    <div class="intro">
 
-    <p class="intro">
-      Water security demands collaboration across
-      disciplines, institutions, and borders.
-      <br><br>
-      We welcome dialogue with governments,
-      multilateral institutions, research organizations,
-      strategic partners, and investors working
-      to advance long-term water and climate resilience.
-    </p>
+      <p>
+        Water security demands collaboration across
+        disciplines, institutions, and borders.
+      </p>
+
+      <p>
+        Global Water Fund welcomes dialogue with
+        governments, multilateral institutions,
+        research organizations, strategic partners,
+        and investors working to advance long-term
+        water and climate resilience.
+      </p>
+
+    </div>
+
+    <!-- EMAIL CONTACTS -->
 
     <section
       class="contact-grid"
@@ -331,7 +436,9 @@
 
       <div class="contact-block">
 
-        <h2>01 / General Inquiries</h2>
+        <h2>
+          01 / General Inquiries
+        </h2>
 
         <p>
           For institutional partnerships,
@@ -350,7 +457,9 @@
 
       <div class="contact-block">
 
-        <h2>02 / Direct Correspondence</h2>
+        <h2>
+          02 / Direct Correspondence
+        </h2>
 
         <p>
           Direct correspondence with
@@ -371,9 +480,13 @@
 
   </main>
 
+  <!-- FOOTER -->
+
   <footer>
-    GLOBAL WATER FUND — WATER &bull; SYSTEMS &bull; SECURITY
+    GLOBAL WATER FUND — ENGAGE &bull; ADVISE &bull; STABILIZE
   </footer>
+
+  <!-- MENU FUNCTIONALITY -->
 
   <script>
     const menuButton =
@@ -383,7 +496,11 @@
       document.getElementById("menuOverlay");
 
     function setMenu(open) {
-      menuOverlay.classList.toggle("open", open);
+
+      menuOverlay.classList.toggle(
+        "open",
+        open
+      );
 
       menuButton.setAttribute(
         "aria-expanded",
@@ -400,30 +517,36 @@
     menuButton.addEventListener(
       "click",
       function () {
+
         setMenu(
           !menuOverlay.classList.contains("open")
         );
+
       }
     );
 
     document.addEventListener(
       "keydown",
       function (event) {
+
         if (event.key === "Escape") {
           setMenu(false);
         }
+
       }
     );
 
     menuOverlay
       .querySelectorAll("a")
       .forEach(function (link) {
+
         link.addEventListener(
           "click",
           function () {
             setMenu(false);
           }
         );
+
       });
   </script>
 
